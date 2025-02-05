@@ -1,10 +1,11 @@
 import './App.css'
+import HeaderMobile from './components/Header/Header'
 
 function App() {
 
   return (
     <>
-    <p>prueba</p>
+    <HeaderMobile />
     </>
   )
 }

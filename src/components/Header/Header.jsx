@@ -4,11 +4,11 @@ import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 
 const navItems = [
-  { label: 'Inicio', value: 'home', icon: '/icons/isotype.svg', width: 40, height: 40, link: '/'},
-  { label: 'Estancia', value: 'book', icon: '/icons/bed_2.svg' , width: 34, height: 34, link: '/my-reservations'},
-  { label: 'Restaurante', value: 'restaurant', icon: '/icons/restaurant.svg', width: 28, height: 28, link: '/restaurant'},
-  { label: 'Contacto', value: 'contact', icon: '/icons/contact.svg', width: 28, height: 28},
-  { label: 'Perfil', value: 'profile', icon: '/icons/profile.svg', width: 28, height: 28, link: '/profile'},
+  { label: 'Inicio', value: 'home', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/isotype_idmria.svg', width: 40, height: 40, link: '/'},
+  { label: 'Estancia', value: 'book', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/bed_2_kda2wz.svg' , width: 34, height: 34, link: '/my-reservations'},
+  { label: 'Restaurante', value: 'restaurant', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/restaurant_d16z1c.svg', width: 28, height: 28, link: '/restaurant'},
+  { label: 'Contacto', value: 'contact', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/contact_incmt5.svg', width: 28, height: 28},
+  { label: 'Perfil', value: 'profile', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/profile_d9xatr.svg', width: 28, height: 28, link: '/profile'},
 ];
 
 function Header() {
@@ -34,3 +34,4 @@ function Header() {
 }
 
 export default Header;
+

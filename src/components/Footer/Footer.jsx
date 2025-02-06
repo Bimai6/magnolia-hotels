@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-contact">
         <h3>Contacto</h3>
-        <p>Teléfono: <a href="tel:+34222222222">+34 222 222 222</a></p>
+        <p><bold>Teléfono:</bold> <a href="tel:+34222222222">+34 222 222 222</a></p>
       </div>
       <div className="footer-icons">
         <a href="#" aria-label="Instagram">

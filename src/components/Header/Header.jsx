@@ -19,7 +19,7 @@ function Header() {
   };
 
   return (
-    <BottomNavigation sx={{ width: 500 }} value={value} onChange={handleChange}>
+    <BottomNavigation sx={{ width: 500, position:'fixed', bottom:0}} value={value} onChange={handleChange}>
       {navItems.map((item) => (
         <BottomNavigationAction
           key={item.value}

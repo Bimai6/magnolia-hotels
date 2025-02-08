@@ -1,31 +1,14 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { AppBar, Toolbar, IconButton, Box } from '@mui/material';
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import { AppBar, Toolbar, IconButton, Box, BottomNavigation, BottomNavigationAction, useMediaQuery, Button} from '@mui/material';
 
 const navItems = [
-  { label: 'Inicio', value: 'home', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/isotype_idmria.svg', link: '/' },
-  { label: 'Estancia', value: 'book', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/bed_2_kda2wz.svg', link: '/my-reservations' },
-  { label: 'Restaurante', value: 'restaurant', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/restaurant_d16z1c.svg', link: '/restaurant' },
-  { label: 'Contacto', value: 'contact', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/contact_incmt5.svg' },
-  { label: 'Perfil', value: 'profile', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/profile_d9xatr.svg', link: '/profile' },
+  { label: 'Inicio', value: 'home', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/isotype_idmria.svg', link: '/', width: 40, height: 40 },
+  { label: 'Estancia', value: 'book', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/bed_2_kda2wz.svg', link: '/my-reservations', width: 34, height: 34, ml: 'auto'},
+  { label: 'Restaurante', value: 'restaurant', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/restaurant_d16z1c.svg', link: '/restaurant', width: 28, height: 28, ml:2 },
+  { label: 'Contacto', value: 'contact', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/contact_incmt5.svg', width: 28, height: 28, ml:2 },
+  { label: 'Perfil', value: 'profile', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/profile_d9xatr.svg', link: '/profile', width: 28, height: 28, ml:2 },
 ];
-
-const DesktopHeader = () => (
-  <AppBar position="static" sx={{ backgroundColor: 'white', boxShadow: '0px 2px 5px rgba(0,0,0,0.1)' }}>
-    <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-      <Box sx={{ display: 'flex', gap: 3 }}>
-        {navItems.map((item) => (
-          <IconButton key={item.value} component={Link} to={item.link || '#'}>
-            <img src={item.icon} alt={item.label} width={30} height={30} />
-          </IconButton>
-        ))}
-      </Box>
-    </Toolbar>
-  </AppBar>
-);
 
 const MobileHeader = () => {
   const [value, setValue] = React.useState('home');
@@ -48,12 +31,49 @@ const MobileHeader = () => {
           component={Link}
           to={item.link || '#'}
           value={item.value}
-          icon={<img src={item.icon} alt={item.label} width={28} height={28} />}
+          icon={<img src={item.icon} alt={item.label} width={item.width} height={item.height} />}
         />
       ))}
     </BottomNavigation>
   );
 };
+
+function DesktopHeader() {
+  return (
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static" sx={{ backgroundColor: 'white', boxShadow: 'none' }}>
+        <Toolbar>
+          <IconButton
+            component={Link}
+            to="/"
+            size="large"
+            edge="start"
+            aria-label="logo"
+          >
+            <img 
+              src="https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/isotype_idmria.svg" 
+              alt="Logo"
+              width={navItems[0].width}
+              height={navItems[0].height}
+              style={{ objectFit: 'contain' }} 
+            />
+          </IconButton>
+          {navItems.slice(1).map((item) => (
+            <Button 
+              key={item.value} 
+              component={Link} 
+              to={item.link} 
+              sx={{ color: 'black', textTransform: 'none', fontSize: '16px', ml: item.ml }}
+            >
+              {item.label}
+            </Button>
+          ))}
+        </Toolbar>
+      </AppBar>
+    </Box>
+  );
+}
+
 
 function Header() {
   const isMobile = useMediaQuery('(max-width:1023px)');

@@ -4,7 +4,7 @@ import doubleRoom from '../double-room.png'
 const Home = () => {
   return (
     <div>
-      <RoomCard title = {'Habitación Doble'} stars={3} price={43} img={doubleRoom}/>
+      Home
     </div>
     
     

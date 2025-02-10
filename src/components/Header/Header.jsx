@@ -47,7 +47,8 @@ const MobileHeader = () => {
 
 const DesktopHeader = () => (
   <Box sx={{ flexGrow: 1 }}>
-    <AppBar position="static" sx={{ backgroundColor: 'white', boxShadow: 'none' }}>
+    <AppBar position="absolute" sx={{ backgroundColor: 'transparent', boxShadow: 'none', zIndex: 2 }}>
+
       <Toolbar>
         <IconButton component={Link} to="/" size="large" edge="start" aria-label="logo" disableRipple>
           <img 
@@ -61,13 +62,13 @@ const DesktopHeader = () => (
             key={item.value} 
             component={Link} 
             to={item.link} 
-            sx={{ color: 'black', textTransform: 'none', fontSize: '16px', ml: item.ml, position: 'relative',
+            sx={{ color: 'white', textTransform: 'none', fontSize: '16px', ml: item.ml, position: 'relative',
               '&::after': {
                 content: '""',
                 display: 'block',
                 width: 0,
                 height: '2px',
-                background: 'black',
+                background: 'white',
                 transition: 'width .3s',
                 position: 'absolute',
                 bottom: 0,
@@ -100,30 +101,65 @@ export default function HomePage() {
             Tus vacaciones como nunca
           </Typography>
           <Typography variant="body1" sx={{ mt: 2 }}>
-            Lorem fistrum condemor me cago en tus muelas amatomaa te va a hasé pupitaa...
+          Lorem fistrum condemor me cago en tus muelas amatomaa te va a hasé pupitaa a gramenawer benemeoor. Hasta lu
+          ego Lucas jarl ese que llega mamaar. Sexuarl a gramenawer te voy a borrar el cerito papaar papaar me cago en tus muelas. Tiene musho peligro.
           </Typography>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Box sx={{
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            width: { xs: '100%', md: '50%' },
+            height: '100%',
+            zIndex: -1
+              }}>
           <img 
             src="https://res.cloudinary.com/dk1g12n2h/image/upload/v1739175372/fondo_hp9223.png" 
             alt="Hotel Magnolia"
-            style={{ width: '100%', borderRadius: '10px' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
-        </Grid>
+        </Box>
       </Grid>
 
-      <Grid container spacing={4} justifyContent="center" sx={{ my: 4 }}>
-        {benefits.map((benefit, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index} textAlign="center">
-            <img src={benefit.icon} alt={benefit.label} width="140" />
-            <Typography variant="subtitle1" sx={{ mt: 2 }}>
-              {benefit.label}
-            </Typography>
-          </Grid>
-        ))}
-      </Grid>
+<Grid 
+  container 
+  spacing={4} 
+  justifyContent="center" 
+  sx={{ 
+    my: 4, 
+    minHeight: '150vh',
+    '& .MuiGrid-item': { 
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center'
+    } 
+  }} 
+>
+  {benefits.map((benefit, index) => (
+    <Grid item xs={12} sm={6} md={3} key={index}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <img src={benefit.icon} alt={benefit.label} width="150" />
 
-      <Grid container spacing={2} sx={{ my: 4 }}>
+        <Typography 
+          variant="subtitle1" 
+          sx={{ 
+          position: 'relative', left: '10px',
+          mt: 2, 
+          textAlign: 'center',
+          minHeight: '4em', 
+          display: 'flex',
+          align: 'center'
+              }}>
+          {benefit.label}
+        </Typography>
+        
+      </Box>
+    </Grid>
+  ))}
+</Grid>
+
+      <Grid container spacing={2}>
         <Grid item xs={12}>
           <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3105.123456789!2d-5.984459!3d37.389092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd126f6e5a2a3b4f%3A0xabcdef1234567890!2sCalle%20Pedro%20del%20Toro%2018%2C%20Sevilla%2C%20España!5e0!3m2!1ses!2ses!4v1610000000000!5m2!1ses!2ses" 

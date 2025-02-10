@@ -51,11 +51,11 @@ function DesktopHeader() {
             aria-label="logo"
           >
             <img 
-              src="https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/isotype_idmria.svg" 
+              src="https://res.cloudinary.com/dk1g12n2h/image/upload/v1739173714/IMG-20250202-WA0012_1_eic08v.png" 
               alt="Logo"
               width={navItems[0].width}
               height={navItems[0].height}
-              style={{ objectFit: 'contain' }} 
+              style={{ objectFit: 'contain', width: '200px' }} 
             />
           </IconButton>
           {navItems.slice(1).map((item) => (

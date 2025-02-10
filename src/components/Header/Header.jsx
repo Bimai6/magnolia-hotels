@@ -63,7 +63,22 @@ function DesktopHeader() {
               key={item.value} 
               component={Link} 
               to={item.link} 
-              sx={{ color: 'black', textTransform: 'none', fontSize: '16px', ml: item.ml }}
+              sx={{ color: 'black', textTransform: 'none', fontSize: '16px', ml: item.ml, position: 'relative',
+                '&::after': {
+                  content: '""',
+                  display: 'block',
+                  width: 0,
+                  height: '2px',
+                  background: 'black',
+                  transition: 'width .3s',
+                  position: 'absolute',
+                  bottom: 0,
+                  left: 0
+                },
+                '&:hover::after': {
+                  width: '100%'
+                }
+              }}
             >
               {item.label}
             </Button>

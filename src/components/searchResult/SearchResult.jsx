@@ -18,20 +18,23 @@ const SearchResult = () => {
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <Box sx={{ display: 'flex', flexDirection: 'row', gap: 10 }}>
           {/* Fecha entrada */}
-          <p>Fecha de entrada</p>
-          <DatePicker  
-            minDate={dayjs()}
-            value={entry}
-            sx={{ width: 250, borderRadius: '5px', backgroundColor: '#ffffff' }} 
-            onChange={(newValue) => {
-              setEntry(newValue);
-              if(newValue.isAfter(departure)){
-                setDeparture(newValue.add(1, 'day'));
-              }
-            }} 
-          />
-          
+          <div>
+            <p>Fecha de entrada</p>
+            <DatePicker  
+              minDate={dayjs()}
+              value={entry}
+              sx={{ width: 250, borderRadius: '5px', backgroundColor: '#ffffff' }} 
+              onChange={(newValue) => {
+                setEntry(newValue);
+                if(newValue.isAfter(departure)){
+                  setDeparture(newValue.add(1, 'day'));
+                }
+              }} 
+            />
+          </div>
           {/* Fecha salida */}
+          <div>
+          <p>Fecha de salida</p>
           <DatePicker 
             minDate={entry.add(1, 'day')}
             value={departure}
@@ -43,10 +46,11 @@ const SearchResult = () => {
               }
             }} 
           />
+          </div>
         </Box>
       </LocalizationProvider>
+      <button className='searchButton'>Buscar</button>
     </div>
   );
-}
-
+};
 export default SearchResult;

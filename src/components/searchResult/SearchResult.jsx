@@ -1,12 +1,12 @@
 import * as React from 'react';
 import dayjs from 'dayjs';
 import './SearchResult.css';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Box } from '@mui/material'; // Asegúrate de importar Box
-import { Height } from '@mui/icons-material';
+import { Box } from '@mui/material'; 
+import Button from 'react-bootstrap/Button';
+
 
 const SearchResult = () => {
 
@@ -14,9 +14,9 @@ const SearchResult = () => {
   const [departure, setDeparture] = React.useState(dayjs().add(1, 'day'));
 
   return (
-    <div className='container'>
+    <div className='search-container'>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <Box sx={{ display: 'flex', flexDirection: 'row', gap: 10 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'row', gap: 4   }}>
           {/* Fecha entrada */}
           <div>
             <p>Fecha de entrada</p>
@@ -38,7 +38,7 @@ const SearchResult = () => {
           <DatePicker 
             minDate={entry.add(1, 'day')}
             value={departure}
-            sx={{ width: 250, borderRadius: '5px', backgroundColor: '#ffffff'}}
+            sx={{ width: 250, borderRadius: '5px', backgroundColor: '#ffffff', marginRight: '30px' }}
             onChange={(newValue) => {
               setDeparture(newValue);
               if(newValue.isBefore(entry)){
@@ -49,8 +49,8 @@ const SearchResult = () => {
           </div>
         </Box>
       </LocalizationProvider>
-      <button className='searchButton'>Buscar</button>
-    </div>
+      <Button id='search-button' variant="dark" size='lg' className='rounded-5 fs-6 mx-auto' style={{width: '110px'}}>Reservar</Button>
+    </div>  
   );
 };
 export default SearchResult;

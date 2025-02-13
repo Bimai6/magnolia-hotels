@@ -7,7 +7,6 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Box } from '@mui/material'; 
 import Button from 'react-bootstrap/Button';
 
-
 const SearchResult = () => {
 
   const [entry, setEntry] = React.useState(dayjs());

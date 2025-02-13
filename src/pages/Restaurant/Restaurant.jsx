@@ -1,6 +1,6 @@
 import React from 'react';
 import './Restaurant.css';
-import ButtonRestaurant from '../components/ButtonRestaurant/ButtonRestaurant';
+import ButtonRestaurant from '../../components/ButtonRestaurant/ButtonRestaurant';
 
 const Restaurant = () => {
   return (

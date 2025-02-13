@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../pages/Home";
-import Profile from "../pages/Profile";
-import Restaurant from "../pages/Restaurant";
-import Reservations from "../pages/Reservations";
-import MyReservations from "../pages/MyReservations";
-import RestaurantMenu from "../pages/RestaurantMenu";
-import React from 'react'
+import Home from "../pages/Home/Home";
+import Profile from "../pages/Profile/Profile";
+import Restaurant from "../pages/Restaurant/Restaurant";
+import Reservations from "../pages/Reservations/Reservations";
+import MyReservations from "../pages/MyReservations/MyReservations";
+import RestaurantMenu from "../pages/RestaurantMenu/RestaurantMenu";
+import React from 'react';
 
 export const Router = createBrowserRouter([
     {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { AppBar, Toolbar, IconButton, Box, BottomNavigation, BottomNavigationAction, useMediaQuery, Button} from '@mui/material';
+import { AppBar, Toolbar, IconButton, Box, BottomNavigation, BottomNavigationAction, useMediaQuery, Button, Grid, Typography, Container } from '@mui/material';
 
 const navItems = [
   { label: 'Inicio', value: 'home', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/isotype_idmria.svg', link: '/', width: 45, height: 45 },
@@ -16,8 +16,8 @@ const MobileHeader = () => {
   return (
     <BottomNavigation
       sx={{
-        width: '100%', 
-        position: 'fixed', 
+        width: '100%',
+        position: 'fixed',
         bottom: 0,
         backgroundColor: 'white',
         boxShadow: '0px -2px 5px rgba(0,0,0,0.1)'

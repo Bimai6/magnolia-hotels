@@ -1,0 +1,33 @@
+* {
+    font-family: "manrope", serif;
+}
+    #pageButtons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        gap: 20px;
+        border-color: white;
+        color: red;
+    }
+
+    .magnolia-restaurant {
+        background-color: transparent;
+        backdrop-filter: blur(4px);
+        border: 2px solid white;
+        color: white;
+        font-size: 18px;
+        padding: 12px 24px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .magnolia-restaurant:hover {
+        background-color: transparent;
+        color: white;
+        border-color: white;
+        box-shadow: none;
+    }
+
+

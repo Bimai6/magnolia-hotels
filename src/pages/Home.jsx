@@ -13,6 +13,7 @@ const Home = () => {
 
   return (
     <>
+    <>
       <Header />
       <Container maxWidth="lg">
 

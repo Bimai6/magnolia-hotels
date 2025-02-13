@@ -13,7 +13,7 @@ const Home = () => {
 
   return (
     <>
-    <>
+    
       <Header />
       <Container maxWidth="lg">
 
@@ -98,4 +98,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Home;

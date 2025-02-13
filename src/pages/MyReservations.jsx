@@ -3,7 +3,8 @@ import Header from '../components/Header/Header';
 
 const MyReservations = () => {
   return (
-    <>MyReservations
+    <>
+    MyReservations
           <Header />
     </>
   )

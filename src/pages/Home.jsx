@@ -1,8 +1,13 @@
-import React from 'react'
+import React from 'react';
+import Header from '../components/Header/Header';
+import Button from '../components/buttonSearch/ButtonSearch';
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <>
+      <Header />
+      <Button />
+    </>
   )
 }
 

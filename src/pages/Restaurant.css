@@ -10,8 +10,36 @@ body {
     background-size: cover;
     }
 
-    .logo {
+.logo {
         backdrop-filter: blur(1px); 
       }
-    
+#buttonsRestaurant {
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        gap: 10px; 
+    }
 
+    .restaurant-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        text-align: center;
+    }
+    
+    .restaurant-container img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 20px; 
+    }
+    
+@media screen and (min-width: 700px) {
+    #buttonsRestaurant {
+        display: flex;
+        flex-direction: row;
+        align-items: center; 
+        gap: 10px; 
+    }
+} 

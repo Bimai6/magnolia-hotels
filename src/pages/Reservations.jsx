@@ -1,8 +1,12 @@
 import React from 'react'
-
+import SearchResult from '../components/searchResult/SearchResult'
+import './Reservations.css';
 const Reservations = () => {
   return (
-    <div>Reservations</div>
+    <div className='container'>
+      <SearchResult/> 
+    </div>
+    
   )
 }
 

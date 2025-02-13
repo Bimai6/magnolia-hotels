@@ -1,33 +1,104 @@
 import * as React from 'react';
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import { Link } from 'react-router-dom';
+import { AppBar, Toolbar, IconButton, Box, BottomNavigation, BottomNavigationAction, useMediaQuery, Button} from '@mui/material';
 
 const navItems = [
-  { label: 'Inicio', value: 'home', icon: '/icons/isotype.svg', width: 40, height: 40},
-  { label: 'Estancia', value: 'book', icon: '/icons/bed_2.svg' , width: 34, height: 34},
-  { label: 'Restaurante', value: 'restaurant', icon: '/icons/restaurant.svg', width: 28, height: 28},
-  { label: 'Contacto', value: 'contact', icon: '/icons/contact.svg', width: 28, height: 28 },
-  { label: 'Perfil', value: 'profile', icon: '/icons/profile.svg', width: 28, height: 28 },
+  { label: 'Inicio', value: 'home', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/isotype_idmria.svg', link: '/', width: 45, height: 45 },
+  { label: 'Estancia', value: 'book', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/bed_2_kda2wz.svg', link: '/my-reservations', width: 39, height: 39, ml: 'auto'},
+  { label: 'Restaurante', value: 'restaurant', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/restaurant_d16z1c.svg', link: '/restaurant', width: 33, height: 33, ml:2 },
+  { label: 'Contacto', value: 'contact', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/contact_incmt5.svg', width: 33, height: 33, ml:2 },
+  { label: 'Identificarse', value: 'profile', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/profile_d9xatr.svg', link: '/profile', width: 33, height: 33, ml:2 },
 ];
 
-function HeaderMobile() {
+const MobileHeader = () => {
   const [value, setValue] = React.useState('home');
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
   return (
-    <BottomNavigation sx={{ width: 500 }} value={value} onChange={handleChange}>
+    <BottomNavigation
+      sx={{
+        width: '100%', 
+        position: 'fixed', 
+        bottom: 0,
+        backgroundColor: 'white',
+        boxShadow: '0px -2px 5px rgba(0,0,0,0.1)'
+      }}
+      value={value}
+      onChange={(event, newValue) => setValue(newValue)}
+    >
       {navItems.map((item) => (
         <BottomNavigationAction
           key={item.value}
+          component={Link}
+          to={item.link || '#'}
           value={item.value}
           icon={<img src={item.icon} alt={item.label} width={item.width} height={item.height} />}
         />
       ))}
     </BottomNavigation>
   );
+};
+
+function DesktopHeader() {
+  return (
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static" sx={{ backgroundColor: 'white', boxShadow: 'none' }}>
+        <Toolbar>
+          <IconButton
+            component={Link}
+            to="/"
+            size="large"
+            edge="start"
+            aria-label="logo"
+            disableRipple
+          >
+            <img 
+              src="https://res.cloudinary.com/dk1g12n2h/image/upload/v1739173714/IMG-20250202-WA0012_1_eic08v.png" 
+              alt="Logo"
+              style={{ objectFit: 'contain', width: '200px', height: 'auto' }} 
+            />
+          </IconButton>
+          <Box sx={{ ml: 'auto', display: 'flex', gap: 8 }}>
+            {navItems.slice(1).map((item) => (
+              <Button 
+                key={item.value} 
+                component={Link} 
+                to={item.link} 
+                sx={{ 
+                  color: 'black', 
+                  textTransform: 'none', 
+                  fontSize: '18px', 
+                  position: 'relative',
+                  '&::after': {
+                    content: '""',
+                    display: 'block',
+                    width: 0,
+                    height: '2px',
+                    background: 'black',
+                    transition: 'width .3s',
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0
+                  },
+                  '&:hover::after': {
+                    width: '100%'
+                  }
+                }}
+              >
+                {item.label}
+              </Button>
+            ))}
+          </Box>
+        </Toolbar>
+      </AppBar>
+    </Box>
+  );
 }
 
-export default HeaderMobile;
+
+
+function Header() {
+  const isMobile = useMediaQuery('(max-width:1023px)');
+  return isMobile ? <MobileHeader /> : <DesktopHeader />;
+}
+
+export default Header;

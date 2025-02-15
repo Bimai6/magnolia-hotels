@@ -23,4 +23,4 @@ const RoomCard = ({title, stars, price, img }) => {
   )
 }
 
-export default RoomCard
+export default RoomCard;

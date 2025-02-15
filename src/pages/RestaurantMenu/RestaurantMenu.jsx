@@ -6,4 +6,4 @@ const RestaurantMenu = () => {
   )
 }
 
-export default RestaurantMenu
+export default RestaurantMenu;

@@ -10,4 +10,4 @@ const MyReservations = () => {
   )
 }
 
-export default MyReservations
+export default MyReservations;

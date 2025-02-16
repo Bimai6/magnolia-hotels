@@ -94,11 +94,9 @@ function DesktopHeader() {
   );
 }
 
-
-
 function Header() {
   const isMobile = useMediaQuery('(max-width:1023px)');
-  return isMobile ? <MobileHeader /> : <DesktopHeader />;
+  return isMobile ? <MobileHeader/> : <DesktopHeader />;
 }
 
 export default Header;

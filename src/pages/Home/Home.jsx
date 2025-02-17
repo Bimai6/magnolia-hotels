@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from '../../components/Header/Header';
 import { Box, Grid, Typography, Container } from '@mui/material';
+import { Button } from 'bootstrap';
+import ButtonSearch from '../../components/buttonSearch/ButtonSearch';
 
 const Home = () => {
 
@@ -94,6 +96,7 @@ const Home = () => {
         </Grid>
       </Grid>
     </Container>
+    <ButtonSearch />
     </>
   )
 }

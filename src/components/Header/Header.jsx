@@ -20,7 +20,8 @@ const MobileHeader = () => {
         position: 'fixed',
         bottom: 0,
         backgroundColor: 'white',
-        boxShadow: '0px -2px 5px rgba(0,0,0,0.1)'
+        boxShadow: 'none',
+        zIndex: 9999
       }}
       value={value}
       onChange={(event, newValue) => setValue(newValue)}

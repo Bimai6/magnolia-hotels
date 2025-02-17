@@ -14,3 +14,4 @@
 - react-icons
 - react-router-dom
 - sweetalert2
+- sweetalert2-react-content

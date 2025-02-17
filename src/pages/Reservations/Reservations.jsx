@@ -1,8 +1,8 @@
 import React from 'react';
-import RoomCard from '../../components/roomCard/RoomCard';
+import RoomCard from '../../components/RoomCard/RoomCard';
 
 const rooms = [
-  { title: 'Habitación Doble', stars: 3, price: 43, img: 'https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg'},
+  { title: 'Habitación Doble',description:"Disfruta de la combinación perfecta entre elegancia y confort en nuestra Suite Junior, un espacio diseñado para brindar una estancia exclusiva y relajante.", stars: 3, price: 43, img: 'https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg'},
   { title: 'Habitación Individual', stars: 4, price: 38, img: 'https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg'  },
   { title: 'Suite Deluxe', stars: 5, price: 99, img: 'https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg'  },
   { title: 'Habitación Superior', stars: 4, price: 55, img: 'https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg' },

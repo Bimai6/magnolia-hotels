@@ -10,6 +10,9 @@
     background-size: cover;
     }
 
+    .restaurantTitle {
+       padding-bottom: 40px;
+    }
 .logo {
         backdrop-filter: blur(1px); 
       }

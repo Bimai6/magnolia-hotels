@@ -96,7 +96,7 @@ body.swal2-shown > [aria-hidden='true'] {
 @media (min-width: 1400px) { 
     .custom-swal-popup {
         
-        min-height: 700px;
+        min-height: 680px;
         
     }
     

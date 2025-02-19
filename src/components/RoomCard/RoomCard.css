@@ -92,7 +92,7 @@ body.swal2-shown > [aria-hidden='true'] {
     transition: all 0.3s ease-in-out;
 }
 
-/* Escalado dinámico basado en el tamaño de la pantalla */
+
 @media (min-width: 1400px) { 
     .custom-swal-popup {
         

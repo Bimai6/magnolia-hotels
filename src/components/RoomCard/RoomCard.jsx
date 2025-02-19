@@ -29,7 +29,7 @@ const RoomCard = ({title, description, stars, price, img }) => {
       </div>
       `,
       
-      showConfirmButton: false, // Oculta el botón predeterminado
+      showConfirmButton: false, 
       customClass: {
         popup: 'custom-swal-popup',
         backdrop: 'custom-backdrop'
@@ -38,7 +38,12 @@ const RoomCard = ({title, description, stars, price, img }) => {
       didOpen: () => {
         // Agregamos evento al botón personalizado cuando se abra la alerta
         document.getElementById("customConfirmButton").addEventListener("click", () => {
-          MySwal.close(); // Cierra el SweetAlert
+          /*funcion para introducir en el json la reserva del usuario*/
+
+
+          
+          /* ---------- */
+          MySwal.close(); 
           MySwal.fire(
             '¡Reservado!',
             'Puedes gestionar la reserva en Mis reservas',

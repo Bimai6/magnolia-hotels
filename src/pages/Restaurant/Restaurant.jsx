@@ -7,14 +7,21 @@ import ButtonRestaurant from '../../components/ButtonRestaurant/ButtonRestaurant
 const MySwal = withReactContent(Swal);
 
 const handleCartaClick = () => {
-  const images = [
-    "https://res.cloudinary.com/dczjloaiy/image/upload/v1739785736/Carta_Menu_jfzv5r.png",
-    "https://res.cloudinary.com/dczjloaiy/image/upload/v1739785738/Carta_Cocktails_beuuhh.png"
-  ];
+  const isMobile = window.innerWidth < 768;
+
+  const images = isMobile
+    ? [
+        "https://res.cloudinary.com/dczjloaiy/image/upload/v1739952437/Mobile_Carta_Restaurante_Pag_1_1_telmro.png",
+        "https://res.cloudinary.com/dczjloaiy/image/upload/v1739788112/Mobile_Carta_Restaurante_2_hmpv3x.png",
+        "https://res.cloudinary.com/dczjloaiy/image/upload/v1739788113/Mobile_Carta_Cocktails_e4mpdq.png"
+      ]
+    : [
+        "https://res.cloudinary.com/dczjloaiy/image/upload/v1739785736/Carta_Menu_jfzv5r.png",
+        "https://res.cloudinary.com/dczjloaiy/image/upload/v1739785738/Carta_Cocktails_beuuhh.png"
+      ];
 
   let currentIndex = 0;
 
-  /*Tengo que añadir el cambio de imagenes según si es movil o no. lo tengo en cloudinary.*/ 
   const updateImage = (index) => {
     currentIndex = index;
     MySwal.update({
@@ -30,12 +37,12 @@ const handleCartaClick = () => {
     });
 
     document.getElementById('prevImage').addEventListener('click', () => {
-      currentIndex = currentIndex === 0 ? 1 : 0;
+      currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
       updateImage(currentIndex);
     });
 
     document.getElementById('nextImage').addEventListener('click', () => {
-      currentIndex = currentIndex === 0 ? 1 : 0;
+      currentIndex = (currentIndex + 1) % images.length;
       updateImage(currentIndex);
     });
   };
@@ -62,12 +69,12 @@ const handleCartaClick = () => {
     },
     didOpen: () => {
       document.getElementById('prevImage').addEventListener('click', () => {
-        currentIndex = currentIndex === 0 ? 1 : 0;
+        currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
         updateImage(currentIndex);
       });
 
       document.getElementById('nextImage').addEventListener('click', () => {
-        currentIndex = currentIndex === 0 ? 1 : 0;
+        currentIndex = (currentIndex + 1) % images.length;
         updateImage(currentIndex);
       });
     }

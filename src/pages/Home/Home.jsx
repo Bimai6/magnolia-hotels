@@ -1,4 +1,3 @@
-import React from 'react';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import ButtonSearch from '../../components/ButtonSearch/ButtonSearch';
@@ -25,9 +24,8 @@ const Home = () => {
               <Typography variant="h3" fontWeight="bold">
                 Tus vacaciones como nunca
               </Typography>
-              <Typography variant="body1" sx={{ mt: 2 }}>
-              Lorem fistrum condemor me cago en tus muelas amatomaa te va a hasé pupitaa a gramenawer benemeoor. Hasta lu
-              ego Lucas jarl ese que llega mamaar. Sexuarl a gramenawer te voy a borrar el cerito papaar papaar me cago en tus muelas. Tiene musho peligro.
+              <Typography variant="body1" sx={{ mt: 8 }}>
+              Descubre un oasis de lujo y confort donde cada detalle está pensado para hacer de tu estancia una experiencia inolvidable. Relájate en nuestras exclusivas instalaciones, disfruta de una gastronomía excepcional y sumérgete en un servicio diseñado para superar tus expectativas. Tu descanso y bienestar son nuestra prioridad. ¿Listo para unas vacaciones inigualables?
               </Typography>
             </Grid>
             <Box sx={{

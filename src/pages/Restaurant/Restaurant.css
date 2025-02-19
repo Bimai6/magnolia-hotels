@@ -90,3 +90,50 @@
         gap: 10px;
     }
 }
+
+.swal-reserva-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+  
+  .swal-reserva-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: nowrap; 
+  }
+  
+  .swal-reserva-row label {
+    width: 160px; 
+    text-align: right;
+  }
+  
+  .swal-reserva-input {
+    flex: 1;
+    min-width: 180px;
+    max-width: 250px; 
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  @media (max-width: 768px) {
+    .swal-reserva-row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .swal-reserva-row label {
+      text-align: left;
+      width: 100%;
+    }
+  
+    .swal-reserva-input {
+      width: 100%;
+    }
+  }
+  

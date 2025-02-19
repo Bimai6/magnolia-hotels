@@ -58,12 +58,13 @@ const handleMenuClick = () => {
         </div>
       </div>
     `,
+    color: '#fff',
     showConfirmButton: false,
     showCloseButton: true,
     heightAuto: false,
     width: "80vw",
     maxWidth: "80vw",
-    background: 'rgba(255, 255, 255, 0.9)',
+    background: 'rgba(79, 78, 78, 0.66)',
     customClass: {
       popup: 'custom-swal-popup',
     },
@@ -82,35 +83,39 @@ const handleMenuClick = () => {
 };
 
 const handleReservationClick = () => {
+  const isMobile = window.innerWidth <= 768;
+  const titleText = isMobile
+    ? "Reserva tu mesa"
+    : "Estás a un simple paso de vivir una experiencia inolvidable.";
   MySwal.fire({
-    title: 'Estás a un simple paso de vivir una experiencia inolvidable.',
+    title: titleText,
     html: `
-      <div class="swal-reserva-container" style="display: flex; flex-direction: column; gap: 16px; text-align: center; align-items: center; width: 100%;">
-  <div style="display: flex; align-items: center; gap: 10px; justify-content: center; width: 100%; white-space: nowrap;">
-    <label for="name" style="width: 170px; text-align: right;">Nombre</label>
-    <input type="text" id="name" class="swal-reserva-input" style="text-align: left;" required>
-  </div>
+     <div class="swal-reserva-container">
+        <div class="swal-reserva-row">
+          <label for="name">Nombre</label>
+          <input type="text" id="name" class="swal-reserva-input" required>
+        </div>
 
-  <div style="display: flex; align-items: center; gap: 10px; justify-content: center; width: 100%; white-space: nowrap;">
-    <label for="email" style="width: 170px; text-align: right;">Correo electrónico</label>
-    <input type="email" id="email" class="swal-reserva-input" style="text-align: left;" required>
-  </div>
+        <div class="swal-reserva-row">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" class="swal-reserva-input" required>
+        </div>
 
-  <div style="display: flex; align-items: center; gap: 10px; justify-content: center; width: 100%; white-space: nowrap;">
-    <label for="phone" style="width: 170px; text-align: right;">Teléfono de contacto</label>
-    <input type="tel" id="phone" class="swal-reserva-input" style="text-align: left;" required>
-  </div>
+        <div class="swal-reserva-row">
+          <label for="phone">Teléfono de contacto</label>
+          <input type="tel" id="phone" class="swal-reserva-input" required>
+        </div>
 
-  <div style="display: flex; align-items: center; gap: 10px; justify-content: center; width: 100%; white-space: nowrap;">
-    <label for="guests" style="width: 170px; text-align: right;">Comensales</label>
-    <input type="number" id="guests" class="swal-reserva-input" style="text-align: left;" min="1" required>
-  </div>
+        <div class="swal-reserva-row">
+          <label for="guests">Comensales</label>
+          <input type="number" id="guests" class="swal-reserva-input" min="1" required>
+        </div>
 
-  <div style="display: flex; align-items: center; gap: 10px; justify-content: center; width: 100%; white-space: nowrap;">
-    <label for="dateTime" style="width: 170px; text-align: right;">Fecha y hora</label>
-    <input type="datetime-local" id="dateTime" class="swal-reserva-input" style="text-align: left;" required>
-  </div>
-</div>
+        <div class="swal-reserva-row">
+          <label for="dateTime">Fecha y hora</label>
+          <input type="datetime-local" id="dateTime" class="swal-reserva-input" required>
+        </div>
+      </div>
 
     `,
     showConfirmButton: true,

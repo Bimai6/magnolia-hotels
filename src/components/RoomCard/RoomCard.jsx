@@ -10,50 +10,49 @@ const MySwal = withReactContent(Swal);
 
 const RoomCard = ({title, description, stars, price, img }) => {
 
-
+  
 
   const handleReservationDesktop = () => {
     MySwal.fire({
       html: `
-      <div class="main-content"">
-        <img alt=${title} src=${img} class="room-image" /> 
+      <div class="main-content">
+        <img alt="${title}" src="${img}" class="room-image" /> 
         <div class="sweetalert-info-container">
-          <h2 class="title">${title}</h2>
+          <h3 class="title">${title}</h3>
           <div class="description-container">
             <p class="description">${description}</p>
-            <h4 class="price">Total: <strong>${price*1} EUR</strong></h4>
+            <h4 class="price">Total: <strong>${price * 1} EUR</strong></h4>
           </div>
+          <!-- Botón personalizado dentro del modal -->
+          <button id="customConfirmButton" class="custom-confirm-button">Reservar</button>
         </div>
       </div>
       `,
-
-      confirmButtonText: 'Reservar',
-      cancelButtonText: 'Cancelar',
-      confirmButtonColor: '#000000',
-      cancelButtonColor: '#d33',
+      
+      showConfirmButton: false, // Oculta el botón predeterminado
       customClass: {
         popup: 'custom-swal-popup',
-        confirmButton: 'custom-confirm-button',
-        cancelButton: 'custom-cancel-button',
         backdrop: 'custom-backdrop'
-        
       },
       
-    }).then((result) => {
-      if(result.isConfirmed){
-        MySwal.fire(
-          '¡Reservado!',
-          'Puedes gestionar la reserva en Mis reservas',
-          /*aqui iria la logica de añadir en la bd la reserva del usuario correspondiente*/
-        )
+      didOpen: () => {
+        // Agregamos evento al botón personalizado cuando se abra la alerta
+        document.getElementById("customConfirmButton").addEventListener("click", () => {
+          MySwal.close(); // Cierra el SweetAlert
+          MySwal.fire(
+            '¡Reservado!',
+            'Puedes gestionar la reserva en Mis reservas',
+          );
+        });
       }
-    })
-  }
+    });
+};
+
 
 
   return (
       <Card style={{fontFamily: 'Manrope, sans-serif'  }} className='bg-white border-0' >
-        <Card.Img variant="top" src={img} className='p-3'   />
+        <Card.Img variant="top" src={img} className='card-image p-3'   />
         <Card.Body className='d-flex flex-column'>
           <Card.Title style={{fontSize: '23px',  minHeight: '55px'}}>{title}</Card.Title>
           <div>

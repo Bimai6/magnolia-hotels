@@ -22,8 +22,8 @@ const handleCartaClick = () => {
         <div class="swal-menu-container">
           <img src="${images[currentIndex]}" class="swal-menu-image" alt="Carta">
           <div class="swal-menu-nav">
-            <button id="prevImage" class="swal-menu-button">⬅️</button>
-            <button id="nextImage" class="swal-menu-button">➡️</button>
+            <button id="prevImage" class="swal-menu-button">🡸</button>
+            <button id="nextImage" class="swal-menu-button">🡺</button>
           </div>
         </div>
       `,
@@ -46,8 +46,8 @@ const handleCartaClick = () => {
       <div class="swal-menu-container">
         <img src="${images[0]}" class="swal-menu-image" alt="Carta">
         <div class="swal-menu-nav">
-          <button id="prevImage" class="swal-menu-button">⬅️</button>
-          <button id="nextImage" class="swal-menu-button">➡️</button>
+          <button id="prevImage" class="swal-menu-button">🡸</button>
+          <button id="nextImage" class="swal-menu-button">🡺</button>
         </div>
       </div>
     `,

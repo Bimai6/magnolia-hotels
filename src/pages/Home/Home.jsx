@@ -19,7 +19,7 @@ const Home = () => {
       <Header />
       <Container maxWidth="lg">
 
-       <Box sx={{ my: 4 }}>
+       <Box sx={{ my: 14 }}>
           <Grid container spacing={4} alignItems="center">
             <Grid item xs={12} md={6} sx={{ ml: -8, mt: 20 }}>
               <Typography variant="h3" fontWeight="bold">
@@ -47,7 +47,7 @@ const Home = () => {
           </Grid>
         </Box>
 
-        <Box sx={{ mt: 40, minHeight: '150vh' }}>
+        <Box sx={{ mt:25, minHeight:'40vh', display: 'flex', justifyContent: 'flex-start'}}>
           <Grid 
             container 
             spacing={4} 
@@ -57,7 +57,7 @@ const Home = () => {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'flex-end'
               } 
             }} 
           >
@@ -74,7 +74,7 @@ const Home = () => {
                       textAlign: 'center',
                       minHeight: '4em', 
                       display: 'flex',
-                      align: 'center'
+                      align: 'flex-start'
                     }}>
                     {benefit.label}
                   </Typography>
@@ -84,7 +84,7 @@ const Home = () => {
           </Grid>
         </Box>
 
-        <Box sx={{ mt: -100}}>
+        <Box sx={{ mt: 0}}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <iframe 

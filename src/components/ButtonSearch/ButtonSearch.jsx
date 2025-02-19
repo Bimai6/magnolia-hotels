@@ -1,4 +1,3 @@
-import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './ButtonSearch.css';
 import {Button} from '@mui/material';

@@ -1,6 +1,6 @@
 import React from 'react';
 import RoomCard from '../../components/roomCard/RoomCard';
-
+import SearchResult from '../../components/searchResult/SearchResult';
 const rooms = [
   { title: 'Habitación Doble', stars: 3, price: 43,   },
   { title: 'Habitación Individual', stars: 4, price: 38,   },
@@ -19,6 +19,10 @@ const rooms = [
 const Reservations = () => {
   return (
     <div className="container">
+    <div className='search-result-container'>
+      <SearchResult />
+    </div>
+
       <div className="row justify-content-center">
         {rooms.map((room, index) => (
           <div key={index} className="col-12 col-sm-6 col-lg-3 d-flex justify-content-center">

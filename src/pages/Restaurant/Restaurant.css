@@ -2,13 +2,7 @@
     font-family: "manrope", serif;
 }
 
-body {
-    background-image: url(https://res.cloudinary.com/dczjloaiy/image/upload/v1739176575/interiorismo-para-restaurante_1_swgqnp.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    }
+
 
 .logo {
         backdrop-filter: blur(1px); 

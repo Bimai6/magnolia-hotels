@@ -1,0 +1,27 @@
+import { render, screen, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom";
+import Header from "./Header";
+import { describe, it, expect } from "vitest";
+import { BrowserRouter } from "react-router-dom";
+
+const Wrapper = ({ children }) => {
+    return <BrowserRouter>{children}</BrowserRouter>;
+};
+
+describe("Header", () => {
+    it("Displays icon correctly", () => {
+        render(<Header />, { wrapper: Wrapper });
+
+        const icon = screen.getByAltText('Logo');
+        expect(icon).toBeInTheDocument();
+        expect(icon).toHaveAttribute('src', 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1739173714/IMG-20250202-WA0012_1_eic08v.png');
+
+        const buttonText = ['Estancia', 'Restaurante', 'Contacto', 'Identificarse'];
+        buttonText.forEach((text) => {
+            expect(screen.getByText(text)).toBeInTheDocument();
+        });
+
+    });
+
+
+});

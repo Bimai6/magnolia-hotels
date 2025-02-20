@@ -17,7 +17,7 @@ function Register() {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
         <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md w-96">
-          <h2 className="text-2xl font-bold mb-4">Register</h2>
+          <h2 className="text-2xl font-bold mb-4">Registrarse</h2>
           <input
             type="email"
             placeholder="Email"
@@ -42,7 +42,7 @@ function Register() {
             className="w-full p-2 border rounded mb-3"
             required
           />
-          <button type="submit" className="w-full bg-green-500 text-white p-2 rounded">Register</button>
+          <button type="submit" className="w-full bg-green-500 text-white p-2 rounded">Iniciar sesion</button>
         </form>
       </div>
     );

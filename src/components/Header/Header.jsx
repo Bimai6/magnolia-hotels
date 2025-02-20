@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { AppBar, Toolbar, IconButton, Box, BottomNavigation, BottomNavigationAction, useMediaQuery, Button } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Box, BottomNavigation, BottomNavigationAction, useMediaQuery, Button, Dialog, DialogTitle } from '@mui/material';
+import Register from '../Auth/Register'
 
 const navItems = [
   { label: 'Inicio', value: 'home', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/isotype_idmria.svg', link: '/', width: 45, height: 45 },
@@ -12,8 +13,13 @@ const navItems = [
 
 const MobileHeader = () => {
   const [value, setValue] = React.useState('home');
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
+    <>
     <BottomNavigation
       sx={{
         width: '100%',
@@ -29,18 +35,27 @@ const MobileHeader = () => {
       {navItems.map((item) => (
         <BottomNavigationAction
           key={item.value}
-          component={Link}
-          to={item.link || '#'}
+          component={item.label === 'Identificarse' ? 'button' : Link}
+          to={item.label === 'Identificarse' ? undefined : item.link}
           value={item.value}
+          onClick={item.label === 'Identificarse' ? handleOpen : undefined}
           icon={<img src={item.icon} alt={item.label} width={item.width} height={item.height} />}
         />
       ))}
     </BottomNavigation>
+      <Dialog open={open} onClose={handleClose}>
+      <Register />
+    </Dialog>
+    </>
   );
 };
 
 function DesktopHeader() {
   const [scrolling, setScrolling] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -59,6 +74,7 @@ function DesktopHeader() {
   }, []);
 
   return (
+    <>
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
         position={scrolling ? 'fixed' : 'absolute'}
@@ -89,8 +105,9 @@ function DesktopHeader() {
             {navItems.slice(1).map((item) => (
               <Button
                 key={item.value}
-                component={Link}
-                to={item.link}
+                component={item.label === 'Identificarse' ? 'button' : Link}
+                to={item.label === 'Identificarse' ? undefined : item.link}
+                onClick={item.label === 'Identificarse' ? handleOpen : undefined}
                 sx={{
                   color: scrolling ? 'black' : 'white',
                   textTransform: 'none',
@@ -122,6 +139,11 @@ function DesktopHeader() {
         </Toolbar>
       </AppBar>
     </Box>
+
+<Dialog open={open} onClose={handleClose}>
+<Register />
+</Dialog>
+</>
   );
 }
 

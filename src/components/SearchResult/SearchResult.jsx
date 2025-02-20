@@ -48,7 +48,7 @@ const SearchResult = () => {
           </div>
         </Box>
       </LocalizationProvider>
-      <Button id='search-button' variant="dark" size='lg' className='rounded-5 fs-6 mx-auto' style={{width: '110px'}}>Reservar</Button>
+      <Button id='search-button' variant="dark" size='lg' className='rounded-5 fs-6 mx-auto' style={{width: '110px'}}>Buscar</Button>
     </div>  
   );
 };

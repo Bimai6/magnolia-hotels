@@ -1,6 +1,7 @@
 import React from 'react';
 import RoomCard from '../../components/RoomCard/RoomCard';
-
+import SearchResult from '../../components/SearchResult/SearchResult';
+import './Reservations.css';
 const rooms = [
   { title: 'Habitación Doble',description:"Disfruta de la combinación perfecta entre elegancia y confort en nuestra Suite Junior, un espacio diseñado para brindar una estancia exclusiva y relajante.", stars: 3, price: 43, img: 'https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg'},
   { title: 'Habitación Individual',description:"Disfruta de la combinación perfecta entre elegancia y confort en nuestra Suite Junior, un espacio diseñado para brindar una estancia exclusiva y relajante.", stars: 4, price: 38, img: 'https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg'  },
@@ -14,9 +15,9 @@ const rooms = [
 const Reservations = () => {
   return (
     <div className="container">
-    <div className='search-result-container'>
-      <SearchResult />
-    </div>
+      <div className='search-result-container'>
+        <SearchResult />
+      </div>
 
       <div className="row justify-content-center">
         {rooms.map((room, index) => (

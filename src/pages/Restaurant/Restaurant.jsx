@@ -179,7 +179,7 @@ const handleReservationClick = () => {
       const { name, email, phone, guests, dateTime, reservationNumber } = result.value;
       MySwal.fire({
         title: 'Reserva Confirmada',
-        html: `Gracias ${name}, tu reserva para ${guests} comensales el ${dateTime} ha sido confirmada.<br><br>
+        html: `Gracias ${name}, tu reserva para ${guests} comensales el ${formatDateTime(dateTime)} ha sido confirmada.<br><br>
                <strong>Número de reserva:</strong> ${reservationNumber}<br><br>
                Se enviará una confirmación a tu correo: ${email}`,
         icon: 'success',
@@ -302,7 +302,7 @@ const handleModifyReservationClick = () => {
                      <strong>Nombre:</strong> ${name}<br>
                      <strong>Teléfono:</strong> ${phone}<br>
                      <strong>Comensales:</strong> ${guests}<br>
-                     <strong>Fecha y hora:</strong> ${dateTime}`,
+                     <strong>Fecha y hora:</strong> ${formatDateTime(dateTime)}`,
               icon: 'success',
               confirmButtonText: 'OK',
               confirmButtonColor: '#DAA520',
@@ -336,7 +336,11 @@ const handleModifyReservationClick = () => {
   });
 };
 
-
+const formatDateTime = (dateTime) => {
+  const date = new Date(dateTime);
+  const options = { weekday: 'long', day: 'numeric', month: 'long' };
+  return date.toLocaleDateString('es-ES', options);
+};
 
 const Restaurant = () => {
   return (

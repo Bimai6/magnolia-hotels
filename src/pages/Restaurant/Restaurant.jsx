@@ -16,8 +16,8 @@ const handleMenuClick = () => {
         "https://res.cloudinary.com/dczjloaiy/image/upload/v1739788113/Mobile_Carta_Cocktails_e4mpdq.png"
       ]
     : [
-        "https://res.cloudinary.com/dczjloaiy/image/upload/v1739785736/Carta_Menu_jfzv5r.png",
-        "https://res.cloudinary.com/dczjloaiy/image/upload/v1739785738/Carta_Cocktails_beuuhh.png"
+        "https://res.cloudinary.com/dczjloaiy/image/upload/v1740044125/Carta_Menu_2_dmx6om.png",
+        "https://res.cloudinary.com/dczjloaiy/image/upload/v1740044121/Carta_Cocktails_2_hxyhcj.png"
       ];
 
   let currentIndex = 0;
@@ -184,11 +184,159 @@ const handleReservationClick = () => {
                Se enviará una confirmación a tu correo: ${email}`,
         icon: 'success',
         confirmButtonText: 'OK',
-        confirmButtonColor: '#DAA520'
+        confirmButtonColor: '#DAA520',
+        color: '#fff',
+        background: 'rgba(79, 78, 78, 0.66)',
       });
     }
   });
 };
+
+const handleModifyReservationClick = () => {
+  MySwal.fire({
+    title: "Modificar Reserva",
+    html: `
+      <div class="swal-reserva-container">
+        <div class="swal-reserva-row">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" class="swal-reserva-input" required>
+        </div>
+        <div class="swal-reserva-row">
+          <label for="reservationId">Número de reserva</label>
+          <input type="number" id="reservationId" class="swal-reserva-input" required>
+        </div>
+      </div>
+    `,
+    showConfirmButton: true,
+    confirmButtonText: 'Continuar',
+    confirmButtonColor: '#DAA520',
+    showCancelButton: true,
+    cancelButtonText: 'Volver',
+    cancelButtonColor: '#DAA520',
+    color: '#fff',
+    background: 'rgba(79, 78, 78, 0.66)',
+    preConfirm: () => {
+      const email = document.getElementById('email').value.trim();
+      const reservationId = document.getElementById('reservationId').value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!email || !reservationId) {
+        MySwal.showValidationMessage('Por favor, introduce ambos campos');
+        return false;
+      }
+      if (!emailRegex.test(email)) {
+        MySwal.showValidationMessage('Por favor, introduce un correo válido');
+        return false;
+      }
+
+      return { email, reservationId };
+    },
+  }).then((result) => {
+    if (result.isConfirmed) {
+      const { email, reservationId } = result.value;
+      //dejo anotado que por aqui hay que hacer la validacion con el json.
+      const reservationExists = true;
+      if (reservationExists) {
+        MySwal.fire({
+          title: "Modificar Reserva",
+          html: `
+            <div class="swal-reserva-container">
+              <div class="swal-reserva-row">
+                <label for="name">Nombre</label>
+                <input type="text" id="name" class="swal-reserva-input" required>
+              </div>
+              <div class="swal-reserva-row">
+                <label for="phone">Teléfono de contacto</label>
+                <input type="tel" id="phone" class="swal-reserva-input" required>
+              </div>
+              <div class="swal-reserva-row">
+                <label for="guests">Comensales</label>
+                <input type="number" id="guests" class="swal-reserva-input" min="1" required>
+              </div>
+              <div class="swal-reserva-row">
+                <label for="dateTime">Fecha y hora</label>
+                <input type="datetime-local" id="dateTime" class="swal-reserva-input" required>
+              </div>
+            </div>
+          `,
+          showConfirmButton: true,
+          confirmButtonText: 'Guardar Cambios',
+          confirmButtonColor: '#DAA520',
+          showCancelButton: true,
+          cancelButtonText: 'Cancelar',
+          cancelButtonColor: '#DAA520',
+          showDenyButton: true,
+          denyButtonText: 'Anular Reserva',
+          denyButtonColor: '#FF0000',
+          color: '#fff',
+          background: 'rgba(79, 78, 78, 0.66)',
+          preConfirm: () => {
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const guests = parseInt(document.getElementById('guests').value, 10);
+            const dateTime = document.getElementById('dateTime').value;
+            const selectedDate = new Date(dateTime);
+            const currentDate = new Date();
+
+            if (!name || !phone || !guests || !dateTime) {
+              MySwal.showValidationMessage('Por favor, rellena todos los campos');
+              return false;
+            }
+            if (guests < 1 || guests > 12) {
+              MySwal.showValidationMessage('Número de comensales entre 1 y 12');
+              return false;
+            }
+            if (selectedDate < currentDate) {
+              MySwal.showValidationMessage('No puedes reservar en una fecha pasada');
+              return false;
+            }
+            
+            return { name, phone, guests, dateTime, reservationId };
+          }
+        }).then((modResult) => {
+          if (modResult.isConfirmed) {
+            const { name, phone, guests, dateTime, reservationId } = modResult.value;
+            MySwal.fire({
+              title: 'Reserva Modificada',
+              html: `Tu reserva <strong>${reservationId}</strong> ha sido actualizada.<br>
+                     <strong>Nombre:</strong> ${name}<br>
+                     <strong>Teléfono:</strong> ${phone}<br>
+                     <strong>Comensales:</strong> ${guests}<br>
+                     <strong>Fecha y hora:</strong> ${dateTime}`,
+              icon: 'success',
+              confirmButtonText: 'OK',
+              confirmButtonColor: '#DAA520',
+              color: '#fff',
+              background: 'rgba(79, 78, 78, 0.66)',
+            });
+          } else if (modResult.isDenied) {
+            MySwal.fire({
+              title: 'Reserva Anulada',
+              text: `Tu reserva: ${reservationId}, ha sido anulada.`,
+              icon: 'info',
+              background: 'rgba(79, 78, 78, 0.66)',
+              color: '#fff',
+              confirmButtonText: 'OK',
+              confirmButtonColor: '#DAA520'
+            });
+          }
+        });
+      } else {
+        MySwal.fire({
+          title: 'Error',
+          text: 'No se encontró la reserva con los datos proporcionados.',
+          icon: 'error',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#DAA520',
+          background: 'rgba(79, 78, 78, 0.66)',
+          color: '#fff',
+        });
+      }
+    }
+  });
+};
+
+
 
 const Restaurant = () => {
   return (
@@ -197,7 +345,7 @@ const Restaurant = () => {
       <img className='restaurantTitle' src="https://res.cloudinary.com/dczjloaiy/image/upload/v1739180953/Titulo_Logo_ej81de.png" alt="Ebano Restaurant Title" />
       <div id="buttonsRestaurant">
         <ButtonRestaurant title="Reservar" action={handleReservationClick} />
-        <ButtonRestaurant title="Modificar Reserva" action="" />
+        <ButtonRestaurant title="Modificar Reserva" action={handleModifyReservationClick} />
         <ButtonRestaurant title="Carta" action={handleMenuClick} />
       </div>
     </div>

@@ -5,7 +5,6 @@ import Restaurant from "../pages/Restaurant/Restaurant";
 import Reservations from "../pages/Reservations/Reservations";
 import MyReservations from "../pages/MyReservations/MyReservations";
 import RestaurantMenu from "../pages/RestaurantMenu/RestaurantMenu";
-import React from 'react';
 
 export const Router = createBrowserRouter([
     {

@@ -1,14 +1,64 @@
 {
-    "users": [
-        {"id": 1, "name": "user1", "password": "password1"},
-        {"id": 2, "name": "user2", "password": "password2"},
-        {"id": 3, "name": "user3", "password": "password3"},
-        {"id": 4, "name": "user4", "password": "password4"},
-        {"id": 5, "name": "user5", "password": "password5"},
-        {"id": 6, "name": "user6", "password": "password6"},
-        {"id": 7, "name": "user7", "password": "password7"},
-        {"id": 8, "name": "user8", "password": "password8"},
-        {"id": 9, "name": "user9", "password": "password9"},
-        {"id": 10, "name": "user10", "password": "password10"}
-    ]
+  "users": [
+    {
+      "id": "1",
+      "name": "user1",
+      "email": "mail1@example.com",
+      "password": "password1"
+    },
+    {
+      "id": "2",
+      "name": "user2",
+      "email": "mail2@example.com",
+      "password": "password2"
+    },
+    {
+      "id": "3",
+      "name": "user3",
+      "email": "mail3@example.com",
+      "password": "password3"
+    },
+    {
+      "id": "4",
+      "name": "user4",
+      "email": "mail4@example.com",
+      "password": "password4"
+    },
+    {
+      "id": "5",
+      "name": "user5",
+      "email": "mail5@example.com",
+      "password": "password5"
+    },
+    {
+      "id": "6",
+      "name": "user6",
+      "email": "mail6@example.com",
+      "password": "password6"
+    },
+    {
+      "id": "7",
+      "name": "user7",
+      "email": "mail7@example.com",
+      "password": "password7"
+    },
+    {
+      "id": "8",
+      "name": "user8",
+      "email": "mail8@example.com",
+      "password": "password8"
+    },
+    {
+      "id": "9",
+      "name": "user9",
+      "email": "mail9@example.com",
+      "password": "password9"
+    },
+    {
+      "id": "10",
+      "name": "user10",
+      "email": "mail10@example.com",
+      "password": "password10"
+    }
+  ]
 }

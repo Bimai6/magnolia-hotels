@@ -1,0 +1,21 @@
+.register-primary-container{
+    margin-top: 10vh;
+}
+
+.register-container{
+    background-color: #C99F4B;
+    max-width: 900px;
+}
+
+.label-register-fields{
+    font-size: 1.4em;
+}
+
+.register-title{
+    font-size: 3.2em;
+    padding: 0 1.4vw;
+}
+
+.register-form-field{
+    padding: 0 2vw;
+}

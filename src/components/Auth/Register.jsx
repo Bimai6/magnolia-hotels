@@ -7,7 +7,10 @@ const showAlert = (message, icon = "error") => {
     title: icon === "success" ? "¡Éxito!" : "¡Atención!",
     html: message,
     icon,
-    confirmButtonText: "Aceptar"
+    confirmButtonText: "Aceptar",
+    customClass: {
+      popup: "swal-popup"
+    }
   });
 };
 
@@ -17,7 +20,7 @@ const validators = {
   username: username => /^[a-zA-Z0-9]{3,}$/.test(username)
 };
 
-function Register() {
+function Register( {setLogged}) {
   const [formData, setFormData] = useState({
     fullName: "",
     user: "",
@@ -81,11 +84,17 @@ function Register() {
       }
 
       showAlert("Registro exitoso", "success");
-      localStorage.setItem("user", JSON.stringify(newUser));
+      try {
+        localStorage.setItem("user", JSON.stringify(newUser));
+        setLogged(true);
+      } catch (error) {
+        console.error("Error guardando en localStorage", error);
+      }
+      
       //setShowLogin(true);
 
     } catch (error) {
-      showAlert(error, "error");
+      showAlert("Error connectando a la base de datos", error);
     }
   };
   /*

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { AppBar, Toolbar, IconButton, Box, BottomNavigation, BottomNavigationAction, useMediaQuery, Button, Dialog, DialogTitle } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Box, BottomNavigation, BottomNavigationAction, useMediaQuery, Button, Dialog } from '@mui/material';
 import Register from '../Auth/Register'
 
 const navItems = [
@@ -14,6 +14,18 @@ const navItems = [
 const MobileHeader = () => {
   const [value, setValue] = React.useState('home');
   const [open, setOpen] = React.useState(false);
+  const [logged, setLogged] = React.useState(false);
+
+  React.useEffect(() => {
+    try {
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (user && user.name) {
+        setLogged(true);
+      }
+    } catch (error) {
+      console.error("Error al leer el usuario del localStorage", error);
+    }
+  }, []);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -27,7 +39,7 @@ const MobileHeader = () => {
         bottom: 0,
         backgroundColor: 'white',
         boxShadow: 'none',
-        zIndex: 9999
+        zIndex: 9000
       }}
       value={value}
       onChange={(event, newValue) => setValue(newValue)}
@@ -35,16 +47,16 @@ const MobileHeader = () => {
       {navItems.map((item) => (
         <BottomNavigationAction
           key={item.value}
-          component={item.label === 'Identificarse' ? 'button' : Link}
-          to={item.label === 'Identificarse' ? undefined : item.link}
+          component={item.label === 'Identificarse' ? logged === true ? Link : 'button' : Link}
+          to={item.label === 'Identificarse' ? logged === true ? item.link : undefined : item.link}
           value={item.value}
-          onClick={item.label === 'Identificarse' ? handleOpen : undefined}
+          onClick={item.label === 'Identificarse' ? logged === true ? undefined : handleOpen : undefined}
           icon={<img src={item.icon} alt={item.label} width={item.width} height={item.height} />}
         />
       ))}
     </BottomNavigation>
-      <Dialog open={open} onClose={handleClose}>
-      <Register />
+      <Dialog open={open} onClose={handleClose} maxWidth={'sm'} fullWidth>
+      <Register setLogged={setLogged}/>
     </Dialog>
     </>
   );
@@ -53,6 +65,18 @@ const MobileHeader = () => {
 function DesktopHeader() {
   const [scrolling, setScrolling] = React.useState(false);
   const [open, setOpen] = React.useState(false);
+  const [logged, setLogged] = React.useState(false);
+
+  React.useEffect(() => {
+    try {
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (user && user.name) {
+        setLogged(true);
+      }
+    } catch (error) {
+      console.error("Error al leer el usuario del localStorage", error);
+    }
+  }, []);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -105,9 +129,9 @@ function DesktopHeader() {
             {navItems.slice(1).map((item) => (
               <Button
                 key={item.value}
-                component={item.label === 'Identificarse' ? 'button' : Link}
-                to={item.label === 'Identificarse' ? undefined : item.link}
-                onClick={item.label === 'Identificarse' ? handleOpen : undefined}
+                component={item.label === 'Identificarse' ? logged === true ? Link : 'button' : Link}
+                to={item.label === 'Identificarse' ? logged === true ? item.link : undefined : item.link}
+                onClick={item.label === 'Identificarse' ? logged === true ? undefined : handleOpen : undefined}
                 sx={{
                   color: scrolling ? 'black' : 'white',
                   textTransform: 'none',
@@ -132,7 +156,7 @@ function DesktopHeader() {
                   }
                 }}
               >
-                {item.label}
+                {logged === true ? item.label === 'Identificarse' ? 'Mi perfil' : item.label : item.label}
               </Button>
             ))}
           </Box>
@@ -140,8 +164,8 @@ function DesktopHeader() {
       </AppBar>
     </Box>
 
-<Dialog open={open} onClose={handleClose}>
-<Register />
+<Dialog open={open} onClose={handleClose} maxWidth={'xl'} fullWidth>
+  <Register setLogged={setLogged}/>
 </Dialog>
 </>
   );

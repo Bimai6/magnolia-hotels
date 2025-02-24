@@ -19,3 +19,7 @@
 .register-form-field{
     padding: 0 2vw;
 }
+
+.swal-popup{
+    z-index: 9999;
+}

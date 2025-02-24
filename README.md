@@ -77,4 +77,6 @@ Before you start, ensure you have the following installed:
 
 ## **License**
 
+Magnolia Hotels is licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
 --- 

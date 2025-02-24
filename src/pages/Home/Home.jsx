@@ -3,6 +3,9 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import ButtonSearch from '../../components/ButtonSearch/ButtonSearch';
 import { Box, Grid, Typography, Container } from '@mui/material';
+import Slider from "react-slick"; 
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 const Home = () => {
 
@@ -14,6 +17,17 @@ const Home = () => {
     { label: 'Garantía de calidad', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1739175371/image_6_nsr9wa.png'},
     { label: 'Excelencia gastronómica', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1739175372/image_7_oglx3g.png'},
   ];
+
+  const sliderSettings = {
+    dots: true, 
+    infinite: true, 
+    speed: 400, 
+    slidesToShow: 1, 
+    slidesToScroll: 1,
+    autoplay: true, 
+    autoplaySpeed: 2000, 
+    arrows: true, 
+  };
 
   const DesktopView = () => (
     <>
@@ -116,18 +130,33 @@ const Home = () => {
           </Grid>
         </Grid>
 
-        <Grid container spacing={4} justifyContent="center" sx={{ my: 4 }}>
+        <Slider {...sliderSettings}>
           {benefits.map((benefit, index) => (
-            <Grid item xs={12} key={index}>
-              <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <img src={benefit.icon} alt={benefit.label} width="100" />
-                <Typography variant="subtitle1" sx={{ mt: 2, textAlign: 'center', minHeight: '4em', display: 'flex', alignItems: 'center' }}>
-                  {benefit.label}
-                </Typography>
-              </Box>
-            </Grid>
+            <Box key={index} sx={{ 
+              mt: 8,
+              display: "flex", 
+              flexDirection: "column", 
+              alignItems: "center", 
+              justifyContent: "center", 
+              textAlign: "center",
+              height: "300px" 
+            }}>
+          <img 
+            src={benefit.icon} 
+            alt={benefit.label} 
+            width="100" 
+            style={{ display: "block", margin: "0 auto" }}
+          />
+          <Typography 
+            variant="subtitle1" 
+            sx={{ mt: 2, textAlign: "center" }}
+          >
+            {benefit.label}
+          </Typography>
+          </Box>
           ))}
-        </Grid>
+        </Slider>
+
 
         <Grid item xs={12}>
           <iframe 

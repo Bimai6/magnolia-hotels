@@ -1,9 +1,17 @@
-
 ![logo](https://res.cloudinary.com/dk1g12n2h/image/upload/v1739956982/magnolialLogoMobile_awbjyy.png)
 
 # **Magnolia Hotels**
 
 **Magnolia Hotels** is an exclusive luxury hotel chain, where every detail is designed to offer you a unique experience. With individual and double luxury rooms, a gourmet restaurant that takes gastronomy to new heights, and a pool and spa service for your total relaxation. Located in central and privileged locations, **Magnolia Hotels** guarantees you a dream getaway, combining comfort, elegance, and sophistication in one place.
+
+## Table of Contents
+1. [Installation and Requirements](#installation-and-requirements)
+2. [Technologies Used](#technologies-used) 
+3. [App Design](#app-design)
+4. [Project Architecture](#project-architecture)
+5. [Next Steps](#next-steps)
+6. [Contributing](#contributing)
+7. [License](#license)
 
 ---
 
@@ -70,5 +78,3 @@ Before you start, ensure you have the following installed:
 ## **License**
 
 --- 
-
-

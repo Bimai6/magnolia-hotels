@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, IconButton, Box, BottomNavigation, BottomNavigationAction, useMediaQuery, Button, Dialog } from '@mui/material';
-import Register from '../Auth/Register'
+import Register from '../Auth/Register';
 
 const navItems = [
   { label: 'Inicio', value: 'home', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/isotype_idmria.svg', link: '/', width: 45, height: 45 },
@@ -38,8 +38,7 @@ const MobileHeader = () => {
         position: 'fixed',
         bottom: 0,
         backgroundColor: 'white',
-        boxShadow: 'none',
-        zIndex: 9000
+        boxShadow: 'none'
       }}
       value={value}
       onChange={(event, newValue) => setValue(newValue)}
@@ -55,7 +54,7 @@ const MobileHeader = () => {
         />
       ))}
     </BottomNavigation>
-      <Dialog open={open} onClose={handleClose} maxWidth={'sm'} fullWidth>
+      <Dialog open={open} onClose={handleClose} maxWidth={'sm'} fullWidth sx={{zIndex: 1200}}>
       <Register setLogged={setLogged}/>
     </Dialog>
     </>
@@ -106,8 +105,7 @@ function DesktopHeader() {
           backgroundColor: scrolling ? 'white' : 'transparent',
           boxShadow: scrolling ? '0px 2px 5px rgba(0, 0, 0, 0.1)' : 'none',
           transition: 'background-color 0.3s, box-shadow 0.3s',
-          width: '100%',
-          zIndex: 999
+          width: '100%'
         }}
       >
         <Toolbar>
@@ -164,7 +162,7 @@ function DesktopHeader() {
       </AppBar>
     </Box>
 
-<Dialog open={open} onClose={handleClose} maxWidth={'xl'} fullWidth>
+<Dialog open={open} onClose={handleClose} maxWidth={'xl'} fullWidth sx={{zIndex: 1200}}>
   <Register setLogged={setLogged}/>
 </Dialog>
 </>

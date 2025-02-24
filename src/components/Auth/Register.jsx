@@ -8,9 +8,6 @@ const showAlert = (message, icon = "error") => {
     html: message,
     icon,
     confirmButtonText: "Aceptar",
-    customClass: {
-      popup: "swal-popup"
-    }
   });
 };
 

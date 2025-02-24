@@ -13,4 +13,7 @@
 - react-dom
 - react-icons
 - react-router-dom
+- react-slick
+- slick-carousel
 - sweetalert2
+  

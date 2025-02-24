@@ -36,6 +36,13 @@ const handleMenuClick = () => {
       `,
     });
 
+    // Reasignar el evento de zoom
+    const image = document.querySelector('.swal-menu-image');
+    image.addEventListener('click', () => {
+      image.classList.toggle('zoomed');
+    });
+
+    // Reasignar eventos de navegación
     document.getElementById('prevImage').addEventListener('click', () => {
       currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
       updateImage(currentIndex);
@@ -69,6 +76,13 @@ const handleMenuClick = () => {
       popup: 'custom-swal-popup',
     },
     didOpen: () => {
+      // Asignar el evento de zoom al abrir
+      const image = document.querySelector('.swal-menu-image');
+      image.addEventListener('click', () => {
+        image.classList.toggle('zoomed');
+      });
+
+      // Asignar eventos de navegación
       document.getElementById('prevImage').addEventListener('click', () => {
         currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
         updateImage(currentIndex);

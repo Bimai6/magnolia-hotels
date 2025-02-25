@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Swal from "sweetalert2";
-import '/src/components/Auth/Register.css';
+import '../Auth/Register.css';
+import Login from '../Auth/Login';
+import { AuthContext } from '../../context/AuthContext';
 
 const showAlert = (message, icon = "error") => {
   Swal.fire({
@@ -17,7 +19,7 @@ const validators = {
   username: username => /^[a-zA-Z0-9]{3,}$/.test(username)
 };
 
-function Register( {setLogged}) {
+function Register() {
   const [formData, setFormData] = useState({
     fullName: "",
     user: "",
@@ -27,7 +29,8 @@ function Register( {setLogged}) {
     confirmPassword: "",
   });
 
-  //const [showLogin, setShowLogin] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+  const { login } = useContext(AuthContext);
 
   const fields = [
     { name: "fullName", type: "text", placeholder: "Nombre completo", label: "Nombre completo" },
@@ -81,24 +84,18 @@ function Register( {setLogged}) {
       }
 
       showAlert("Registro exitoso", "success");
-      try {
-        localStorage.setItem("user", JSON.stringify(newUser));
-        setLogged(true);
-      } catch (error) {
-        console.error("Error guardando en localStorage", error);
-      }
-      
-      //setShowLogin(true);
+      login(newUser);
+      setShowLogin(true);
 
     } catch (error) {
-      showAlert("Error connectando a la base de datos", error);
+      showAlert("Error conectando a la base de datos", error);
     }
   };
-  /*
+
   if (showLogin) {
     return <Login />;
   }
-  */
+
   return (
     <div className="register-primary-container flex items-center justify-center min-h-screen bg-gray-300 p-5">
       <div className="register-container p-10 rounded-5 shadow-lg w-full px-5 m-auto">

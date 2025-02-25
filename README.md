@@ -1,22 +1,25 @@
 ![logo](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740471924/magnolialLogoMobile_awbjyy_1_od9omf.png)
 
-# **Magnolia Hotels**
+# **Magnolia Hotels** 🏨
 
 **Magnolia Hotels** is an exclusive luxury hotel chain, where every detail is designed to offer you a unique experience. With individual and double luxury rooms, a gourmet restaurant that takes gastronomy to new heights, and a pool and spa service for your total relaxation. Located in central and privileged locations, **Magnolia Hotels** guarantees you a dream getaway, combining comfort, elegance, and sophistication in one place.
 
-## Table of Contents
-1. [Installation and Requirements](#installation-and-requirements)
-2. [Team Members](#👥team-members)
-3. [Technologies Used](#technologies-used) 
-4. [App Design](#app-design)
-5. [Project Architecture](#project-architecture)
-6. [Next Steps](#next-steps)
-7. [Libraries](#libraries)
-8. [License](#license)
+---
+
+## 📌 **Table of Contents**
+1. [⚙️ Installation and Requirements](#-installation-and-requirements)
+2. [👥 Team Members](#-team-members)
+3. [💻 Technologies Used](#-technologies-used) 
+4. [🎨 App Design](#-app-design)
+5. [🏗️ Project Architecture](#project-architecture)
+6. [📚 Libraries](#-libraries)
+7. [🚀 Next Steps](#-next-steps)
+8. [🌐 Preview](#-preview)
+9. [🔖 License](#-license)
 
 ---
 
-## **Installation and Requirements**
+## ⚙️ **Installation and Requirements**
 
 ### **Prerequisites**  
 Before you start, ensure you have the following installed:
@@ -58,7 +61,7 @@ Before you start, ensure you have the following installed:
 
 ---
 
-## **Technologies Used**
+## 💻 **Technologies Used**
   This project utilizes the following technologies and libraries:
 
   - React: Frontend JavaScript library for building user interfaces
@@ -69,7 +72,7 @@ Before you start, ensure you have the following installed:
 
 ---
 
-## **App Design**
+## 🎨 **App Design**
 
 ### 🖥️ Desktop Version  
 
@@ -85,11 +88,11 @@ Before you start, ensure you have the following installed:
 
 ---
 
-## **Project Architecture**
+## 🏗️ **Project Architecture**
 
 ---
 
-## **Libraries**
+## 📚 **Libraries**
 
 - @cloudinary/react
 - @cloudinary/url-gen
@@ -111,15 +114,15 @@ Before you start, ensure you have the following installed:
 
 ---
 
-## **Next Steps**
+## 🚀 **Next Steps**
 
 ---
 
-## **Preview**
+## 🌐 **Preview**
 
 ---
 
-## **License**
+## 🔖 **License**
 
 Magnolia Hotels is licensed under the [MIT license](https://opensource.org/licenses/MIT).
 

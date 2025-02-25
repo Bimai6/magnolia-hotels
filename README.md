@@ -13,9 +13,10 @@
 4. [🏗️ Project Architecture](#project-architecture)
 5. [💻 Technologies Used](#-technologies-used) 
 6. [📚 Libraries](#-libraries)
-7. [🚀 Next Steps](#-next-steps)
-8. [🌐 Preview](#-preview)
-9. [🔖 License](#-license)
+7. [🧪 Test](#-test)
+8. [🚀 Next Steps](#-next-steps)
+9. [🌐 Preview](#-preview)
+10. [🔖 License](#-license)
 
 ---
 
@@ -111,6 +112,10 @@ Before you start, ensure you have the following installed:
 - react-slick
 - slick-carousel
 - sweetalert2
+
+---
+
+## 🧪 **Test**
 
 ---
 

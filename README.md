@@ -45,6 +45,18 @@ Before you start, ensure you have the following installed:
 
 ---
 
+## 👥 **Team Members**  
+
+| Nombre | Rol | GitHub |
+|--------|-----|--------|
+| **Mario Lebrero** | Developer | [@Bimai6](https://github.com/Bimai6) |
+| **Pablo Jiménez** | Developer | [@pablo-jm](https://github.com/pablo-jm) |
+| **Alejandro Gómez** | Developer | [@AleGomoj](https://github.com/AleGomoj) |
+| **Jesús Manuel García** | Scrum Master | [@LozzDev](https://github.com/LozzDev) |
+| **Felipe Chacón** | Product Owner | [@PhilippeInCode](https://github.com/PhilippeInCode) |
+
+---
+
 ## **Technologies Used**
   This project utilizes the following technologies and libraries:
 

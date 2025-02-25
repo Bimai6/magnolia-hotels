@@ -62,7 +62,7 @@ function Login() {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <h2 className="register-title mb-5 text-black pt-5">Registro</h2>
+        <h2 className="register-title mb-5 text-black pt-5">Iniciar sesión</h2>
         <label>Usuario</label>
         <input type="text" name="user" value={formData.user} onChange={handleChange} />
       </div>

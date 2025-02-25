@@ -39,7 +39,7 @@ const Home = () => {
               <Typography variant="h3" fontWeight="bold">
                 Tus vacaciones como nunca
               </Typography>
-              <Typography variant="body1" sx={{ mt: 8 }}>
+              <Typography variant="body1" sx={{ mt: 8}}>
                 Descubre un oasis de lujo y confort donde cada detalle está pensado para hacer de tu estancia una experiencia inolvidable. Relájate en nuestras exclusivas instalaciones, disfruta de una gastronomía excepcional y sumérgete en un servicio diseñado para superar tus expectativas. Tu descanso y bienestar son nuestra prioridad. ¿Listo para unas vacaciones inigualables?
               </Typography>
             </Grid>
@@ -124,7 +124,7 @@ const Home = () => {
             <Typography variant="h3" fontWeight="bold" textAlign="center">
               Tus vacaciones como nunca
             </Typography>
-            <Typography variant="body1" sx={{ mt: 2, textAlign: { xs: 'justify', md: 'left' } }}>
+            <Typography variant="body1" sx={{ mt: 2, ml: 4, mr: 5, textAlign: { xs: 'justify', md: 'left' } }}>
             Descubre un oasis de lujo y confort donde cada detalle está pensado para hacer de tu estancia una experiencia inolvidable. Relájate en nuestras exclusivas instalaciones, disfruta de una gastronomía excepcional y sumérgete en un servicio diseñado para superar tus expectativas. Tu descanso y bienestar son nuestra prioridad. ¿Listo para unas vacaciones inigualables?
             </Typography>
           </Grid>

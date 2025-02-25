@@ -6,12 +6,13 @@
 
 ## Table of Contents
 1. [Installation and Requirements](#installation-and-requirements)
-2. [Technologies Used](#technologies-used) 
-3. [App Design](#app-design)
-4. [Project Architecture](#project-architecture)
-5. [Next Steps](#next-steps)
-6. [Libraries](#libraries)
-7. [License](#license)
+2. [Team Members](#team-members)
+3. [Technologies Used](#technologies-used) 
+4. [App Design](#app-design)
+5. [Project Architecture](#project-architecture)
+6. [Next Steps](#next-steps)
+7. [Libraries](#libraries)
+8. [License](#license)
 
 ---
 

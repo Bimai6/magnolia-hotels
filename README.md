@@ -1,4 +1,4 @@
-![logo](https://res.cloudinary.com/dk1g12n2h/image/upload/v1739956982/magnolialLogoMobile_awbjyy.png)
+![logo](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740471924/magnolialLogoMobile_awbjyy_1_od9omf.png)
 
 # **Magnolia Hotels**
 
@@ -10,7 +10,7 @@
 3. [App Design](#app-design)
 4. [Project Architecture](#project-architecture)
 5. [Next Steps](#next-steps)
-6. [Contributing](#contributing)
+6. [Libraries](#libraries)
 7. [License](#license)
 
 ---
@@ -58,12 +58,41 @@ Before you start, ensure you have the following installed:
 
 ## **App Design**
 
-![Home Page 1](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740390718/homePage_v6r72r.png)
-![Home Page 2](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740390718/homePage2_zf3cwd.png)
+### 🖥️ Desktop Version  
+
+| Home Page | Restaurant Page | Restaurant Reservation | Restaurant Menu |
+|-----------|----------------|----------------|----------------|
+| [![Home Page](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740390718/homePage_v6r72r.png)](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740390718/homePage_v6r72r.png) | [![Restaurant Page](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740473446/Restaurante_s4pswh.png)](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740473446/Restaurante_s4pswh.png) | [![Restaurant Reservation](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740473324/reservaDesktop_eprhaw.png) | [![Restaurant Menu](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740472850/cartaDesktop_dfdc5y.png) |
+
+### 📱 Mobile Version  
+
+| Home Page | Restaurant Page | Restaurant Reservation | Restaurant Menu |
+|-----------|----------------|----------------|----------------|
+| [![Home Page](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740469834/homePageMobile_yzmmro.png)](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740390718/homePage_v6r72r.png) | [![Restaurant Page](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740473446/RestauranteMobile_baqkp5.png)](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740473446/Restaurante_s4pswh.png) | [![Restaurant Reservation](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740472856/reservaMobile_bnvhgt.png) | [![Restaurant Menu](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740472894/cartaMobile_sh0u29.png) |
+
+## **Project Architecture**
 
 ---
 
-## **Project Architecture**
+## **Libraries**
+
+- @cloudinary/react
+- @cloudinary/url-gen
+- @emotion/react
+- @emotion/styled
+- @mui/icons-material
+- @mui/material
+- @mui/x-date-pickers
+- bootstrap
+- dayjs
+- react
+- react-bootstrap
+- react-dom
+- react-icons
+- react-router-dom
+- react-slick
+- slick-carousel
+- sweetalert2
 
 ---
 
@@ -71,7 +100,7 @@ Before you start, ensure you have the following installed:
 
 ---
 
-## **Contributing**
+## **Preview**
 
 ---
 

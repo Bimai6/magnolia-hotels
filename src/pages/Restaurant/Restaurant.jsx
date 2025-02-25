@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import './Restaurant.css';
 import ButtonRestaurant from '../../components/ButtonRestaurant/ButtonRestaurant';
+import emailjs from '@emailjs/browser';
 
 const MySwal = withReactContent(Swal);
 
@@ -36,13 +37,11 @@ const handleMenuClick = () => {
       `,
     });
 
-    // Reasignar el evento de zoom
     const image = document.querySelector('.swal-menu-image');
     image.addEventListener('click', () => {
       image.classList.toggle('zoomed');
     });
 
-    // Reasignar eventos de navegación
     document.getElementById('prevImage').addEventListener('click', () => {
       currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
       updateImage(currentIndex);
@@ -76,13 +75,13 @@ const handleMenuClick = () => {
       popup: 'custom-swal-popup',
     },
     didOpen: () => {
-      // Asignar el evento de zoom al abrir
+    
       const image = document.querySelector('.swal-menu-image');
       image.addEventListener('click', () => {
         image.classList.toggle('zoomed');
       });
 
-      // Asignar eventos de navegación
+      
       document.getElementById('prevImage').addEventListener('click', () => {
         currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
         updateImage(currentIndex);
@@ -202,6 +201,27 @@ const handleReservationClick = () => {
         color: '#fff',
         background: 'rgba(79, 78, 78, 0.66)',
       });
+
+      emailjs.send(
+        'service_qgjhvea',
+        'template_8c7fits',
+        {
+          name: name,
+          email: email,
+          phone: phone,
+          guests: guests,
+          dateTime: formatDateTime(dateTime),
+          reservationNumber: reservationNumber
+        },
+        'h0PZABPnZmb6RndN-'
+      )
+      .then((response) => {
+        console.log('Correo enviado con éxito:', response);
+      })
+      .catch((error) => {
+        console.error('Error al enviar el correo:', error);
+      });
+      
     }
   });
 };
@@ -350,11 +370,16 @@ const handleModifyReservationClick = () => {
   });
 };
 
-const formatDateTime = (dateTime) => {
+function formatDateTime(dateTime) {
   const date = new Date(dateTime);
-  const options = { weekday: 'long', day: 'numeric', month: 'long' };
-  return date.toLocaleDateString('es-ES', options);
-};
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  
+  return `${day}/${month}/${year} ${hours}:${minutes}`;
+}
 
 const Restaurant = () => {
   return (

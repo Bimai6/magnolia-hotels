@@ -159,6 +159,7 @@ const handleReservationClick = () => {
       const dateTime = document.getElementById('dateTime').value;
       const reservationNumber = Math.floor(100000000 + Math.random() * 900000000);
       
+      const phoneRegex = /^[0-9]{10}$/;
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const selectedDate = new Date(dateTime);
       const currentDate = new Date();
@@ -175,7 +176,7 @@ const handleReservationClick = () => {
         MySwal.showValidationMessage('El número de comensales debe ser al menos 1');
         return false;
       }
-      //añadir validacion del telefono
+      
       if (guests > 12) {
         MySwal.showValidationMessage('Lo sentimos, no aceptamos reservas para más de 12 comensales, contacta con nosotros para más información');
         return false;
@@ -186,6 +187,11 @@ const handleReservationClick = () => {
         MySwal.showValidationMessage('No puedes reservar en una fecha pasada');
         return false;
       }
+
+      if (!phoneRegex.test(phone)) {
+        MySwal.showValidationMessage('Por favor, ingresa un número de teléfono válido');
+        return false;
+    }
 
       return { name, email, phone, guests, dateTime, reservationNumber };
     },

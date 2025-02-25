@@ -7,11 +7,11 @@
 ---
 
 ## 📌 **Table of Contents**
-1. [⚙️ Installation and Requirements](#-installation-and-requirements)
+1. [⚙️ Installation and Requirements](#installation-and-requirements)
 2. [👥 Team Members](#-team-members)
-3. [💻 Technologies Used](#-technologies-used) 
-4. [🎨 App Design](#-app-design)
-5. [🏗️ Project Architecture](#project-architecture)
+3. [🎨 App Design](#-app-design)
+4. [🏗️ Project Architecture](#project-architecture)
+5. [💻 Technologies Used](#-technologies-used) 
 6. [📚 Libraries](#-libraries)
 7. [🚀 Next Steps](#-next-steps)
 8. [🌐 Preview](#-preview)
@@ -61,16 +61,6 @@ Before you start, ensure you have the following installed:
 
 ---
 
-## 💻 **Technologies Used**
-  This project utilizes the following technologies and libraries:
-
-  - React: Frontend JavaScript library for building user interfaces
-  - React Router: For handling navigation within the app
-  - SweetAlert2: For beautiful alert pop-ups
-  - Bootstrap: For responsive design and UI components
-  - React Bootstrap: Bootstrap components for React
-
----
 
 ## 🎨 **App Design**
 
@@ -89,6 +79,16 @@ Before you start, ensure you have the following installed:
 ---
 
 ## 🏗️ **Project Architecture**
+
+---
+
+## 💻 **Technologies Used**
+ This project utilizes the following technologies:
+
+- React: Frontend JavaScript library for building user interfaces
+- React Router: For handling navigation within the app
+- Bootstrap: For responsive design and UI components
+- React Bootstrap: Bootstrap components for React
 
 ---
 

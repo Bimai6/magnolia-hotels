@@ -6,7 +6,7 @@
 
 ## Table of Contents
 1. [Installation and Requirements](#installation-and-requirements)
-2. [Team Members](#team-members)
+2. [Team Members](#👥team-members)
 3. [Technologies Used](#technologies-used) 
 4. [App Design](#app-design)
 5. [Project Architecture](#project-architecture)
@@ -46,7 +46,7 @@ Before you start, ensure you have the following installed:
 
 ---
 
-## **Team Members**  
+## 👥 **Team Members**  
 
 | Nombre | Rol | GitHub |
 |--------|-----|--------|

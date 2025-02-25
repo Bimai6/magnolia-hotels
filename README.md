@@ -61,14 +61,16 @@ Before you start, ensure you have the following installed:
 ### 🖥️ Desktop Version  
 
 | Home Page | Restaurant Page | Restaurant Reservation | Restaurant Menu |
-|-----------|----------------|----------------|----------------|
-| [![Home Page](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740390718/homePage_v6r72r.png)](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740390718/homePage_v6r72r.png) | [![Restaurant Page](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740473446/Restaurante_s4pswh.png)](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740473446/Restaurante_s4pswh.png) | [![Restaurant Reservation](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740473324/reservaDesktop_eprhaw.png) | [![Restaurant Menu](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740472850/cartaDesktop_dfdc5y.png) |
+|-----------|----------------|------------------------|----------------|
+| [![Home Page](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740390718/homePage_v6r72r.png)](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740390718/homePage_v6r72r.png) | [![Restaurant Page](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740473446/Restaurante_s4pswh.png)](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740473446/Restaurante_s4pswh.png) | [![Restaurant Reservation](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740473324/reservaDesktop_eprhaw.png)](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740473324/reservaDesktop_eprhaw.png) | [![Restaurant Menu](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740472850/cartaDesktop_dfdc5y.png)](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740472850/cartaDesktop_dfdc5y.png) |
 
 ### 📱 Mobile Version  
 
 | Home Page | Restaurant Page | Restaurant Reservation | Restaurant Menu |
-|-----------|----------------|----------------|----------------|
-| [![Home Page](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740469834/homePageMobile_yzmmro.png)](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740390718/homePage_v6r72r.png) | [![Restaurant Page](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740473446/RestauranteMobile_baqkp5.png)](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740473446/Restaurante_s4pswh.png) | [![Restaurant Reservation](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740472856/reservaMobile_bnvhgt.png) | [![Restaurant Menu](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740472894/cartaMobile_sh0u29.png) |
+|-----------|----------------|------------------------|----------------|
+| [![Home Page](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740469834/homePageMobile_yzmmro.png)](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740469834/homePageMobile_yzmmro.png) | [![Restaurant Page](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740473446/RestauranteMobile_baqkp5.png)](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740473446/RestauranteMobile_baqkp5.png) | [![Restaurant Reservation](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740472856/reservaMobile_bnvhgt.png)](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740472856/reservaMobile_bnvhgt.png) | [![Restaurant Menu](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740472894/cartaMobile_sh0u29.png)](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740472894/cartaMobile_sh0u29.png) |
+
+---
 
 ## **Project Architecture**
 

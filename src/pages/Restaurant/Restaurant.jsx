@@ -5,6 +5,8 @@ import './Restaurant.css';
 import ButtonRestaurant from '../../components/ButtonRestaurant/ButtonRestaurant';
 import emailjs from '@emailjs/browser';
 
+emailjs.init('h0PZABPnZmb6RndN-');
+
 const MySwal = withReactContent(Swal);
 
 const handleMenuClick = () => {
@@ -173,7 +175,7 @@ const handleReservationClick = () => {
         MySwal.showValidationMessage('El número de comensales debe ser al menos 1');
         return false;
       }
-
+      //añadir validacion del telefono
       if (guests > 12) {
         MySwal.showValidationMessage('Lo sentimos, no aceptamos reservas para más de 12 comensales, contacta con nosotros para más información');
         return false;

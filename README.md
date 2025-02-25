@@ -46,7 +46,7 @@ Before you start, ensure you have the following installed:
 
 ---
 
-## 👥 **Team Members**  
+## **Team Members**  
 
 | Nombre | Rol | GitHub |
 |--------|-----|--------|

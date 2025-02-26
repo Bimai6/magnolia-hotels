@@ -4,7 +4,7 @@
     padding: 20px;
     font-family: Arial, sans-serif;
     color: #000;
-    position: fixed;
+    margin-top: 50px;
     bottom: 50px;
     width: 100%;
     z-index: 10;

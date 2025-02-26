@@ -16,4 +16,4 @@
 - react-slick
 - slick-carousel
 - sweetalert2
-  
+- sweetalert2-react-content

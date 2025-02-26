@@ -3,9 +3,7 @@ import "./ButtonRestaurant.css";
 
 const ButtonRestaurant = ({title, action}) => {
     return (
-        <body>
-             <button type="button" className="btn btn-primary btn-lg magnolia-restaurant" onClick={action}>{title}</button>
-        </body>
+             <button type="button" className="btn btn-dark btn-lg magnolia-restaurant" onClick={action}>{title}</button>
     );
   };
   

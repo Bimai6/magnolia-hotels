@@ -13,7 +13,7 @@
 4. [🏗️ Project Architecture](#project-architecture)
 5. [💻 Technologies Used](#-technologies-used) 
 6. [📚 Libraries](#-libraries)
-7. [🧪 Test](#-test)
+7. [🧪 Test Screenshots](#-test-screenshots)
 8. [🚀 Next Steps](#-next-steps)
 9. [🌐 Preview](#-preview)
 10. [🔖 License](#-license)
@@ -117,7 +117,12 @@ Before you start, ensure you have the following installed:
 
 ---
 
-## 🧪 **Test**
+## 🧪 **Test Screenshots**
+
+| Test Name        | Screenshot |
+|-----------------|------------|
+| **Header Test** | [![Header Test](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740558036/test_1_1_l8ylxd.png)](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740558036/test_1_1_l8ylxd.png) |
+| **Footer Test** | [![Footer Test](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740558036/test_2_1_ehuvjw.png)](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740558036/test_2_1_ehuvjw.png) |
 
 ---
 

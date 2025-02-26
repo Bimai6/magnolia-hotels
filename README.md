@@ -80,7 +80,7 @@ Before you start, ensure you have the following installed:
 
 ---
 
-## 🏗️ **Project Architecture**
+## 🏗️ Project Architecture <a name="project-architecture"></a>
 
 ---
 

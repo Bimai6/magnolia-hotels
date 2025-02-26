@@ -9,6 +9,34 @@ emailjs.init('h0PZABPnZmb6RndN-');
 
 const MySwal = withReactContent(Swal);
 
+const getReservations = () => {
+  const reservations = localStorage.getItem('reservations');
+  return reservations ? JSON.parse(reservations) : [];
+};
+
+const saveReservation = (reservation) => {
+  const reservations = getReservations();
+  reservations.push(reservation);
+  localStorage.setItem('reservations', JSON.stringify(reservations));
+};
+
+const updateReservation = (reservationId, updatedReservation) => {
+  const reservations = getReservations();
+  const index = reservations.findIndex(res => res.reservationNumber === reservationId);
+  if (index !== -1) {
+    reservations[index] = updatedReservation;
+    localStorage.setItem('reservations', JSON.stringify(reservations));
+    return true;
+  }
+  return false;
+};
+
+const deleteReservation = (reservationId) => {
+  const reservations = getReservations();
+  const filteredReservations = reservations.filter(res => res.reservationNumber !== reservationId);
+  localStorage.setItem('reservations', JSON.stringify(filteredReservations));
+};
+
 const handleMenuClick = () => {
   const isMobile = window.innerWidth < 768;
 
@@ -77,13 +105,11 @@ const handleMenuClick = () => {
       popup: 'custom-swal-popup',
     },
     didOpen: () => {
-    
       const image = document.querySelector('.swal-menu-image');
       image.addEventListener('click', () => {
         image.classList.toggle('zoomed');
       });
 
-      
       document.getElementById('prevImage').addEventListener('click', () => {
         currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
         updateImage(currentIndex);
@@ -182,7 +208,6 @@ const handleReservationClick = () => {
         return false;
       }
 
-      
       if (selectedDate < currentDate) {
         MySwal.showValidationMessage('No puedes reservar en una fecha pasada');
         return false;
@@ -191,13 +216,16 @@ const handleReservationClick = () => {
       if (!phoneRegex.test(phone)) {
         MySwal.showValidationMessage('Por favor, ingresa un número de teléfono válido');
         return false;
-    }
+      }
 
       return { name, email, phone, guests, dateTime, reservationNumber };
     },
   }).then((result) => {
     if (result.isConfirmed) {
       const { name, email, phone, guests, dateTime, reservationNumber } = result.value;
+      const reservation = { name, email, phone, guests, dateTime, reservationNumber };
+      saveReservation(reservation);
+
       MySwal.fire({
         title: 'Reserva Confirmada',
         html: `Gracias ${name}, tu reserva para ${guests} comensales el ${formatDateTime(dateTime)} ha sido confirmada.<br><br>
@@ -229,7 +257,6 @@ const handleReservationClick = () => {
       .catch((error) => {
         console.error('Error al enviar el correo:', error);
       });
-      
     }
   });
 };
@@ -259,7 +286,7 @@ const handleModifyReservationClick = () => {
     background: 'rgba(79, 78, 78, 0.66)',
     preConfirm: () => {
       const email = document.getElementById('email').value.trim();
-      const reservationId = document.getElementById('reservationId').value.trim();
+      const reservationId = parseInt(document.getElementById('reservationId').value.trim(), 10);
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
       if (!email || !reservationId) {
@@ -276,28 +303,29 @@ const handleModifyReservationClick = () => {
   }).then((result) => {
     if (result.isConfirmed) {
       const { email, reservationId } = result.value;
-      //dejo anotado que por aqui hay que hacer la validacion con el json.
-      const reservationExists = true;
-      if (reservationExists) {
+      const reservations = getReservations();
+      const reservation = reservations.find(res => res.reservationNumber === reservationId && res.email === email);
+
+      if (reservation) {
         MySwal.fire({
           title: "Modificar Reserva",
           html: `
             <div class="swal-reserva-container">
               <div class="swal-reserva-row">
                 <label for="name">Nombre</label>
-                <input type="text" id="name" class="swal-reserva-input" required>
+                <input type="text" id="name" class="swal-reserva-input" value="${reservation.name}" required>
               </div>
               <div class="swal-reserva-row">
                 <label for="phone">Teléfono de contacto</label>
-                <input type="tel" id="phone" class="swal-reserva-input" required>
+                <input type="tel" id="phone" class="swal-reserva-input" value="${reservation.phone}" required>
               </div>
               <div class="swal-reserva-row">
                 <label for="guests">Comensales</label>
-                <input type="number" id="guests" class="swal-reserva-input" min="1" required>
+                <input type="number" id="guests" class="swal-reserva-input" value="${reservation.guests}" min="1" required>
               </div>
               <div class="swal-reserva-row">
                 <label for="dateTime">Fecha y hora</label>
-                <input type="datetime-local" id="dateTime" class="swal-reserva-input" required>
+                <input type="datetime-local" id="dateTime" class="swal-reserva-input" value="${reservation.dateTime}" required>
               </div>
             </div>
           `,
@@ -338,20 +366,24 @@ const handleModifyReservationClick = () => {
         }).then((modResult) => {
           if (modResult.isConfirmed) {
             const { name, phone, guests, dateTime, reservationId } = modResult.value;
-            MySwal.fire({
-              title: 'Reserva Modificada',
-              html: `Tu reserva <strong>${reservationId}</strong> ha sido actualizada.<br>
-                     <strong>Nombre:</strong> ${name}<br>
-                     <strong>Teléfono:</strong> ${phone}<br>
-                     <strong>Comensales:</strong> ${guests}<br>
-                     <strong>Fecha y hora:</strong> ${formatDateTime(dateTime)}`,
-              icon: 'success',
-              confirmButtonText: 'OK',
-              confirmButtonColor: '#DAA520',
-              color: '#fff',
-              background: 'rgba(79, 78, 78, 0.66)',
-            });
+            const updatedReservation = { name, email: reservation.email, phone, guests, dateTime, reservationNumber: reservationId };
+            if (updateReservation(reservationId, updatedReservation)) {
+              MySwal.fire({
+                title: 'Reserva Modificada',
+                html: `Tu reserva <strong>${reservationId}</strong> ha sido actualizada.<br>
+                       <strong>Nombre:</strong> ${name}<br>
+                       <strong>Teléfono:</strong> ${phone}<br>
+                       <strong>Comensales:</strong> ${guests}<br>
+                       <strong>Fecha y hora:</strong> ${formatDateTime(dateTime)}`,
+                icon: 'success',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#DAA520',
+                color: '#fff',
+                background: 'rgba(79, 78, 78, 0.66)',
+              });
+            }
           } else if (modResult.isDenied) {
+            deleteReservation(reservationId);
             MySwal.fire({
               title: 'Reserva Anulada',
               text: `Tu reserva: ${reservationId}, ha sido anulada.`,

@@ -20,7 +20,7 @@
 
 ---
 
-## ⚙️ **Installation and Requirements**
+## ⚙️ Installation and Requirements <a name="installation-and-requirements"></a>
 
 ### **Prerequisites**  
 >[!IMPORTANT]

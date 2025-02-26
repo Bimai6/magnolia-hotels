@@ -1,0 +1,54 @@
+{
+  "rooms": [
+    {
+      "id": "1",
+      "title": "Habitación Doble",
+      "description": "Nuestra Habitación Doble ofrece el equilibrio perfecto entre comodidad y funcionalidad, ideal para parejas o amigos. Equipada con dos camas individuales o una cama doble, aire acondicionado y Wi-Fi gratuito.",
+      "stars": 3,
+      "price": 43,
+      "img": "https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg",
+      "reservations": []
+    },
+    {
+      "id": "2",
+      "title": "Habitación Individual",
+      "description": "Perfecta para viajeros solitarios, nuestra Habitación Individual combina confort y privacidad en un espacio acogedor. Dispone de una cama individual, escritorio de trabajo y baño privado.",
+      "stars": 4,
+      "price": 38,
+      "img": "https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg",
+      "reservations": []
+    },
+    {
+      "id": "3",
+      "title": "Suite Deluxe",
+      "description": "Nuestra Suite Deluxe es sinónimo de lujo y exclusividad. Amplia y elegante, cuenta con una sala de estar, jacuzzi, cama king size y vistas panorámicas. Ideal para estancias románticas o viajes de negocios premium.",
+      "stars": 5,
+      "price": 99,
+      "img": "https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg",
+      "reservations": []
+    },
+    {
+      "id": "4",
+      "title": "Habitación Superior",
+      "description": "Disfruta de un espacio sofisticado con nuestra Habitación Superior. Con diseño moderno, cama queen size y detalles exclusivos, esta habitación es ideal para quienes buscan un extra de confort.",
+      "stars": 4,
+      "price": 55,
+      "img": "https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg",
+      "reservations": []
+    },
+    {
+      "id": "5",
+      "title": "Habitación Económica",
+      "description": "La mejor opción para presupuestos ajustados sin sacrificar calidad. Nuestra Habitación Económica ofrece una estancia cómoda con cama individual, escritorio y conexión Wi-Fi gratuita.",
+      "stars": 3,
+      "price": 30,
+      "img": "https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg",
+      "reservations": [
+        {
+          "entry": "2025-02-26",
+          "departure": "2025-02-28"
+        }
+      ]
+    }
+  ]
+}

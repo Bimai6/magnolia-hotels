@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import RoomCard from '../../components/RoomCard/RoomCard';
 import SearchResult from '../../components/SearchResult/SearchResult';
 import './Reservations.css';
+//npx json-server --watch src/data/db.json --port 3000
 
 const Reservations = () => {
   const [rooms, setRooms] = useState([]);

@@ -9,32 +9,59 @@ emailjs.init('h0PZABPnZmb6RndN-');
 
 const MySwal = withReactContent(Swal);
 
-const getReservations = () => {
-  const reservations = localStorage.getItem('reservations');
-  return reservations ? JSON.parse(reservations) : [];
-};
-
-const saveReservation = (reservation) => {
-  const reservations = getReservations();
-  reservations.push(reservation);
-  localStorage.setItem('reservations', JSON.stringify(reservations));
-};
-
-const updateReservation = (reservationId, updatedReservation) => {
-  const reservations = getReservations();
-  const index = reservations.findIndex(res => res.reservationNumber === reservationId);
-  if (index !== -1) {
-    reservations[index] = updatedReservation;
-    localStorage.setItem('reservations', JSON.stringify(reservations));
-    return true;
+const getReservations = async () => {
+  try {
+    const response = await fetch('http://localhost:5000/restaurantReservations');
+    const reservations = await response.json();
+    return reservations;
+  } catch (error) {
+    console.error("Error al obtener las reservas:", error);
+    return [];
   }
-  return false;
 };
 
-const deleteReservation = (reservationId) => {
-  const reservations = getReservations();
-  const filteredReservations = reservations.filter(res => res.reservationNumber !== reservationId);
-  localStorage.setItem('reservations', JSON.stringify(filteredReservations));
+const saveReservation = async (reservation) => {
+  try {
+    const response = await fetch('http://localhost:5000/restaurantReservations', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(reservation),
+    });
+    const newReservation = await response.json();
+    return newReservation;
+  } catch (error) {
+    console.error("Error al guardar la reserva:", error);
+  }
+};
+
+
+const updateReservation = async (reservationId, updatedReservation) => {
+  try {
+    const response = await fetch(`http://localhost:5000/restaurantReservations/${reservationId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedReservation),
+    });
+    const updated = await response.json();
+    return updated;
+  } catch (error) {
+    console.error("Error al actualizar la reserva:", error);
+  }
+};
+
+
+const deleteReservation = async (reservationId) => {
+  try {
+    await fetch(`http://localhost:5000/restaurantReservations/${reservationId}`, {
+      method: 'DELETE',
+    });
+  } catch (error) {
+    console.error("Error al eliminar la reserva:", error);
+  }
 };
 
 const handleMenuClick = () => {
@@ -185,7 +212,7 @@ const handleReservationClick = () => {
       const dateTime = document.getElementById('dateTime').value;
       const reservationNumber = Math.floor(100000000 + Math.random() * 900000000);
       
-      const phoneRegex = /^[0-9]{10}$/;
+      const phoneRegex = /^[0-9]{9}$/; //añadir digitos especiales (to do)
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const selectedDate = new Date(dateTime);
       const currentDate = new Date();
@@ -261,7 +288,7 @@ const handleReservationClick = () => {
   });
 };
 
-const handleModifyReservationClick = () => {
+const handleModifyReservationClick = async () => {
   MySwal.fire({
     title: "Modificar Reserva",
     html: `
@@ -300,10 +327,10 @@ const handleModifyReservationClick = () => {
 
       return { email, reservationId };
     },
-  }).then((result) => {
+  }).then(async (result) => {
     if (result.isConfirmed) {
       const { email, reservationId } = result.value;
-      const reservations = getReservations();
+      const reservations = await getReservations(); // Asegúrate de que `getReservations` esté funcionando
       const reservation = reservations.find(res => res.reservationNumber === reservationId && res.email === email);
 
       if (reservation) {
@@ -360,14 +387,15 @@ const handleModifyReservationClick = () => {
               MySwal.showValidationMessage('No puedes reservar en una fecha pasada');
               return false;
             }
-            
+
             return { name, phone, guests, dateTime, reservationId };
           }
         }).then((modResult) => {
           if (modResult.isConfirmed) {
             const { name, phone, guests, dateTime, reservationId } = modResult.value;
             const updatedReservation = { name, email: reservation.email, phone, guests, dateTime, reservationNumber: reservationId };
-            if (updateReservation(reservationId, updatedReservation)) {
+
+            updateReservation(reservationId, updatedReservation).then(() => {
               MySwal.fire({
                 title: 'Reserva Modificada',
                 html: `Tu reserva <strong>${reservationId}</strong> ha sido actualizada.<br>
@@ -381,17 +409,18 @@ const handleModifyReservationClick = () => {
                 color: '#fff',
                 background: 'rgba(79, 78, 78, 0.66)',
               });
-            }
+            });
           } else if (modResult.isDenied) {
-            deleteReservation(reservationId);
-            MySwal.fire({
-              title: 'Reserva Anulada',
-              text: `Tu reserva: ${reservationId}, ha sido anulada.`,
-              icon: 'info',
-              background: 'rgba(79, 78, 78, 0.66)',
-              color: '#fff',
-              confirmButtonText: 'OK',
-              confirmButtonColor: '#DAA520'
+            deleteReservation(reservationId).then(() => {
+              MySwal.fire({
+                title: 'Reserva Anulada',
+                text: `Tu reserva: ${reservationId}, ha sido anulada.`,
+                icon: 'info',
+                background: 'rgba(79, 78, 78, 0.66)',
+                color: '#fff',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#DAA520'
+              });
             });
           }
         });
@@ -409,6 +438,7 @@ const handleModifyReservationClick = () => {
     }
   });
 };
+
 
 function formatDateTime(dateTime) {
   const date = new Date(dateTime);

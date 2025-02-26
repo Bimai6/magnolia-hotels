@@ -126,7 +126,7 @@ function DesktopHeader() {
 }
 
 function Header() {
-  const isMobile = useMediaQuery('(max-width:1023px)');
+  const isMobile = useMediaQuery('(max-width:1285px)');
   return isMobile ? <MobileHeader /> : <DesktopHeader />;
 }
 

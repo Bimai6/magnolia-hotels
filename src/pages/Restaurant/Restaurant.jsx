@@ -495,7 +495,7 @@ const Restaurant = () => {
         <ButtonRestaurant title="Modificar Reserva" action={handleModifyReservationClick} />
         <ButtonRestaurant title="Carta" action={handleMenuClick} />
       </div>
-      <Footer/>
+      
     </div>
   );
 };

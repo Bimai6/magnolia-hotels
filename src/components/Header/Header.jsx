@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import { AppBar, Toolbar, IconButton, Box, BottomNavigation, BottomNavigationAction, useMediaQuery, Button, Dialog } from '@mui/material';
 import Register from '../Auth/Register';
 import ContactSlider from '../ContactSlider/ContactSlider';
+import { useLocation } from 'react-router-dom';
+
+
 
 const navItems = [
   { label: 'Inicio', value: 'home', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/isotype_idmria.svg', link: '/', width: 45, height: 45 },
@@ -66,6 +69,9 @@ function DesktopHeader() {
   const [open, setOpen] = React.useState(false);
   const [logged, setLogged] = React.useState(false);
 
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+
   React.useEffect(() => {
     try {
       const user = JSON.parse(localStorage.getItem("user"));
@@ -98,17 +104,17 @@ function DesktopHeader() {
 
 
   return (
-    <>
+    <div>
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar
-        position={scrolling ? 'fixed' : 'absolute'}
-        sx={{
-          backgroundColor: scrolling ? 'white' : 'transparent',
-          boxShadow: scrolling ? '0px 2px 5px rgba(0, 0, 0, 0.1)' : 'none',
-          transition: 'background-color 0.3s, box-shadow 0.3s',
-          width: '100%'
-        }}
-      >
+    <AppBar
+  position={scrolling ? 'fixed' : 'absolute'}
+  sx={{
+    backgroundColor: scrolling || !isHome ? 'white' : 'transparent',
+    boxShadow: scrolling || !isHome ? '0px 5px 10px rgba(0, 0, 0, 0.1)' : 'none',
+    transition: 'background-color 0.3s, box-shadow 0.3s',
+    width: '100%'
+  }}
+>
         <Toolbar>
           <IconButton
             component={Link}
@@ -121,7 +127,7 @@ function DesktopHeader() {
             <img
               src="https://res.cloudinary.com/dk1g12n2h/image/upload/v1739173714/IMG-20250202-WA0012_1_eic08v.png"
               alt="Logo"
-              style={{ objectFit: 'contain', width: '200px', height: 'auto' }}
+              style={{ objectFit: 'contain', width: '200px', height: 'auto', margin: '0' }}
             />
           </IconButton>
           <Box sx={{ ml: 'auto', display: 'flex', gap: 8 }}>
@@ -132,7 +138,7 @@ function DesktopHeader() {
                 to={item.label === 'Identificarse' ? logged === true ? item.link : undefined : item.link}
                 onClick={item.label === 'Contacto' ? () => setIsContactOpen(true) : item.label === 'Identificarse' ? logged === true ? undefined : handleOpen : undefined}
                 sx={{
-                  color: scrolling ? 'black' : 'white',
+                  color: scrolling || !isHome ? 'black' : 'white',
                   textTransform: 'none',
                   fontSize: '18px',
                   position: 'relative',
@@ -141,14 +147,14 @@ function DesktopHeader() {
                     display: 'block',
                     width: 0,
                     height: '2px',
-                    background: scrolling ? 'black' : 'white',
+                    background: scrolling || !isHome ? 'black' : 'white',
                     transition: 'width .3s',
                     position: 'absolute',
                     bottom: 0,
                     left: 0
                   },
                   '&:hover': {
-                    color: scrolling ? 'black' : 'white',
+                    color: scrolling || !isHome ? 'black' : 'white',
                     '&::after': {
                       width: '100%' 
                     }
@@ -166,7 +172,7 @@ function DesktopHeader() {
 <Dialog open={open} onClose={handleClose} maxWidth={'xl'} fullWidth sx={{zIndex: 1200}}>
   <Register setLogged={setLogged}/>
 </Dialog>
-</>
+</div>
   );
 }
 

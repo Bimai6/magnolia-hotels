@@ -150,7 +150,7 @@ const handleMenuClick = () => {
     heightAuto: false,
     width: "80vw",
     maxWidth: "80vw",
-    background: 'rgba(79, 78, 78, 0.66)',
+    background: "transparent",
     customClass: {
       popup: 'custom-swal-popup',
     },
@@ -235,7 +235,7 @@ const handleReservationClick = () => {
       const dateTime = document.getElementById('dateTime').value;
       const reservationNumber = Math.floor(100000000 + Math.random() * 900000000);
       
-      const phoneRegex = /^[0-9]{9}$/; //añadir digitos especiales (to do), añadir de 8 a 15 digitos
+      const phoneRegex = /^\+?[0-9]{8,15}$/;
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const selectedDate = new Date(dateTime);
       const currentDate = new Date();

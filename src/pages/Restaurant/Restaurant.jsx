@@ -86,6 +86,27 @@ const deleteReservation = async (reservationNumber) => {
   }
 };
 
+const generateTimeOptions = () => {
+  const timeSlots = [];
+  const addTimes = (start, end) => {
+    let currentTime = new Date();
+    currentTime.setHours(...start.split(":").map(Number), 0, 0);
+    const endTime = new Date();
+    endTime.setHours(...end.split(":").map(Number), 0, 0);
+
+    while (currentTime <= endTime) {
+      const hours = currentTime.getHours().toString().padStart(2, "0");
+      const minutes = currentTime.getMinutes().toString().padStart(2, "0");
+      timeSlots.push(`<option value="${hours}:${minutes}">${hours}:${minutes}</option>`);
+      currentTime.setMinutes(currentTime.getMinutes() + 30);
+    }
+  };
+
+  addTimes("12:00", "15:30"); 
+  addTimes("18:00", "22:30"); 
+  return timeSlots.join("");
+};
+
 
 const handleMenuClick = () => {
   const isMobile = window.innerWidth < 768;
@@ -178,10 +199,37 @@ const handleReservationClick = () => {
   const titleText = isMobile
     ? "Reserva tu mesa"
     : "Estás a un simple paso de vivir una experiencia inolvidable.";
+
+    const generateTimeOptions = () => {
+      const timeSlots = [];
+      const addTimeSlot = (hour, minute) => {
+          const formattedHour = hour.toString().padStart(2, '0');
+          const formattedMinute = minute.toString().padStart(2, '0');
+          timeSlots.push(`<option value="${formattedHour}:${formattedMinute}">${formattedHour}:${formattedMinute}</option>`);
+      };
+  
+      
+      for (let hour = 12; hour < 16; hour++) { 
+          for (let minute of [0, 30]) {
+              if (hour === 15 && minute > 30) break; 
+              addTimeSlot(hour, minute);
+          }
+      }
+  
+     
+      for (let hour = 18; hour < 23; hour++) { 
+          for (let minute of [0, 30]) {
+              if (hour === 22 && minute > 30) break;
+              addTimeSlot(hour, minute);
+          }
+      }
+  
+      return timeSlots.join('');
+  };
   MySwal.fire({
     title: titleText,
     html: `
-     <div class="swal-reserva-container">
+      <div class="swal-reserva-container">
         <div class="swal-reserva-row">
           <label for="name">Nombre</label>
           <input type="text" id="name" class="swal-reserva-input" required>
@@ -203,11 +251,17 @@ const handleReservationClick = () => {
         </div>
 
         <div class="swal-reserva-row">
-          <label for="dateTime">Fecha y hora</label>
-          <input type="datetime-local" id="dateTime" class="swal-reserva-input" required>
+          <label for="date">Fecha</label>
+          <input type="date" id="date" class="swal-reserva-input" required min="${new Date().toISOString().split("T")[0]}">
+        </div>
+
+        <div class="swal-reserva-row">
+          <label for="time">Hora</label>
+          <select id="time" class="swal-reserva-input" required>
+            ${generateTimeOptions()}
+          </select>
         </div>
       </div>
-
     `,
     showConfirmButton: true,
     confirmButtonText: 'Confirmar',
@@ -232,15 +286,16 @@ const handleReservationClick = () => {
       const email = document.getElementById('email').value.trim();
       const phone = document.getElementById('phone').value.trim();
       const guests = parseInt(document.getElementById('guests').value, 10);
-      const dateTime = document.getElementById('dateTime').value;
+      const date = document.getElementById('date').value;
+      const time = document.getElementById('time').value;
       const reservationNumber = Math.floor(100000000 + Math.random() * 900000000);
-      
+
       const phoneRegex = /^\+?[0-9]{8,15}$/;
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      const selectedDate = new Date(dateTime);
+      const selectedDate = new Date(date);
       const currentDate = new Date();
 
-      if (!name || !email || !phone || !guests || !dateTime) {
+      if (!name || !email || !phone || !guests || !date || !time) {
         MySwal.showValidationMessage('Por favor, rellena todos los campos');
         return false;
       }
@@ -268,17 +323,17 @@ const handleReservationClick = () => {
         return false;
       }
 
-      return { name, email, phone, guests, dateTime, reservationNumber };
+      return { name, email, phone, guests, date, time, reservationNumber };
     },
   }).then((result) => {
     if (result.isConfirmed) {
-      const { name, email, phone, guests, dateTime, reservationNumber } = result.value;
-      const reservation = { name, email, phone, guests, dateTime, reservationNumber };
+      const { name, email, phone, guests, date, time, reservationNumber } = result.value;
+      const reservation = { name, email, phone, guests, date, time, reservationNumber };
       saveReservation(reservation);
 
       MySwal.fire({
         title: 'Reserva Confirmada',
-        html: `Gracias ${name}, tu reserva para ${guests} comensales el ${formatDateTime(dateTime)} ha sido confirmada.<br><br>
+        html: `Gracias ${name}, tu reserva para ${guests} comensales el ${date} a las ${time} ha sido confirmada.<br><br>
                <strong>Número de reserva:</strong> ${reservationNumber}<br><br>
                Se enviará una confirmación a tu correo: ${email}`,
         icon: 'success',
@@ -296,7 +351,7 @@ const handleReservationClick = () => {
           email: email,
           phone: phone,
           guests: guests,
-          dateTime: formatDateTime(dateTime),
+          dateTime: `${date} ${time}`,
           reservationNumber: reservationNumber
         },
         'h0PZABPnZmb6RndN-'
@@ -310,6 +365,7 @@ const handleReservationClick = () => {
     }
   });
 };
+
 
 const handleModifyReservationClick = async () => {
   MySwal.fire({

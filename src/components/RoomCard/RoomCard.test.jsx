@@ -15,7 +15,7 @@ describe('RoomCard Component', () => {
     render(<RoomCard {...mockProps} />);
 
     expect(screen.getByText(mockProps.title)).toBeInTheDocument();
-    expect(screen.getByText(/Desde \d+ EUR/)).toBeInTheDocument();
+    expect(screen.getByText(/Desde\s+\d+(\.\d{1,2})?\s?EUR/)).toBeInTheDocument();
     expect(screen.getByRole('img')).toHaveAttribute('src', mockProps.img);
     expect(screen.getByRole('button', { name: /reservar/i })).toBeInTheDocument();
   });

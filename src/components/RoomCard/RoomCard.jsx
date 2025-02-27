@@ -82,7 +82,7 @@ const RoomCard = ({ id, title, description, stars, price, img, setRooms, entry, 
           ))}
         </div>
         <Card.Text>
-          Desde <strong>{price} EUR</strong>/noche
+          Desde {price} EUR/noche
         </Card.Text>
         <Button onClick={handleReservationDesktop} variant="dark" size='lg' className='w-100 rounded-0 fs-6 mx-auto' style={{ maxWidth: '355px' }}>
           Reservar

@@ -9,7 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 const Home = () => {
 
-  const isDesktop = useMediaQuery("(min-width:1285px)");
+  const isDesktop = useMediaQuery("(min-width:1286px)");
 
   const benefits = [
     { label: 'Protocolo de experiencia cliente', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1739175372/isotipo_1_k7fbrd.png'},

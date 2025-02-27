@@ -153,6 +153,12 @@
       "name": "user10",
       "email": "mail10@example.com",
       "password": "password10"
+    },
+    {
+      "id": "11",
+      "name": "manolo",
+      "email": "manolo@gmail.com",
+      "password": "12345678a"
     }
   ]
 }

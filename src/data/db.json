@@ -159,6 +159,12 @@
       "name": "manolo",
       "email": "manolo@gmail.com",
       "password": "12345678a"
+    },
+    {
+      "id": "12",
+      "name": "febrero",
+      "email": "febrero@gmail.com",
+      "password": "12345678a"
     }
   ]
 }

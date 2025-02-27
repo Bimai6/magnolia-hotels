@@ -11,7 +11,7 @@ const MySwal = withReactContent(Swal);
 
 const getReservations = async () => {
   try {
-    const response = await fetch('http://localhost:5000/restaurantReservations');
+    const response = await fetch('http://localhost:3000/restaurantReservations');
     const reservations = await response.json();
     return reservations;
   } catch (error) {
@@ -22,7 +22,7 @@ const getReservations = async () => {
 
 const saveReservation = async (reservation) => {
   try {
-    const response = await fetch('http://localhost:5000/restaurantReservations', {
+    const response = await fetch('http://localhost:3000/restaurantReservations', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ const updateReservation = async (reservationNumber, updatedReservation) => {
       throw new Error(`No se encontró la reserva con el número ${reservationNumber}`);
     }
 
-    const response = await fetch(`http://localhost:5000/restaurantReservations/${reservation.id}`, {
+    const response = await fetch(`http://localhost:3000/restaurantReservations/${reservation.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const deleteReservation = async (reservationNumber) => {
       throw new Error(`No se encontró la reserva con el número ${reservationNumber}`);
     }
 
-    await fetch(`http://localhost:5000/restaurantReservations/${reservation.id}`, {
+    await fetch(`http://localhost:3000/restaurantReservations/${reservation.id}`, {
       method: 'DELETE',
     });
 

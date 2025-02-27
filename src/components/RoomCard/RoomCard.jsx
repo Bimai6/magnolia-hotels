@@ -72,12 +72,13 @@ const RoomCard = ({ id, title, description, stars, price, img, setRooms, entry, 
 
   return (
     <Card style={{ fontFamily: 'Manrope, sans-serif' }} className='bg-white border-0'>
-      <Card.Img variant="top" src={img} className='card-image p-3' />
+      <Card.Img variant="top" src={img} className='card-image p-3'alt="card image"/>
       <Card.Body className='d-flex flex-column'>
         <Card.Title style={{ fontSize: '23px', minHeight: '55px' }}>{title}</Card.Title>
         <div>
           {Array.from({ length: stars }, (_, i) => (
-            <FaStar key={i} color="lightgray" size={20} style={{ marginRight: '5px', marginBottom: '10px' }} />
+            <FaStar key={i} color="lightgray" size={20} style={{ marginRight: '5px', marginBottom: '10px' }} 
+            data-testid="star-icon"/>
           ))}
         </div>
         <Card.Text>
@@ -92,3 +93,4 @@ const RoomCard = ({ id, title, description, stars, price, img, setRooms, entry, 
 };
 
 export default RoomCard;
+

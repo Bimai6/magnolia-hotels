@@ -4,7 +4,7 @@ import withReactContent from 'sweetalert2-react-content';
 import './Restaurant.css';
 import ButtonRestaurant from '../../components/ButtonRestaurant/ButtonRestaurant';
 import emailjs from '@emailjs/browser';
-
+import Header from '../../components/Header/Header';
 emailjs.init('h0PZABPnZmb6RndN-');
 
 const MySwal = withReactContent(Swal);
@@ -484,6 +484,7 @@ function formatDateTime(dateTime) {
 const Restaurant = () => {
   return (
     <div className="restaurant-container">
+      <Header/>
       <img src="https://res.cloudinary.com/dczjloaiy/image/upload/v1739180961/construction_16080058_1_iwgnb0.png" alt="Ebano Restaurant Logo" />
       <img className='restaurantTitle' src="https://res.cloudinary.com/dczjloaiy/image/upload/v1739180953/Titulo_Logo_ej81de.png" alt="Ebano Restaurant Title" />
       <div id="buttonsRestaurant">

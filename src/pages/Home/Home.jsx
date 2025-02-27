@@ -114,7 +114,7 @@ const Home = () => {
 
 
   const MobileView = () => (
-    <>
+    <div style={{ overflowX: 'hidden' }}> 
 
       <Box sx={{ 
         position: 'relative', 
@@ -192,7 +192,7 @@ const Home = () => {
       <Box sx={{ height: '80px' }} />
       <ButtonSearch />
       <Header />
-    </>
+    </div>
   );
 
   return isDesktop ? <DesktopView /> : <MobileView />;

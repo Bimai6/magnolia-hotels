@@ -12,21 +12,27 @@ const ContactSlider = ({ isOpen, onClose }) => {
           <button className="close-btn" onClick={onClose}>
             &times;
           </button>
-          <h2>Contacto</h2>
-          <p>Ponte en contacto con nosotros a través de:</p>
-          <h4 className="contact-titles">Mail</h4>
-          <EmailButton />
-          <h4 className="contact-titles">Teléfono:</h4>
-          <h3>+34 903-410-048</h3>
-          <p className="coment">Servicio para llamadas desde España (ofrecido en Español)</p>
-            <div className="footer-icons">
-              <a href="#" aria-label="Instagram">
-                <img src="https://res.cloudinary.com/dczjloaiy/image/upload/v1738835940/Frame_htcow1.png" alt="Instagram" />
-              </a>
-              <a href="#" aria-label="Facebook">
-                <img src="https://res.cloudinary.com/dczjloaiy/image/upload/v1738835940/Frame_1_pk6tlv.png" alt="Facebook" />
-              </a>
-            </div>
+          <div className="contact-title">
+            <h2>Contacto</h2>
+            <p>Ponte en contacto con nosotros a través de:</p>
+          </div>
+          <div className="email-btn">
+            <h4>Mail</h4>
+            <EmailButton />
+          </div>
+          <div className="phone-section">
+            <h4 >Teléfono:</h4>
+            <a href="tel:+34222222222"><h3>+34 222 222 222</h3></a>
+            <p>Servicio para llamadas desde España (ofrecido en Español)</p>
+          </div>
+          <div className="media-icons">
+            <a href="#" aria-label="Instagram">
+              <img src="https://res.cloudinary.com/dczjloaiy/image/upload/v1738835940/Frame_htcow1.png" alt="Instagram" />
+            </a>
+            <a href="#" aria-label="Facebook">
+              <img src="https://res.cloudinary.com/dczjloaiy/image/upload/v1738835940/Frame_1_pk6tlv.png" alt="Facebook" />
+            </a>
+          </div>
         </div>
       </div>
     </>

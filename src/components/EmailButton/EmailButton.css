@@ -9,10 +9,11 @@
     cursor: pointer;
     width: 60%;
     text-transform: none;
-    transition: background-color 0.3s ease;
+    transition: border 0.3s ease, color 0.3s ease;
   }
   
   .email-button:hover {
-    background-color: #333;
+    border: 3px solid #ffbe3c !important;
+    color: #ffbe3c;
   }
   

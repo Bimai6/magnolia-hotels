@@ -75,32 +75,7 @@
     color: #555;
   }
   
-  @media screen and (max-width: 768px) {
-    .footer-icons a {
-      margin: 0 8px;
-    }
   
-    .footer-icons img {
-      width: 25px;
-      height: 25px;
-    }
-  
-    .footer-links {
-      gap: 10px;
-    }
-  
-    .footer-contact h3 {
-      font-size: 1.2em;
-    }
-  
-    .footer-contact p {
-      font-size: 1em;
-    }
-  
-    .footer-logo img {
-      width: 40px;
-    }
-  }
   
   @media screen and (max-width: 480px) {
     .footer {

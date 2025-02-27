@@ -50,7 +50,7 @@ const MobileHeader = () => {
             to={item.label === 'Identificarse' ? logged === true ? item.link : undefined : item.link}
             value={item.value}
             onClick={item.label === 'Contacto' ? () => setIsContactOpen(true) : item.label === 'Identificarse' ? logged === true ? undefined : handleOpen : undefined}
-            icon={<img src={item.icon} alt={item.label} width={item.width} height={item.height} />}
+            icon={<img src={item.icon} alt={item.label} width={item.width} height={item.height} style={{margin:0}}/>}
           />
         ))}
       </BottomNavigation>
@@ -142,6 +142,7 @@ function DesktopHeader() {
                   textTransform: 'none',
                   fontSize: '18px',
                   position: 'relative',
+                  fontWeight: 300,
                   '&::after': {
                     content: '""',
                     display: 'block',
@@ -151,7 +152,8 @@ function DesktopHeader() {
                     transition: 'width .3s',
                     position: 'absolute',
                     bottom: 0,
-                    left: 0
+                    left: 0,
+                    
                   },
                   '&:hover': {
                     color: scrolling || !isHome ? 'black' : 'white',

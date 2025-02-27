@@ -6,6 +6,7 @@ import ButtonRestaurant from '../../components/ButtonRestaurant/ButtonRestaurant
 import emailjs from '@emailjs/browser';
 import Header from '../../components/Header/Header';
 emailjs.init('h0PZABPnZmb6RndN-');
+import Footer from '../../components/Footer/Footer';
 
 const MySwal = withReactContent(Swal);
 
@@ -485,13 +486,16 @@ const Restaurant = () => {
   return (
     <div className="restaurant-container">
       <Header/>
-      <img src="https://res.cloudinary.com/dczjloaiy/image/upload/v1739180961/construction_16080058_1_iwgnb0.png" alt="Ebano Restaurant Logo" />
-      <img className='restaurantTitle' src="https://res.cloudinary.com/dczjloaiy/image/upload/v1739180953/Titulo_Logo_ej81de.png" alt="Ebano Restaurant Title" />
+      <div className="restaurant-content">
+        <img src="https://res.cloudinary.com/dczjloaiy/image/upload/v1739180961/construction_16080058_1_iwgnb0.png" alt="Ebano Restaurant Logo" />
+        <img className='restaurantTitle' src="https://res.cloudinary.com/dczjloaiy/image/upload/v1739180953/Titulo_Logo_ej81de.png" alt="Ebano Restaurant Title" />
+      </div>
       <div id="buttonsRestaurant">
         <ButtonRestaurant title="Reservar" action={handleReservationClick} />
         <ButtonRestaurant title="Modificar Reserva" action={handleModifyReservationClick} />
         <ButtonRestaurant title="Carta" action={handleMenuClick} />
       </div>
+      <Footer/>
     </div>
   );
 };

@@ -146,7 +146,7 @@ const handleMenuClick = () => {
     `,
     color: '#fff',
     showConfirmButton: false,
-    showCloseButton: true,
+    showCloseButton: false,
     heightAuto: false,
     width: "80vw",
     maxWidth: "80vw",

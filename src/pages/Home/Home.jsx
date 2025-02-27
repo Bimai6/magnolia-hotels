@@ -137,8 +137,8 @@ const Home = () => {
 
       <Container maxWidth="lg">
         <Grid container spacing={4} alignItems="center" sx={{ my: 4 }}>
-          <Grid item xs={12}>
-            <Typography variant="h3" fontWeight="bold" textAlign="center">
+          <Grid container item xs={12} justifyContent="center">
+            <Typography variant="h3"  textAlign="center">
               Tus vacaciones como nunca
             </Typography>
             <Typography variant="body1" sx={{ mt: 2, ml: 4, mr: 5, textAlign: { xs: 'justify', md: 'left' } }}>

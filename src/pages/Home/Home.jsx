@@ -39,7 +39,7 @@ const Home = () => {
               <Typography variant="h3" fontWeight="bold">
                 Tus vacaciones como nunca
               </Typography>
-              <Typography variant="body1" sx={{ mt: 8}}>
+              <Typography variant="body1" sx={{ mt: 8, ml: 4, mr: 5, textAlign: { xs: 'justify', md: 'left' } }}>
                 Descubre un oasis de lujo y confort donde cada detalle está pensado para hacer de tu estancia una experiencia inolvidable. Relájate en nuestras exclusivas instalaciones, disfruta de una gastronomía excepcional y sumérgete en un servicio diseñado para superar tus expectativas. Tu descanso y bienestar son nuestra prioridad. ¿Listo para unas vacaciones inigualables?
               </Typography>
             </Grid>
@@ -60,7 +60,7 @@ const Home = () => {
           </Grid>
         </Box>
 
-        <Box sx={{ mt: 25, minHeight:'40vh', display: 'flex', justifyContent: 'flex-start'}}>
+        <Box sx={{ mt: 10, minHeight:'40vh', display: 'flex', justifyContent: 'flex-start'}}>
           <Grid container spacing={4} justifyContent="center" sx={{ '& .MuiGrid-item': { display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-end' } }}>
             {benefits.map((benefit, index) => (
               <Grid item xs={12} sm={6} md={3} key={index}>
@@ -124,7 +124,7 @@ const Home = () => {
             <Typography variant="h3" fontWeight="bold" textAlign="center">
               Tus vacaciones como nunca
             </Typography>
-            <Typography variant="body1" sx={{ mt: 2, ml: 4, mr: 5, textAlign: { xs: 'justify', md: 'left' } }}>
+            <Typography variant="body1" sx={{ mt: 4, ml: 4, mr: 5, textAlign: { xs: 'justify', md: 'left' } }}>
             Descubre un oasis de lujo y confort donde cada detalle está pensado para hacer de tu estancia una experiencia inolvidable. Relájate en nuestras exclusivas instalaciones, disfruta de una gastronomía excepcional y sumérgete en un servicio diseñado para superar tus expectativas. Tu descanso y bienestar son nuestra prioridad. ¿Listo para unas vacaciones inigualables?
             </Typography>
           </Grid>

@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import Swal from "sweetalert2";
-import '../Auth/Register.css';
+import '../Auth/Auth.css';
 import Login from '../Auth/Login';
 import { AuthContext } from '../../context/AuthContext';
 
@@ -122,7 +122,7 @@ function Register() {
             </button>
           </div>
           <p className="text-center mt-3 text-sm text-black pb-3">
-            ¿Ya tienes cuenta? <span className="text-blue-600 cursor-pointer" onClick={() => setShowLogin(true)}>Inicia sesión</span>
+            ¿Ya tienes cuenta? <span className="login-anchor" onClick={() => setShowLogin(true)}>Inicia sesión</span>
           </p>
         </form>
       </div>

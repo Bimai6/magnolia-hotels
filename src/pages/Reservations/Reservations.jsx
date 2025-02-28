@@ -14,25 +14,66 @@ const Reservations = () => {
     fetch('http://localhost:3000/rooms')
       .then(response => response.json())
       .then(data => {
-        const availableRooms = data.filter(room => room.reservations.length === 0);
-        setRooms(availableRooms);
+        
+        setRooms(data);
       })
       .catch(error => console.error('Error fetching rooms:', error));
-  }, []);
+  });
+
+  const searchAnimation = () => {
+    const searcherContainer=document.getElementsByClassName("search-result-container");
+    searcherContainer[0].style.marginTop= "0px";
+    searcherContainer[0].style.transition= "margin-top 0.5s";
+
+  }
+
+  const loadingAnimation = () => {
+    const loadingGif = document.createElement("img");
+    loadingGif.src= "https://res.cloudinary.com/dzecw7i0a/image/upload/v1740777897/89_aysk0b.gif";
+    loadingGif.className="loader";
+    loadingGif.style.opacity="1";
+    
+
+    const searcherContainer=document.getElementsByClassName("search-result-container");
+    
+    setTimeout(() => {
+      searcherContainer[0].appendChild(loadingGif);
+    }, 200)
+
+    const roomsView = document.getElementsByClassName("rooms-view");
+    roomsView[0].style.opacity= "0";
+
+    setTimeout(() => {
+      loadingGif.style.opacity="0";
+      
+      
+      loadingGif.style.transition= "opacity 0.3s";
+      
+      setTimeout(() => {
+        roomsView[0].style.opacity= "1";
+      }, 300)
+      roomsView[0].style.transition= "opacity 0.5s";
+    }, 1500)
+  }
 
   return (
     <div className="container">
       <div className='search-result-container'>
-        <SearchResult setFilteredRooms={setFilteredRooms} rooms={rooms} setEntry={setEntry} setDeparture={setDeparture} />
+        <SearchResult loadingAnimation={loadingAnimation} onExtraClick={searchAnimation} setFilteredRooms={setFilteredRooms} rooms={rooms} setEntry={setEntry} setDeparture={setDeparture} />
       </div>
 
-      <div className="row justify-content-center">
-        {filteredRooms.map((room) => (
-          <div key={room.id} className="col-12 col-sm-6 col-lg-3 d-flex justify-content-center g-2">
-            <RoomCard {...room} setRooms={setRooms} entry={entry} departure={departure} />
-          </div>
-        ))}
+      <div className="rooms-view row justify-content-center">
+  {filteredRooms.map((room, index) => {
+    
+    const colClass = filteredRooms.length <= 3 ? 'col-lg-4' : 'col-lg-3';
+
+    return (
+      <div key={room.id} className={`col-12 col-sm-6 ${colClass} d-flex justify-content-center`}>
+        <RoomCard {...room} setRooms={setRooms} entry={entry} departure={departure} />
       </div>
+    );
+  })}
+</div>
     </div>
   );
 };

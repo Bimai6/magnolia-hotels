@@ -1,5 +1,5 @@
 .login-logo{
-    max-width: 10vw;
+    max-width: 20vw;
     height: auto;
     position: relative;
     margin-top: 5vh;
@@ -23,8 +23,13 @@
     font-size: 1.4em;
 }
 
-.register-title , .login-title{
+.register-title{
     font-size: 3.2em;
+    padding: 0 1.4vw;
+}
+
+.login-title{
+    font-size: 2.2em;
     padding: 0 1.4vw;
 }
 
@@ -43,4 +48,10 @@
 .login-anchor:hover, .register-anchor:hover{
     color: #698aca;
     cursor: pointer;
+}
+
+@media screen and (min-width: 769px) {
+    .login-logo{
+        max-width: 10vw;
+    }
 }

@@ -1,18 +1,29 @@
 .search-container {
     background-color: #f4f4f4;
-    padding: 40px;
+    padding: 30px;
     padding-top: 20px;
     
-    width: 800px;
+    gap: 40px;
     border-radius: 30px;
     display: flex;
     align-items: center;
 }
 
-#search-button{
+.search-button{
     margin-top: 40px;
-    display: flex;
+    
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width:899px) {
+    .search-container {
+        flex-direction: column;
+    }
+
+    .search-button{
+        margin: 0;
+        
+    }
 }
 

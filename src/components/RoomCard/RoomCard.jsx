@@ -37,7 +37,9 @@ const RoomCard = ({ id, title, description, stars, price, img, setRooms, entry, 
       setRooms(prevRooms => prevRooms.filter(room => room.id !== id));
 
       MySwal.close();
-      MySwal.fire('¡Reservado!', 'Tu reserva ha sido guardada.', 'success');
+      MySwal.fire('¡Reservado!', 'Tu reserva ha sido guardada.', 'success').then(() => {
+        location.reload();
+      });
     } catch (error) {
       console.error('Error al realizar la reserva:', error);
       MySwal.fire('Error', 'Hubo un problema al hacer la reserva. Intenta de nuevo.', 'error');

@@ -54,7 +54,20 @@
       "stars": 3,
       "price": 43,
       "img": "https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg",
-      "reservations": []
+      "reservations": [
+        {
+          "entry": "2025-03-06",
+          "departure": "2025-03-07"
+        },
+        {
+          "entry": "2025-02-28",
+          "departure": "2025-03-01"
+        },
+        {
+          "entry": "2025-03-01",
+          "departure": "2025-03-02"
+        }
+      ]
     },
     {
       "id": "2",
@@ -63,7 +76,20 @@
       "stars": 4,
       "price": 38,
       "img": "https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg",
-      "reservations": []
+      "reservations": [
+        {
+          "entry": "2025-02-28",
+          "departure": "2025-03-01"
+        },
+        {
+          "entry": "2025-03-28",
+          "departure": "2025-03-29"
+        },
+        {
+          "entry": "2025-03-29",
+          "departure": "2025-03-30"
+        }
+      ]
     },
     {
       "id": "3",

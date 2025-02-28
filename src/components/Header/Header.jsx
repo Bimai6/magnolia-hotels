@@ -39,7 +39,7 @@ const MobileHeader = () => {
   return (
     <>
       <BottomNavigation
-        sx={{ width: '100%', position: 'fixed', bottom: 0, backgroundColor: 'white', boxShadow: 'none' }}
+        sx={{ width: '100%', position: 'fixed', bottom: 0, backgroundColor: 'white', boxShadow: 'none', zIndex: '100' }}
         value={value}
         onChange={(event, newValue) => setValue(newValue)}
       >

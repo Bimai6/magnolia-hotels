@@ -2,7 +2,7 @@
     background-color: #f4f4f4;
     padding: 30px;
     padding-top: 20px;
-    
+    margin-top: 100px;
     gap: 40px;
     border-radius: 30px;
     display: flex;
@@ -26,4 +26,10 @@
         
     }
 }
+@media (max-width:1285px) {
+    .search-container {
+        margin-top: 0px;
+    }
+
+    
 

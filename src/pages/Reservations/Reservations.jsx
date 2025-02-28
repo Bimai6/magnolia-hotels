@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import RoomCard from '../../components/RoomCard/RoomCard';
 import SearchResult from '../../components/SearchResult/SearchResult';
 import './Reservations.css';
+import Header from '../../components/Header/Header';
 //npx json-server --watch src/data/db.json --port 3000
 
 const Reservations = () => {
@@ -59,6 +60,7 @@ const Reservations = () => {
 
   return (
     <div className="container">
+      <Header />
       <div className='search-result-container'>
         <SearchResult loadingAnimation={loadingAnimation} onExtraClick={searchAnimation} setFilteredRooms={setFilteredRooms} rooms={rooms} setEntry={setEntry} setDeparture={setDeparture} />
       </div>

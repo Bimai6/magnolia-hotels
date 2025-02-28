@@ -52,7 +52,8 @@ const Reservations = () => {
       setTimeout(() => {
         roomsView[0].style.opacity= "1";
       }, 300)
-      roomsView[0].style.transition= "opacity 0.5s";
+      
+      
     }, 1500)
   }
 

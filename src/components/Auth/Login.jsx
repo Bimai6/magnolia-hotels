@@ -3,13 +3,14 @@ import Swal from "sweetalert2";
 import '../Auth/Auth.css';
 import Register from '../Auth/Register';
 import { AuthContext } from '../../context/AuthContext';
+import { Timer } from "@mui/icons-material";
 
 const showAlert = (message, icon = "error") => {
   Swal.fire({
     title: icon === "success" ? "¡Éxito!" : "¡Atención!",
     html: message,
     icon,
-    confirmButtonText: "Aceptar",
+    confirmButtonText: "Aceptar"
   });
 };
 
@@ -49,7 +50,7 @@ function Login() {
       const response = await fetch("http://localhost:3000/users");
       const users = await response.json();
 
-      const userFound = users.find(u => u.user === formData.user);
+      const userFound = users.find(u => u.name === formData.user);
       
       if (!userFound) {
         return showAlert('Usuario no encontrado', 'error');
@@ -59,9 +60,13 @@ function Login() {
         return showAlert('Contraseña incorrecta', 'error');
       }
 
-      showAlert("Inicio de sesión exitoso", "success");
       login(userFound);
-      setShowRegister(true);
+      showAlert("Inicio de sesión exitoso", "success");
+
+      setTimeout(() => {
+      window.location.reload();
+      }, 1500);
+      
 
     } catch (error) {
       showAlert(`Error conectando a la base de datos: ${error.message}`, 'error');

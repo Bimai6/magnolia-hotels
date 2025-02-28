@@ -83,9 +83,11 @@ function Register() {
         throw new Error("Error al registrar usuario");
       }
 
-      showAlert("Registro exitoso", "success");
       login(newUser);
-      setShowLogin(true);
+      showAlert("Inicio de sesión exitoso", "success");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500);
 
     } catch (error) {
       showAlert("Error conectando a la base de datos", error);

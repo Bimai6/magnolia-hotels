@@ -58,7 +58,7 @@ function Register() {
       const existingUsersResponse = await fetch("http://localhost:3000/users");
       const existingUsers = await existingUsersResponse.json();
 
-      if (existingUsers.some(user => user.name === formData.user)) {
+      if (existingUsers.some(user => user.user === formData.user)) {
         return showAlert("El usuario ya está registrado", "warning");
       }
 
@@ -66,7 +66,8 @@ function Register() {
 
       const newUser = {
         id: newUserId.toString(),
-        name: formData.user,
+        user: formData.user,
+        fullName: formData.fullName,
         email: formData.email,
         password: formData.password
       };

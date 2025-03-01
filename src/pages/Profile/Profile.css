@@ -1,0 +1,61 @@
+.profile-primary-container {
+    height: 100vh;
+    width: 100vw;
+}
+
+.profile-bg-management {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('https://res.cloudinary.com/demqnwfff/image/upload/v1740828840/12_31_20_photo_1481833761820_0509d3217039_h1vg9z.jpg');
+    background-size: cover;
+    filter: blur(5px);
+    z-index: -50;
+}
+
+.profile-settings-container, .profile-reservations-container {
+    max-width: 500px;
+    background-color: #C99F4B;
+}
+
+.profile-logout-btn {
+    color: #EB0606;
+}
+
+.profile-logout-btn:hover {
+    color: #e93f3f;
+    cursor: pointer;
+}
+
+.form-label{
+    font-size: 1.4em;
+    font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+    .profile-container{
+        flex-direction: column;
+    }
+
+    .form-control{
+        padding: 0 10vw;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .profile-layer-1, .profile-layer-2{
+        position: absolute;
+        height: 100vh;
+        width: 4vw;
+        background-color: #C99F4B;
+    }
+
+    .profile-layer-2{
+        right: 0;
+    }
+
+    .form-control{
+        padding: 0 4vw;
+    }
+
+}

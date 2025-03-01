@@ -3,7 +3,6 @@ import Swal from "sweetalert2";
 import '../Auth/Auth.css';
 import Register from '../Auth/Register';
 import { AuthContext } from '../../context/AuthContext';
-import { Timer } from "@mui/icons-material";
 
 const showAlert = (message, icon = "error") => {
   Swal.fire({
@@ -50,7 +49,7 @@ function Login() {
       const response = await fetch("http://localhost:3000/users");
       const users = await response.json();
 
-      const userFound = users.find(u => u.name === formData.user);
+      const userFound = users.find(u => u.user === formData.user);
       
       if (!userFound) {
         return showAlert('Usuario no encontrado', 'error');

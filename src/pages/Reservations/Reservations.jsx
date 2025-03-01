@@ -72,7 +72,7 @@ const Reservations = () => {
 
     return (
       <div key={room.id} className={`col-12 col-sm-6 ${colClass} d-flex justify-content-center`}>
-        <RoomCard {...room} setRooms={setRooms} entry={entry} departure={departure} />
+        <RoomCard {...room} setRooms={setRooms} entry={entry} departure={departure} reservationVisibility={'none'} manageReservationButtonVisibility={'none'}/>
       </div>
     );
   })}

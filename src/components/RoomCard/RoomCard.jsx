@@ -7,7 +7,7 @@ import './RoomCard.css';
 
 const MySwal = withReactContent(Swal);
 
-const RoomCard = ({ id, title, description, stars, price, img, setRooms, entry, departure }) => {
+const RoomCard = ({ id, title, description, stars, price, img, setRooms, entry, departure, reservationTime, reservationVisibility, priceVisibility, manageReservationButtonVisibility, reservationButtonVisibility, reservationManagement }) => {
   const handleReservation = async () => {
     try {
       // Obtener los datos de la habitación
@@ -120,10 +120,18 @@ const RoomCard = ({ id, title, description, stars, price, img, setRooms, entry, 
             data-testid="star-icon"/>
           ))}
         </div>
-        <Card.Text>
+        <Card.Text style={{display: `${priceVisibility}`}}>
           Desde {price} EUR/noche
         </Card.Text>
-        <Button onClick={handleReservationDesktop} variant="dark" size='lg' className='w-100 rounded-0 fs-6 mx-auto' style={{ maxWidth: '355px' }}>
+        <Card.Text style={{display: `${reservationVisibility}`}}>
+          {reservationTime}
+        </Card.Text>
+        <Button onClick={handleReservationDesktop} variant="dark" size='lg' className='w-100 rounded-0 fs-6 mx-auto' style={{ maxWidth: '355px', display: `${reservationButtonVisibility}` }}>
+          Reservar
+        </Button>
+        <Button onClick={() => {
+          if(reservationManagement) reservationManagement();
+        }} variant="dark" size='lg' className='w-100 rounded-0 fs-6 mx-auto' style={{ maxWidth: '355px', display: `${manageReservationButtonVisibility}` }}>
           Reservar
         </Button>
       </Card.Body>

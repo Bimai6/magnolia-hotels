@@ -14,12 +14,10 @@
 }
 
 .profile-settings-container {
-    max-width: 500px;
     background-color: #C99F4B;
 }
 
 .profile-edit-container {
-    max-width: 1000px;
     background-color: #C99F4B;
 }
 
@@ -42,6 +40,10 @@
         flex-direction: column;
     }
 
+    .profile-settings-container, .profile-edit-container{
+        max-width: 400px;
+    }
+
     .form-control{
         padding: 0 10vw;
     }
@@ -57,6 +59,14 @@
 
     .profile-layer-2{
         right: 0;
+    }
+
+    .profile-settings-container{
+        max-width: 500px;
+    }
+
+    .profile-edit-container{
+        max-width: 1000px;
     }
 
     .form-control{

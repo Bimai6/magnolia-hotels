@@ -2,12 +2,8 @@ import { useState, useContext } from "react";
 import { showAlert } from "../../utils/alerts";
 import '../Auth/Auth.css';
 import Register from '../Auth/Register';
+import { validators } from '../../utils/validators';
 import { AuthContext } from '../../context/AuthContext';
-
-const validators = {
-  password: password => /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password),
-  username: username => /^[a-zA-Z0-9]{3,}$/.test(username)
-};
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -29,11 +25,11 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validators.username(formData.user)) {
-      return showAlert("El nombre de usuario debe tener al menos 3 caracteres alfanuméricos.", 'error');
-    }
-    if (!validators.password(formData.password)) {
-      return showAlert("La contraseña debe tener al menos 8 caracteres, incluyendo una letra y un número.", 'error');
+    const errors = validators.validateForm(formData);
+
+    if (errors.length > 0) {
+      errors.forEach(error => showAlert(error, 'error'));
+      return;
     }
 
     try {

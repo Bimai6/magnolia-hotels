@@ -1,14 +1,9 @@
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { showAlert } from '../../utils/alerts'; // Usamos showAlert directamente
+import { showAlert } from '../../utils/alerts';
+import { validators } from '../../utils/validators';
 import './Profile.css';
-
-const validators = {
-  email: email => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),
-  password: password => /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password),
-  username: username => /^[a-zA-Z0-9]{3,}$/.test(username)
-};
 
 const Profile = () => {
   const { user, logout, login } = useContext(AuthContext);
@@ -59,28 +54,10 @@ const Profile = () => {
       return;
     }
 
-    if (!validators.username(editForm.user)) {
-      showAlert('El nombre de usuario debe tener al menos 3 caracteres alfanuméricos.', 'error');
-      setLoading(false);
-      return;
-    }
-    if (!validators.email(editForm.email)) {
-      showAlert('El correo electrónico no es válido.', 'error');
-      setLoading(false);
-      return;
-    }
-    if (editForm.email !== editForm.confirmEmail) {
-      showAlert('Los correos no coinciden.', 'error');
-      setLoading(false);
-      return;
-    }
-    if (!validators.password(editForm.password)) {
-      showAlert('La contraseña debe tener al menos 8 caracteres, incluyendo una letra y un número.', 'error');
-      setLoading(false);
-      return;
-    }
-    if (editForm.password !== editForm.confirmPassword) {
-      showAlert('Las contraseñas no coinciden.', 'error');
+    const errors = validators.validateForm(editForm, false, true);
+
+    if (errors.length > 0) {
+      errors.forEach(error => showAlert(error, 'error'));
       setLoading(false);
       return;
     }

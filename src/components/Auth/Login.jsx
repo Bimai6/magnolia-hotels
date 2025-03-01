@@ -1,17 +1,8 @@
 import { useState, useContext } from "react";
-import Swal from "sweetalert2";
+import { showAlert } from "../../utils/alerts";
 import '../Auth/Auth.css';
 import Register from '../Auth/Register';
 import { AuthContext } from '../../context/AuthContext';
-
-const showAlert = (message, icon = "error") => {
-  Swal.fire({
-    title: icon === "success" ? "¡Éxito!" : "¡Atención!",
-    html: message,
-    icon,
-    confirmButtonText: "Aceptar"
-  });
-};
 
 const validators = {
   password: password => /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password),
@@ -39,10 +30,10 @@ function Login() {
     e.preventDefault();
 
     if (!validators.username(formData.user)) {
-      return showAlert("El nombre de usuario debe tener al menos 3 caracteres alfanuméricos.");
+      return showAlert("El nombre de usuario debe tener al menos 3 caracteres alfanuméricos.", 'error');
     }
     if (!validators.password(formData.password)) {
-      return showAlert("La contraseña debe tener al menos 8 caracteres, incluyendo una letra y un número.");
+      return showAlert("La contraseña debe tener al menos 8 caracteres, incluyendo una letra y un número.", 'error');
     }
 
     try {

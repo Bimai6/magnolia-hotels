@@ -1,17 +1,8 @@
 import { useState, useContext } from "react";
-import Swal from "sweetalert2";
+import { showAlert } from "../../utils/alerts";
 import '../Auth/Auth.css';
 import Login from '../Auth/Login';
 import { AuthContext } from '../../context/AuthContext';
-
-const showAlert = (message, icon = "error") => {
-  Swal.fire({
-    title: icon === "success" ? "¡Éxito!" : "¡Atención!",
-    html: message,
-    icon,
-    confirmButtonText: "Aceptar",
-  });
-};
 
 const validators = {
   email: email => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),

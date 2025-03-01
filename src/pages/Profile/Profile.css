@@ -13,8 +13,13 @@
     z-index: -50;
 }
 
-.profile-settings-container, .profile-reservations-container {
+.profile-settings-container {
     max-width: 500px;
+    background-color: #C99F4B;
+}
+
+.profile-edit-container {
+    max-width: 1000px;
     background-color: #C99F4B;
 }
 

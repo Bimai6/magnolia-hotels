@@ -14,10 +14,15 @@ const RoomCard = ({ id, title, description, stars, price, img, setRooms, entry, 
       const response = await fetch(`http://localhost:3000/rooms/${id}`);
       const roomData = await response.json();
 
+      //generacion de id unico
+      const totalIds = roomData.reservations.length +1;
+      
+
       // Crear una nueva reserva
       const newReservation = {
         entry: entry.format('YYYY-MM-DD'), // Formatear la fecha en formato 'YYYY-MM-DD'
-        departure: departure.format('YYYY-MM-DD') // Formatear la fecha en formato 'YYYY-MM-DD'
+        departure: departure.format('YYYY-MM-DD'), // Formatear la fecha en formato 'YYYY-MM-DD'
+        reservationId: roomData.id + totalIds,
       };
 
       // Actualizar la habitación con la nueva reserva
@@ -33,9 +38,41 @@ const RoomCard = ({ id, title, description, stars, price, img, setRooms, entry, 
         body: JSON.stringify(updatedRoom)
       });
 
+      //----------------añadir cosas a usuario-----------------------
+      const user = localStorage.getItem('user');
+      const userId = JSON.parse(user).id;
+
+      const userResponse = await fetch(`http://localhost:3000/users/${userId}`);
+      const userData = await userResponse.json();
+
+      console.log(userData); //passed
+
+      //crear un id de reserva para usuario igual que el de la reserva de habitacion
+
+      const newReservationId = {
+        reservationId: newReservation.reservationId
+      }
+
+      //actualizas user con la reserva nueva 
+
+      const updatedUser = {
+        ...userData,
+        myReservations: [...userData.myReservations, newReservationId]
+      }
+
+      // Enviar los datos actualizados al servidor
+
+      await fetch(`http://localhost:3000/users/${userId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedUser)
+      });
+
+      //-------------------------------------------------------------
+
       // Actualizar la lista de habitaciones en el componente principal
       setRooms(prevRooms => prevRooms.filter(room => room.id !== id));
-
+      
       MySwal.close();
       MySwal.fire('¡Reservado!', 'Tu reserva ha sido guardada.', 'success').then(() => {
         location.reload();

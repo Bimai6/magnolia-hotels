@@ -68,7 +68,8 @@ function Register() {
         id: newUserId.toString(),
         name: formData.user,
         email: formData.email,
-        password: formData.password
+        password: formData.password,
+        myReservations: []
       };
 
       const response = await fetch("http://localhost:3000/users", {

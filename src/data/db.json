@@ -56,16 +56,14 @@
       "img": "https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg",
       "reservations": [
         {
-          "entry": "2025-03-06",
-          "departure": "2025-03-07"
-        },
-        {
-          "entry": "2025-02-28",
-          "departure": "2025-03-01"
-        },
-        {
           "entry": "2025-03-01",
-          "departure": "2025-03-02"
+          "departure": "2025-03-02",
+          "reservationId": "11"
+        },
+        {
+          "entry": "2025-03-20",
+          "departure": "2025-03-21",
+          "reservationId": "12"
         }
       ]
     },
@@ -78,16 +76,9 @@
       "img": "https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg",
       "reservations": [
         {
-          "entry": "2025-02-28",
-          "departure": "2025-03-01"
-        },
-        {
-          "entry": "2025-03-28",
-          "departure": "2025-03-29"
-        },
-        {
-          "entry": "2025-03-29",
-          "departure": "2025-03-30"
+          "entry": "2025-03-01",
+          "departure": "2025-03-02",
+          "reservationId": "21"
         }
       ]
     },
@@ -98,7 +89,13 @@
       "stars": 5,
       "price": 99,
       "img": "https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg",
-      "reservations": []
+      "reservations": [
+        {
+          "entry": "2025-03-01",
+          "departure": "2025-03-02",
+          "reservationId": "31"
+        }
+      ]
     },
     {
       "id": "4",
@@ -124,73 +121,25 @@
       "id": "1",
       "name": "user1",
       "email": "mail1@example.com",
-      "password": "password1"
+      "password": "password1",
+      "myReservations": []
     },
     {
       "id": "2",
-      "name": "user2",
-      "email": "mail2@example.com",
-      "password": "password2"
-    },
-    {
-      "id": "3",
-      "name": "user3",
-      "email": "mail3@example.com",
-      "password": "password3"
-    },
-    {
-      "id": "4",
-      "name": "user4",
-      "email": "mail4@example.com",
-      "password": "password4"
-    },
-    {
-      "id": "5",
-      "name": "user5",
-      "email": "mail5@example.com",
-      "password": "password5"
-    },
-    {
-      "id": "6",
-      "name": "user6",
-      "email": "mail6@example.com",
-      "password": "password6"
-    },
-    {
-      "id": "7",
-      "name": "user7",
-      "email": "mail7@example.com",
-      "password": "password7"
-    },
-    {
-      "id": "8",
-      "name": "user8",
-      "email": "mail8@example.com",
-      "password": "password8"
-    },
-    {
-      "id": "9",
-      "name": "user9",
-      "email": "mail9@example.com",
-      "password": "password9"
-    },
-    {
-      "id": "10",
-      "name": "user10",
-      "email": "mail10@example.com",
-      "password": "password10"
-    },
-    {
-      "id": "11",
       "name": "manolo",
       "email": "manolo@gmail.com",
-      "password": "12345678a"
-    },
-    {
-      "id": "12",
-      "name": "febrero",
-      "email": "febrero@gmail.com",
-      "password": "12345678a"
+      "password": "12345678a",
+      "myReservations": [
+        {
+          "reservationId": "11"
+        },
+        {
+          "reservationId": "12"
+        },
+        {
+          "reservationId": "31"
+        }
+      ]
     }
   ]
 }

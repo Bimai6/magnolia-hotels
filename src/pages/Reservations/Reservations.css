@@ -1,0 +1,41 @@
+.container {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+
+.search-result-container{
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    margin-top: 250px;
+    z-index: 0;
+}
+
+.loader{
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.no-result{
+    margin-top: 200px;
+}
+
+@media (max-width: 768px) {
+    .loader{
+        top: 70%;
+    }
+
+    .search-result-container{
+        margin-top: 150px;
+    }
+    .no-result{
+       margin-top: 100px;
+    }
+}
+
+

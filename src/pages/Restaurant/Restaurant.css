@@ -1,0 +1,175 @@
+* {
+    font-family: "manrope", serif;
+}
+.restaurant-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.restaurant-container {
+    background-image: url(https://res.cloudinary.com/dczjloaiy/image/upload/v1739176575/interiorismo-para-restaurante_1_swgqnp.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    
+}
+
+.restaurantTitle {
+   padding-bottom: 40px;
+}
+
+#buttonsRestaurant {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px !important;
+    margin-right: 30px;
+}
+
+.restaurant-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.restaurant-container img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.swal-menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.swal-menu-image {
+    max-width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease; 
+}
+
+.swal-menu-image.zoomed {
+    transform: scale(1.5); 
+}
+
+.swal-menu-nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+    padding: 0 20px;
+}
+
+.swal-menu-button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    color: #DAA520; 
+}
+
+.swal-menu-button:hover {
+    transform: scale(1.2);
+    color: #b8860b; 
+}
+
+@media screen and (max-width: 768px) {
+    .swal-menu-image {
+        max-width: 95vw;
+        max-height: 70vh;
+    }
+
+    .swal-menu-button {
+        font-size: 1.5rem;
+    }
+   
+    
+    
+}
+
+@media screen and (min-width: 700px) {
+    #buttonsRestaurant {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        
+        gap: 10px;
+    }
+    
+}
+
+.swal-reserva-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.swal-reserva-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: nowrap;
+}
+
+.swal-reserva-row label {
+    width: 160px;
+    text-align: right;
+}
+
+.swal-reserva-input {
+    flex: 1;
+    min-width: 180px;
+    max-width: 250px;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+
+@media (max-width: 768px) {
+    .swal-reserva-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .swal-reserva-row label {
+        text-align: left;
+        width: 100%;
+    }
+
+    .swal-reserva-input {
+        width: 100%;
+    }
+
+    .restaurantTitle {
+        padding-bottom: 40px;
+        
+    }
+
+    .restaurant-container img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+        
+    }
+    #buttonsRestaurant {
+       
+        margin-right: 15px;
+    }
+}

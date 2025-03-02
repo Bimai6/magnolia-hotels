@@ -1,0 +1,53 @@
+{
+  "name": "magnolia-hotels",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "start": "json-server --watch ./src/data/db.json",
+    "preview": "vite preview",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@cloudinary/react": "^1.13.1",
+    "@cloudinary/url-gen": "^1.21.0",
+    "@emailjs/browser": "^4.4.1",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.3",
+    "@mui/material": "^6.4.3",
+    "@mui/x-date-pickers": "^7.26.0",
+    "bootstrap": "^5.3.3",
+    "dayjs": "^1.11.13",
+    "json-server": "^1.0.0-beta.3",
+    "react": "^18.3.1",
+    "react-bootstrap": "^2.10.9",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.4.0",
+    "react-router-dom": "^7.1.5",
+    "react-slick": "^0.30.3",
+    "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.17.2",
+    "sweetalert2-react-content": "^5.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.14.0",
+    "jsdom": "^26.0.0",
+    "vite": "^6.0.5",
+    "vitest": "^3.0.5"
+  }
+}

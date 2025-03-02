@@ -1,0 +1,57 @@
+.login-logo{
+    max-width: 20vw;
+    height: auto;
+    position: relative;
+    margin-top: 5vh;
+}
+
+.login-logo-container{
+    display: flex;
+    justify-content: center;
+}
+
+.register-primary-container{
+    margin-top: 10vh;
+}
+
+.register-container, .login-container{
+    background-color: #C99F4B;
+    max-width: 900px;
+}
+
+.label-register-fields, .label-login-fields{
+    font-size: 1.4em;
+}
+
+.register-title{
+    font-size: 3.2em;
+    padding: 0 1.4vw;
+}
+
+.login-title{
+    font-size: 2.2em;
+    padding: 0 1.4vw;
+}
+
+.register-form-field, .login-form-field{
+    padding: 0 2vw;
+}
+
+.swal2-container {
+    z-index: 9999;
+}
+.login-anchor, .register-anchor{
+    text-decoration: underline;
+    color: #346bda;
+}
+
+.login-anchor:hover, .register-anchor:hover{
+    color: #698aca;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 769px) {
+    .login-logo{
+        max-width: 10vw;
+    }
+}

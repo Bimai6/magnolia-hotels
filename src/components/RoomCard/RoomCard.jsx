@@ -23,7 +23,7 @@ const RoomCard = ({
   priceVisibility, 
   manageReservationButtonVisibility, 
   reservationButtonVisibility, 
-  reservationManagement 
+  handleDeleteReservation 
 }) => {
   
   // Estado para almacenar el usuario
@@ -143,6 +143,32 @@ const RoomCard = ({
     });
   };
 
+  const handleMyReservationDesktop = () => {
+    MySwal.fire({
+      html: `
+        <div class="main-content">
+          <img alt="${title}" src="${img}" class="room-image" /> 
+          <div class="sweetalert-info-container">
+            <h3 class="title">${title}</h3>
+            <div class="description-container">
+              <p class="description">${description}</p>
+              <h4 class="price">Total: <strong>${entry} EUR</strong></h4>
+            </div>
+            <button id="customConfirmButton" class="custom-confirm-button" >Cancelar reserva</button>
+          </div>
+        </div>
+      `,
+      showConfirmButton: false,
+      customClass: {
+        popup: 'custom-swal-popup',
+        backdrop: 'custom-backdrop',
+      },
+      didOpen: () => {
+        document.getElementById("customConfirmButton").addEventListener("click", handleDeleteReservation);
+      },
+    });
+  };
+
   return (
     <Card style={{ fontFamily: 'Manrope, sans-serif' }} className='bg-white border-0'>
       <Card.Img variant="top" src={img} className='card-image p-3' alt="card image" />
@@ -162,7 +188,9 @@ const RoomCard = ({
         <Button onClick={handleReservationDesktop} variant="dark" size='lg' className='w-100 rounded-0 fs-6 mx-auto' style={{ maxWidth: '355px', display: `${reservationButtonVisibility}` }}>
           Reservar
         </Button>
-        <Button onClick={() => { if (reservationManagement) reservationManagement(); }} variant="dark" size='lg' className='w-100 rounded-0 fs-6 mx-auto' style={{ maxWidth: '355px', display: `${manageReservationButtonVisibility}` }}>
+        <Button onClick={() => { 
+          handleMyReservationDesktop();
+           }} variant="dark" size='lg' className='w-100 rounded-0 fs-6 mx-auto' style={{ maxWidth: '355px', display: `${manageReservationButtonVisibility}` }}>
           Gestionar
         </Button>
       </Card.Body>

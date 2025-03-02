@@ -55,7 +55,7 @@ const MobileHeader = () => {
 };
 
 function DesktopHeader() {
-  const { isLogged } = React.useContext(AuthContext); // Obtienes isLogged
+  const { isLogged } = React.useContext(AuthContext);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [scrolling, setScrolling] = React.useState(false);
   const [open, setOpen] = React.useState(false);

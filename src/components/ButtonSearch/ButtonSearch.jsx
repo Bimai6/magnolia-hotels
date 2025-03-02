@@ -3,8 +3,6 @@ import './ButtonSearch.css';
 import {Button} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-
-
 const ButtonSearch = () => {
   const navigate = useNavigate();
 

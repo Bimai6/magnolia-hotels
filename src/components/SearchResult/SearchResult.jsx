@@ -54,6 +54,8 @@ const SearchResult = ({ setFilteredRooms, rooms, setEntry, setDeparture, onExtra
                 setEntryLocal(newValue);
                 if (newValue.isAfter(departureLocal)) {
                   setDepartureLocal(newValue.add(1, 'day'));
+                }else if(newValue.isSame(departureLocal)){
+                  setDepartureLocal(newValue.add(1, 'day'));
                 }
               }} 
             />

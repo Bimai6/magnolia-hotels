@@ -62,7 +62,7 @@
       "description": "Perfecta para viajeros solitarios, nuestra Habitación Individual combina confort y privacidad en un espacio acogedor. Dispone de una cama individual, escritorio de trabajo y baño privado.",
       "stars": 4,
       "price": 38,
-      "img": "https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg",
+      "img": "https://res.cloudinary.com/dzecw7i0a/image/upload/v1740949373/hotel-1330834_1280_dcayrd.jpg",
       "reservations": []
     },
     {
@@ -71,7 +71,7 @@
       "description": "Nuestra Suite Deluxe es sinónimo de lujo y exclusividad. Amplia y elegante, cuenta con una sala de estar, jacuzzi, cama king size y vistas panorámicas. Ideal para estancias románticas o viajes de negocios premium.",
       "stars": 5,
       "price": 99,
-      "img": "https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg",
+      "img": "https://res.cloudinary.com/dzecw7i0a/image/upload/v1740949573/villa-1737168_1280_ewovxp.jpg",
       "reservations": []
     },
     {
@@ -80,7 +80,7 @@
       "description": "Disfruta de un espacio sofisticado con nuestra Habitación Superior. Con diseño moderno, cama queen size y detalles exclusivos, esta habitación es ideal para quienes buscan un extra de confort.",
       "stars": 4,
       "price": 55,
-      "img": "https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg",
+      "img": "https://res.cloudinary.com/dzecw7i0a/image/upload/v1740949641/living-room-4809587_1280_h2ssip.jpg",
       "reservations": []
     },
     {
@@ -89,7 +89,7 @@
       "description": "La mejor opción para presupuestos ajustados sin sacrificar calidad. Nuestra Habitación Económica ofrece una estancia cómoda con cama individual, escritorio y conexión Wi-Fi gratuita.",
       "stars": 3,
       "price": 30,
-      "img": "https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg",
+      "img": "https://res.cloudinary.com/dzecw7i0a/image/upload/v1740949696/bedroom-1737167_1280_w2k8de.jpg",
       "reservations": []
     }
   ],

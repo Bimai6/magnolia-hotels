@@ -6,7 +6,7 @@ import ButtonRestaurant from '../../components/ButtonRestaurant/ButtonRestaurant
 import emailjs from '@emailjs/browser';
 import Header from '../../components/Header/Header';
 emailjs.init('h0PZABPnZmb6RndN-');
-import Footer from '../../components/Footer/Footer';
+
 
 const MySwal = withReactContent(Swal);
 

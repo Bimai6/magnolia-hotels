@@ -83,6 +83,62 @@ Before you start, ensure you have the following installed:
 
 ## 🏗️ Project Architecture <a name="project-architecture"></a>
 
+📂 Magnolia-Hotels
+
+├─ 📂 src
+
+   │ ├─ 📂 components
+   
+      │ │ ├─ 📂 Auth
+      │ │ ├─ 📂 ButtonRestaurant
+         │ │ │ ├─ ButtonRestaurant.css
+         │ │ │ └─ ButtonRestaurant.jsx
+      │ │ ├─ 📂 ButtonSearch
+      │ │ ├─ 📂 ContactSlider
+      │ │ ├─ 📂 EmailButton
+      │ │ ├─ 📂 Footer
+      │ │ ├─ 📂 Header
+      │ │ ├─ 📂 RoomCard
+      │ │ └─ 📂 SearchResult
+      
+   │ ├─ 📂 context
+   
+   │ ├─ 📂 data
+   
+   │ ├─ 📂 pages
+   
+      │ │ ├─ 📂 Home
+         │ │ │ ├─ Home.css
+            │ │ │ └─ Home.jsx
+            
+      │ │ ├─ 📂 MyReservations
+      │ │ ├─ 📂 Profile
+      │ │ ├─ 📂 Reservations
+      │ │ └─ 📂 Restaurant
+      │ │ └─ RestaurantMenu
+      
+   │ ├─ 📂 router
+   
+      │ │ └─ Router.jsx
+      
+   │ ├─ index.css
+   
+   │ ├─ main.jsx
+   
+   │ └─ ...
+   
+├─ 📄 .gitignore
+
+├─ 📄 eslint.config.js
+
+├─ 📄 index.html
+
+├─ 📄 package.json
+
+├─ 📄 README.md
+
+└─ 📄 vite.config.js
+
 ---
 
 ## 💻 **Technologies Used**

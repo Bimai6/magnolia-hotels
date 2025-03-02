@@ -176,7 +176,7 @@ const RoomCard = ({
         <Card.Title style={{ fontSize: '23px', minHeight: '55px' }}>{title}</Card.Title>
         <div>
           {Array.from({ length: stars }, (_, i) => (
-            <FaStar key={i} color="lightgray" size={20} style={{ marginRight: '5px', marginBottom: '10px' }} />
+            <FaStar key={i} color="lightgray" size={20} style={{ marginRight: '5px', marginBottom: '10px' }} data-testid="star-icon"/>
           ))}
         </div>
         <Card.Text style={{ display: `${priceVisibility}` }}>

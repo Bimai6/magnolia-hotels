@@ -54,18 +54,7 @@
       "stars": 3,
       "price": 43,
       "img": "https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg",
-      "reservations": [
-        {
-          "entry": "2025-03-01",
-          "departure": "2025-03-02",
-          "reservationId": "11"
-        },
-        {
-          "entry": "2025-03-20",
-          "departure": "2025-03-21",
-          "reservationId": "12"
-        }
-      ]
+      "reservations": []
     },
     {
       "id": "2",
@@ -74,13 +63,7 @@
       "stars": 4,
       "price": 38,
       "img": "https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg",
-      "reservations": [
-        {
-          "entry": "2025-03-01",
-          "departure": "2025-03-02",
-          "reservationId": "21"
-        }
-      ]
+      "reservations": []
     },
     {
       "id": "3",
@@ -89,13 +72,7 @@
       "stars": 5,
       "price": 99,
       "img": "https://res.cloudinary.com/dc732dg4w/image/upload/v1739780013/habitacion-superior_hdbplp.jpg",
-      "reservations": [
-        {
-          "entry": "2025-03-01",
-          "departure": "2025-03-02",
-          "reservationId": "31"
-        }
-      ]
+      "reservations": []
     },
     {
       "id": "4",
@@ -126,20 +103,10 @@
     },
     {
       "id": "2",
-      "name": "manolo",
+      "name": "manolo2",
       "email": "manolo@gmail.com",
       "password": "12345678a",
-      "myReservations": [
-        {
-          "reservationId": "11"
-        },
-        {
-          "reservationId": "12"
-        },
-        {
-          "reservationId": "31"
-        }
-      ]
+      "myReservations": []
     }
   ]
 }

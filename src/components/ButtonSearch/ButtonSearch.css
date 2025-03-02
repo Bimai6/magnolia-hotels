@@ -17,7 +17,7 @@
     }
   }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1284px) {
     .btn-custom {
         padding: 1rem;
         width: 100vw;
@@ -35,7 +35,7 @@
     }
 }
 
-@media screen and (min-width: 1024px) {   
+@media screen and (min-width: 1285px) {   
     .btn-custom {
         padding: 1rem;
         width: 20vw;

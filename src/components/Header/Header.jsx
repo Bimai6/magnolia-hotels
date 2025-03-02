@@ -5,6 +5,7 @@ import { AppBar, Toolbar, IconButton, Box, BottomNavigation, BottomNavigationAct
 import Register from '../Auth/Register';
 import ContactSlider from '../ContactSlider/ContactSlider';
 import { useLocation } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 
 
 
@@ -17,25 +18,14 @@ const navItems = [
 ];
 
 const MobileHeader = () => {
+  const { isLogged } = React.useContext(AuthContext);
   const [value, setValue] = React.useState('home');
   const [open, setOpen] = React.useState(false);
-  const [logged, setLogged] = React.useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
-
-  React.useEffect(() => {
-    try {
-      const user = JSON.parse(localStorage.getItem("user"));
-      if (user && user.name) {
-        setLogged(true);
-      }
-    } catch (error) {
-      console.error("Error al leer el usuario del localStorage", error);
-    }
-  }, []);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  
+
   return (
     <>
       <BottomNavigation
@@ -46,137 +36,110 @@ const MobileHeader = () => {
         {navItems.map((item) => (
           <BottomNavigationAction
             key={item.value}
-            component={item.label === 'Identificarse' ? logged === true ? Link : 'button' : Link}
-            to={item.label === 'Identificarse' ? logged === true ? item.link : undefined : item.link}
+            component={item.label === 'Identificarse' ? isLogged ? Link : 'button' : Link}
+            to={item.label === 'Identificarse' ? isLogged ? item.link : undefined : item.link}
             value={item.value}
-            onClick={item.label === 'Contacto' ? () => setIsContactOpen(true) : item.label === 'Identificarse' ? logged === true ? undefined : handleOpen : undefined}
-            icon={<img src={item.icon} alt={item.label} width={item.width} height={item.height} style={{margin:0}}/>}
+            onClick={item.label === 'Contacto' ? () => setIsContactOpen(true) : item.label === 'Identificarse' ? isLogged ? undefined : handleOpen : undefined}
+            icon={<img src={item.icon} alt={item.label} width={item.width} height={item.height} style={{ margin: 0 }} />}
           />
         ))}
       </BottomNavigation>
+
       <Dialog open={open} onClose={handleClose} maxWidth={'sm'} fullWidth sx={{ zIndex: 1200 }}>
-        <Register setLogged={setLogged} />
+        <Register />
       </Dialog>
+
       <ContactSlider isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
     </>
   );
 };
 
 function DesktopHeader() {
-
+  const { isLogged } = React.useContext(AuthContext); // Obtienes isLogged
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [scrolling, setScrolling] = React.useState(false);
   const [open, setOpen] = React.useState(false);
-  const [logged, setLogged] = React.useState(false);
 
   const location = useLocation();
   const isHome = location.pathname === '/';
-
-  React.useEffect(() => {
-    try {
-      const user = JSON.parse(localStorage.getItem("user"));
-      if (user && user.name) {
-        setLogged(true);
-      }
-    } catch (error) {
-      console.error("Error al leer el usuario del localStorage", error);
-    }
-  }, []);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 70) {
-        setScrolling(true);
-      } else {
-        setScrolling(false);
-      }
+      setScrolling(window.scrollY > 70);
     };
 
     window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
 
   return (
     <div>
-    <Box sx={{ flexGrow: 1 }}>
-    <AppBar
-  position={scrolling ? 'fixed' : 'absolute'}
-  sx={{
-    backgroundColor: scrolling || !isHome ? 'white' : 'transparent',
-    boxShadow: scrolling || !isHome ? '0px 5px 10px rgba(0, 0, 0, 0.1)' : 'none',
-    transition: 'background-color 0.3s, box-shadow 0.3s',
-    width: '100%'
-  }}
->
-        <Toolbar>
-          <IconButton
-            component={Link}
-            to="/"
-            size="large"
-            edge="start"
-            aria-label="logo"
-            disableRipple
-          >
-            <img
-              src="https://res.cloudinary.com/dk1g12n2h/image/upload/v1739173714/IMG-20250202-WA0012_1_eic08v.png"
-              alt="Logo"
-              style={{ objectFit: 'contain', width: '200px', height: 'auto', margin: '0' }}
-            />
-          </IconButton>
-          <Box sx={{ ml: 'auto', display: 'flex', gap: 8 }}>
-            {navItems.slice(1).map((item) => (
-              <Button
-                key={item.value}
-                component={item.label === 'Identificarse' ? logged === true ? Link : 'button' : Link}
-                to={item.label === 'Identificarse' ? logged === true ? item.link : undefined : item.link}
-                onClick={item.label === 'Contacto' ? () => setIsContactOpen(true) : item.label === 'Identificarse' ? logged === true ? undefined : handleOpen : undefined}
-                sx={{
-                  color: scrolling || !isHome ? 'black' : 'white',
-                  textTransform: 'none',
-                  fontSize: '18px',
-                  position: 'relative',
-                  fontWeight: 300,
-                  '&::after': {
-                    content: '""',
-                    display: 'block',
-                    width: 0,
-                    height: '2px',
-                    background: scrolling || !isHome ? 'black' : 'white',
-                    transition: 'width .3s',
-                    position: 'absolute',
-                    bottom: 0,
-                    left: 0,
-                    
-                  },
-                  '&:hover': {
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar
+          position={scrolling ? 'fixed' : 'absolute'}
+          sx={{
+            backgroundColor: scrolling || !isHome ? 'white' : 'transparent',
+            boxShadow: scrolling || !isHome ? '0px 5px 10px rgba(0, 0, 0, 0.1)' : 'none',
+            transition: 'background-color 0.3s, box-shadow 0.3s',
+            width: '100%'
+          }}
+        >
+          <Toolbar>
+            <IconButton component={Link} to="/" size="large" edge="start" aria-label="logo" disableRipple>
+              <img
+                src="https://res.cloudinary.com/dk1g12n2h/image/upload/v1739173714/IMG-20250202-WA0012_1_eic08v.png"
+                alt="Logo"
+                style={{ objectFit: 'contain', width: '200px', height: 'auto', margin: '0' }}
+              />
+            </IconButton>
+            <Box sx={{ ml: 'auto', display: 'flex', gap: 8 }}>
+              {navItems.slice(1).map((item) => (
+                <Button
+                  key={item.value}
+                  component={item.label === 'Identificarse' ? isLogged ? Link : 'button' : Link}
+                  to={item.label === 'Identificarse' ? isLogged ? item.link : undefined : item.link}
+                  onClick={item.label === 'Contacto' ? () => setIsContactOpen(true) : item.label === 'Identificarse' ? isLogged ? undefined : handleOpen : undefined}
+                  sx={{
                     color: scrolling || !isHome ? 'black' : 'white',
+                    textTransform: 'none',
+                    fontSize: '18px',
+                    position: 'relative',
+                    fontWeight: 300,
                     '&::after': {
-                      width: '100%' 
+                      content: '""',
+                      display: 'block',
+                      width: 0,
+                      height: '2px',
+                      background: scrolling || !isHome ? 'black' : 'white',
+                      transition: 'width .3s',
+                      position: 'absolute',
+                      bottom: 0,
+                      left: 0,
+                    },
+                    '&:hover::after': {
+                      width: '100%'
                     }
-                  }
-                }}
-              >
-                {logged === true ? item.label === 'Identificarse' ? 'Mi perfil' : item.label : item.label}
-              </Button>
-            ))}
-          </Box>
-        </Toolbar>
-      </AppBar>
-    </Box>
-<ContactSlider isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
-<Dialog open={open} onClose={handleClose} maxWidth={'xl'} fullWidth sx={{zIndex: 1200}}>
-  <Register setLogged={setLogged}/>
-</Dialog>
-</div>
+                  }}
+                >
+                  {isLogged ? (item.label === 'Identificarse' ? 'Mi perfil' : item.label) : item.label}
+                </Button>
+              ))}
+            </Box>
+          </Toolbar>
+        </AppBar>
+      </Box>
+
+      <ContactSlider isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
+      <Dialog open={open} onClose={handleClose} maxWidth={'xl'} fullWidth sx={{ zIndex: 1200 }}>
+        <Register />
+      </Dialog>
+    </div>
   );
 }
+
 
 function Header() {
   const isMobile = useMediaQuery('(max-width:1286px)');

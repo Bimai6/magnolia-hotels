@@ -1,23 +1,9 @@
 import { useState, useContext } from "react";
-import Swal from "sweetalert2";
+import { showAlert } from "../../utils/alerts";
 import '../Auth/Auth.css';
 import Login from '../Auth/Login';
+import { validators } from '../../utils/validators';
 import { AuthContext } from '../../context/AuthContext';
-
-const showAlert = (message, icon = "error") => {
-  Swal.fire({
-    title: icon === "success" ? "¡Éxito!" : "¡Atención!",
-    html: message,
-    icon,
-    confirmButtonText: "Aceptar",
-  });
-};
-
-const validators = {
-  email: email => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),
-  password: password => /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password),
-  username: username => /^[a-zA-Z0-9]{3,}$/.test(username)
-};
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -48,17 +34,18 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!validators.username(formData.user)) return showAlert("El nombre de usuario debe tener al menos 3 caracteres alfanuméricos.");
-    if (!validators.email(formData.email)) return showAlert("El correo electrónico no es válido.");
-    if (formData.email !== formData.confirmEmail) return showAlert("Los correos no coinciden.");
-    if (!validators.password(formData.password)) return showAlert("La contraseña debe tener al menos 8 caracteres, incluyendo una letra y un número.");
-    if (formData.password !== formData.confirmPassword) return showAlert("Las contraseñas no coinciden.");
+    const errors = validators.validateForm(formData, true);
+
+  if (errors.length > 0) {
+    errors.forEach(error => showAlert(error, 'error'));
+    return;
+  }
 
     try {
       const existingUsersResponse = await fetch("http://localhost:3000/users");
       const existingUsers = await existingUsersResponse.json();
 
-      if (existingUsers.some(user => user.name === formData.user)) {
+      if (existingUsers.some(user => user.user === formData.user)) {
         return showAlert("El usuario ya está registrado", "warning");
       }
 
@@ -66,7 +53,8 @@ function Register() {
 
       const newUser = {
         id: newUserId.toString(),
-        name: formData.user,
+        user: formData.user,
+        fullName: formData.fullName,
         email: formData.email,
         password: formData.password,
         myReservations: []

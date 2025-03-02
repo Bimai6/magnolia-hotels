@@ -1,0 +1,125 @@
+.profile-primary-container {
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+.profile-bg-management {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('https://res.cloudinary.com/demqnwfff/image/upload/v1740828840/12_31_20_photo_1481833761820_0509d3217039_h1vg9z.jpg');
+    background-size: contain;
+    filter: blur(5px);
+    z-index: -50;
+}
+
+.profile-settings-container {
+    background-color: #C99F4B;
+}
+
+.profile-edit-container {
+    background-color: #C99F4B;
+}
+
+.profile-logout-btn {
+    color: #EB0606;
+}
+
+.profile-logout-btn:hover {
+    color: #e93f3f;
+    cursor: pointer;
+}
+
+.form-label {
+    font-size: 1.4em;
+    font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+    }
+
+    .profile-settings-container, .profile-edit-container {
+        max-width: 400px;
+    }
+
+    .profile-settings-container {
+        max-height: 820px;
+    }
+
+    .profile-edit-container {
+        max-height: 920px;
+    }
+
+    .form-control {
+        padding: 0 10vw;
+    }
+
+    .form-label {
+        font-size: 2.75vw; 
+    }
+
+    .profile-edit-title {
+        font-size: 6vw;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1124px) {
+    .profile-layer-1, .profile-layer-2 {
+        position: fixed;
+        height: 100vh;
+        width: 4vw;
+        background-color: #C99F4B;
+    }
+
+    .profile-layer-2 {
+        right: 0;
+    }
+
+    .profile-settings-container {
+        max-width: 500px;
+    }
+
+    .profile-edit-container {
+        max-width: 700px;
+    }
+
+    .form-control {
+        padding: 0 4vw;
+    }
+
+    .form-label {
+        font-size: 2vw; 
+    }
+}
+
+@media screen and (min-width: 1125px) {
+    .profile-layer-1, .profile-layer-2 {
+        position: fixed;
+        height: 100vh;
+        width: 4vw;
+        background-color: #C99F4B;
+    }
+
+    .profile-layer-2 {
+        right: 0;
+    }
+
+    .profile-settings-container {
+        max-width: 500px;
+    }
+
+    .profile-edit-container {
+        max-width: 1000px;
+    }
+
+    .form-control {
+        padding: 0 4vw;
+    }
+
+    .form-label {
+        font-size: 1.5vw;
+    }
+}

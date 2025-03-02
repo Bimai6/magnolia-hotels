@@ -3,9 +3,14 @@ import "@testing-library/jest-dom";
 import Header from "./Header";
 import { describe, it, expect } from "vitest";
 import { BrowserRouter } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 const Wrapper = ({ children }) => {
-    return <BrowserRouter>{children}</BrowserRouter>;
+    return (
+        <AuthContext.Provider value={{ isLogged: false }}>
+            <BrowserRouter>{children}</BrowserRouter>
+        </AuthContext.Provider>
+    );
 };
 
 describe("Header", () => {

@@ -24,6 +24,10 @@ const Profile = () => {
     navigate('/');
   };
 
+  const handleGoHome = () => {
+    navigate('/');
+  };
+
   const handleEditProfile = (e) => {
     e.preventDefault();
     setShowEditProfile(true);
@@ -122,7 +126,7 @@ const Profile = () => {
         <div className='profile-container d-flex justify-content-center align-items-center w-100 h-100'>
           <div className='profile-edit-container d-flex flex-column p-5 rounded-5 shadow-lg w-100'>
             <h1 className='profile-edit-title mb-5'>Editar Perfil</h1>
-            <h3 className='text-decoration-underline mb-5'>Información de usuario</h3>
+            <h3 className='profile-edit-subtitle text-decoration-underline mb-5'>Información de usuario</h3>
             <form onSubmit={handleSaveProfile} className='w-100'>
               <div className="row">
                 {fields.map((field, index) => (
@@ -187,6 +191,9 @@ const Profile = () => {
               <button onClick={handleManageReservations} className="mx-auto bg-black text-white px-4 py-1 rounded-pill text-lg">
                 Gestionar reservas
               </button>
+            </div>
+            <div className='mt-4 d-flex justify-content-center'>
+              <button onClick={handleGoHome} className='bg-black text-white px-4 py-1 rounded-pill text-lg'>Volver</button>
             </div>
             <p className="profile-logout-btn text-decoration-underline mt-3 mb-5" onClick={handleLogout}>Cerrar sesión</p>
           </div>

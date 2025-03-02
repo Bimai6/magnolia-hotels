@@ -4,8 +4,7 @@ import Profile from '../pages/Profile/Profile';
 import Restaurant from '../pages/Restaurant/Restaurant';
 import Reservations from '../pages/Reservations/Reservations';
 import MyReservations from '../pages/MyReservations/MyReservations';
-import RestaurantMenu from '../pages/RestaurantMenu/RestaurantMenu';
-import PrivateRoute from '../components/PrivateRoute'; 
+
 
 export const Router = createBrowserRouter([
   {

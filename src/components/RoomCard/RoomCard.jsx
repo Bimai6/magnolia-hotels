@@ -44,8 +44,9 @@ const RoomCard = ({ id, title, description, stars, price, img, setRooms, entry, 
 
       const userResponse = await fetch(`http://localhost:3000/users/${userId}`);
       const userData = await userResponse.json();
+      localStorage.setItem('user', JSON.stringify(userData)); //actualizamos la info del localstorage para tener las reservas
 
-      console.log(userData); //passed
+      console.log(localStorage.getItem('user')); //passed
 
       //crear un id de reserva para usuario igual que el de la reserva de habitacion
 

@@ -2,7 +2,7 @@
     margin-top: 40px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    
     
 }
 
@@ -23,6 +23,19 @@
 
 .no-result{
     margin-top: 200px;
+}
+
+@media (max-width: 768px) {
+    .loader{
+        top: 70%;
+    }
+
+    .search-result-container{
+        margin-top: 150px;
+    }
+    .no-result{
+       margin-top: 100px;
+    }
 }
 
 

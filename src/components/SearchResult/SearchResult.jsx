@@ -50,6 +50,12 @@ const SearchResult = ({ setFilteredRooms, rooms, setEntry, setDeparture, onExtra
             <DatePicker  
               minDate={dayjs()}
               value={entryLocal}
+              format='DD/MM/YYYY'
+              slotProps={{
+                textField: { 
+                  readOnly: true 
+                }
+              }}
               onChange={(newValue) => {
                 setEntryLocal(newValue);
                 if (newValue.isAfter(departureLocal)) {
@@ -66,6 +72,12 @@ const SearchResult = ({ setFilteredRooms, rooms, setEntry, setDeparture, onExtra
             <DatePicker 
               minDate={entryLocal.add(1, 'day')}
               value={departureLocal}
+              format='DD/MM/YYYY'
+              slotProps={{
+                textField: { 
+                  readOnly: true 
+                }
+              }}
               onChange={(newValue) => {
                 setDepartureLocal(newValue);
                 if (newValue.isBefore(entryLocal)) {

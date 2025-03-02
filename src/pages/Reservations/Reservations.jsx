@@ -11,6 +11,7 @@ const Reservations = () => {
   const [entry, setEntry] = useState(null); // Fecha de entrada
   const [departure, setDeparture] = useState(null); // Fecha de salida
   const [noRoomsAvailable, setNoRoomsAvailable] = useState(false);
+  const [isSingleRoom, setIsSingleRoom] = useState(false); // Nuevo estado
 
   useEffect(() => {
     fetch("http://localhost:3000/rooms")
@@ -20,6 +21,10 @@ const Reservations = () => {
       })
       .catch((error) => console.error("Error fetching rooms:", error));
   },);
+
+  useEffect(() => {
+    setIsSingleRoom(filteredRooms.length === 1); // ✅ Detecta si hay solo 1 habitación
+  }, [filteredRooms]);
 
   const searchAnimation = () => {
     const searcherContainer = document.getElementsByClassName(
@@ -57,7 +62,7 @@ const Reservations = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container" style={{ display: "flex", alignItems: isSingleRoom ? "normal" : "center" }}>
       <Header />
       <div className="search-result-container">
         <SearchResult
@@ -81,12 +86,13 @@ const Reservations = () => {
         )}
 
         {filteredRooms.map((room, index) => {
-          const colClass = filteredRooms.length <= 3 ? "col-lg-4" : "col-lg-3";
+          const colClass = filteredRooms.length <= 3 ? "" : "col-lg-3";
 
           return (
             <div
               key={room.id}
               className={`col-12 col-sm-6 ${colClass} d-flex justify-content-center`}
+              style={{marginBottom: "60px"}}
             >
               <RoomCard
                 {...room}

@@ -14,7 +14,7 @@ export const Router = createBrowserRouter([
   },
   {
     path: '/reservations',
-    element: <PrivateRoute element={<Reservations />} />, 
+    element: <Reservations />, 
   },
   {
     path: '/restaurant',
@@ -22,7 +22,7 @@ export const Router = createBrowserRouter([
   },
   {
     path: '/profile',
-    element: <PrivateRoute element={<Profile />} />,
+    element: <Profile />,
   },
   {
     path: '/restaurant-menu',
@@ -30,6 +30,6 @@ export const Router = createBrowserRouter([
   },
   {
     path: '/my-reservations',
-    element: <PrivateRoute element={<MyReservations />} />,
+    element: <MyReservations />
   },
 ]);

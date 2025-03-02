@@ -25,10 +25,6 @@ export const Router = createBrowserRouter([
     element: <Profile />,
   },
   {
-    path: '/restaurant-menu',
-    element: <RestaurantMenu />,
-  },
-  {
     path: '/my-reservations',
     element: <MyReservations />
   },

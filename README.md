@@ -202,7 +202,7 @@ Before you start, ensure you have the following installed:
 ---
 
 ## 🌐 **Preview**
-COMMING SOON
+   Comming soon
 ---
 
 ## 🔖 **License**

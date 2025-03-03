@@ -69,7 +69,7 @@ function Login() {
         <div className="login-logo-container">
         <img className="login-logo bg-white rounded-pill" src="https://res.cloudinary.com/dk1g12n2h/image/upload/v1739175372/isotipo_1_k7fbrd.png" alt="Magnolia Hotels Logo" />     
         </div>
-        <h2 className="login-title mb-5 text-center text-black pt-5">Iniciar sesion</h2>
+        <h2 className="login-title mb-5 text-center text-black pt-5">Iniciar sesión</h2>
         <form onSubmit={handleSubmit} className="row justify-content-center">
           {fields.map(({ name, type, placeholder, label }) => (
             <div key={name} className="login-form-field mb-4">
@@ -88,10 +88,10 @@ function Login() {
           ))}
           <div className="col-12 mt-4 d-flex justify-content-center">
             <button type="submit" className="mx-auto bg-black text-white px-5 py-2 rounded-pill text-lg">
-              Iniciar Sesión
+              Iniciar sesión
             </button>
           </div>
-          <p className="text-center mt-3 text-sm text-black pb-3">
+          <p className="login-to-register text-center mt-3 text-sm text-black pb-3">
             Tambien puedes <span className="register-anchor" onClick={() => setShowRegister(true)}>crear una cuenta</span>
           </p>
         </form>

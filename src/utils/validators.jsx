@@ -1,6 +1,6 @@
 export const validators = {
     email: (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email),
-    password: (password) => /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password),
+    password: (password) => /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]{8,}$/.test(password),
     username: (username) => /^[a-zA-Z0-9]{3,}$/.test(username),
     validateForm: (form, isRegister = false, isProfile = false) => {
       const errors = [];

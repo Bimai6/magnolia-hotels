@@ -8,4 +8,7 @@
     .main-container {
         margin: 40px;
     }
+    .header-container{
+        margin-left: -40px;
+    }
 }

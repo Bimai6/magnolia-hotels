@@ -193,6 +193,10 @@ Before you start, ensure you have the following installed:
 
 ## 🚀 **Next Steps**
 
+- Choose reservations during time slots at the restaurant
+- Create social media accounts
+- Add dark mode
+
 ---
 
 ## 🌐 **Preview**

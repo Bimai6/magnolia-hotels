@@ -5,6 +5,7 @@ import { showAlert } from '../../utils/alerts';
 import { validators } from '../../utils/validators';
 import './Profile.css';
 
+const API_URL = import.meta.env.VITE_API_URL;
 const Profile = () => {
   const { user, logout, login } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -75,7 +76,7 @@ const Profile = () => {
     };
 
     try {
-      const response = await fetch(`http://localhost:3000/users/${user.id}`, {
+      const response = await fetch(`${API_URL}/users/${user.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

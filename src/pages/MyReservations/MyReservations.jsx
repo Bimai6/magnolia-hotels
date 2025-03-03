@@ -4,6 +4,7 @@ import './MyReservations.css';
 import Header from '../../components/Header/Header';
 import Swal from 'sweetalert2';
 
+const API_URL = import.meta.env.VITE_API_URL;
 const MySwal = Swal.mixin();
 
 const MyReservations = () => {
@@ -15,7 +16,7 @@ const MyReservations = () => {
         const user = JSON.parse(localStorage.getItem('user'));
         if (!user?.myReservations) return;
 
-        const roomsResponse = await fetch('http://localhost:3000/rooms');
+        const roomsResponse = await fetch(`${API_URL}/rooms`);
         const rooms = await roomsResponse.json();
 
         const reservationIds = user.myReservations.map(r => r.reservationId);
@@ -54,7 +55,7 @@ const MyReservations = () => {
 
     try {
       // Eliminar de rooms
-      const roomsResponse = await fetch('http://localhost:3000/rooms');
+      const roomsResponse = await fetch(`${API_URL}/rooms`);
       const rooms = await roomsResponse.json();
       
       const roomWithReservation = rooms.find(room => 
@@ -67,7 +68,7 @@ const MyReservations = () => {
         res => res.reservationId !== reservationId
       );
       
-      await fetch(`http://localhost:3000/rooms/${roomWithReservation.id}`, {
+      await fetch(`${API_URL}/rooms/${roomWithReservation.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -82,7 +83,7 @@ const MyReservations = () => {
         res => res.reservationId !== reservationId
       );
       
-      await fetch(`http://localhost:3000/users/${user.id}`, {
+      await fetch(`${API_URL}/users/${user.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

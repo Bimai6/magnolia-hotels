@@ -4,7 +4,7 @@ import SearchResult from "../../components/SearchResult/SearchResult";
 import "./Reservations.css";
 import Header from "../../components/Header/Header";
 //npx json-server --watch src/data/db.json --port 3000
-
+const API_URL = import.meta.env.VITE_API_URL;
 const Reservations = () => {
   const [rooms, setRooms] = useState([]);
   const [filteredRooms, setFilteredRooms] = useState([]);
@@ -14,7 +14,7 @@ const Reservations = () => {
   const [isSingleRoom, setIsSingleRoom] = useState(false); // Nuevo estado
 
   useEffect(() => {
-    fetch("http://localhost:3000/rooms")
+    fetch(`${API_URL}/rooms`)
       .then((response) => response.json())
       .then((data) => {
         setRooms(data);

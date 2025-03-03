@@ -96,7 +96,7 @@ a{
 
 
 
-/*MEDIA PARA FORMATO PC*/
+
 @media screen and (min-width: 1024px) {
   .contact-slider {
     width: 50%;

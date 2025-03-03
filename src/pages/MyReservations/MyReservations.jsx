@@ -53,7 +53,7 @@ const MyReservations = () => {
     if (!result.isConfirmed) return;
 
     try {
-      // Eliminar de rooms
+      
       const roomsResponse = await fetch('http://localhost:3000/rooms');
       const rooms = await roomsResponse.json();
       
@@ -76,7 +76,7 @@ const MyReservations = () => {
         })
       });
 
-      // Eliminar de usuarios
+      
       const user = JSON.parse(localStorage.getItem('user'));
       const updatedUserReservations = user.myReservations.filter(
         res => res.reservationId !== reservationId
@@ -91,13 +91,13 @@ const MyReservations = () => {
         })
       });
 
-      // Actualizar almacenamiento local
+      
       localStorage.setItem('user', JSON.stringify({
         ...user,
         myReservations: updatedUserReservations
       }));
 
-      // Actualizar estado
+      
       setUserReservations(prev => 
         prev.filter(res => res.reservationId !== reservationId)
       );

@@ -36,9 +36,9 @@ const Home = () => {
       <Header />
       <div>
         
-        {/* Contenedor Principal */}
+        
         <Grid container  alignItems="center" justifyContent="center" sx={{ position: "relative",   width: "100%", }}>
-          {/* Texto a la izquierda */}
+         
           <Grid item xs={12} md={6} sx={{ p: { xs: 2, md: 5 } }}>
             <Typography 
               variant="h2" 
@@ -55,11 +55,11 @@ const Home = () => {
             </Typography>
           </Grid>
   
-          {/* Imagen de fondo */}
+         
           <Grid item xs={12} md={6} sx={{ position: "relative", display: "flex", alignItems: "stretch" }}>
             <Box sx={{
-              width: "100%",  // Asegura que ocupe todo el espacio del Grid
-              height: "100%", // Asegura que siempre tenga altura completa
+              width: "100%",  
+              height: "100%", 
               overflow: "hidden",
             }}>
               <img 
@@ -75,7 +75,7 @@ const Home = () => {
           </Grid> 
         </Grid>
   
-        {/* Sección de beneficios */}
+        
         <Box sx={{ display: "flex", justifyContent: "center", mt: 5 }}>
           <Grid container spacing={4} alignItems={"center"} justifyContent="center">
             {benefits.map((benefit, index) => (
@@ -89,7 +89,7 @@ const Home = () => {
           </Grid>
         </Box>
   
-        {/* Mapa */}
+        
         <Box sx={{ mt: 5 }}>
           <Grid container spacing={2}>
             <Grid item xs={12}>

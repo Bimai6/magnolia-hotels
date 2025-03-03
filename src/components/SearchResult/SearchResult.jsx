@@ -23,8 +23,8 @@ const SearchResult = ({ setFilteredRooms, rooms, setEntry, setDeparture, onExtra
       return;
     }
 
-    // Filtrar habitaciones según el rango de fechas
-    //-----------------------------------------------------------
+    
+    
     const filteredData = rooms.filter(room => {
       
       return !room.reservations.some(reservation => {
@@ -34,17 +34,17 @@ const SearchResult = ({ setFilteredRooms, rooms, setEntry, setDeparture, onExtra
         return (reservationStart.isBefore(departureLocal) && reservationEnd.isAfter(entryLocal));
       });
     });
-    //----------------------------------------------------------
+    
     setFilteredRooms(filteredData);
-    setEntry(entryLocal);  // Pasar fecha de entrada
-    setDeparture(departureLocal);  // Pasar fecha de salida
+    setEntry(entryLocal); 
+    setDeparture(departureLocal);  
   };
 
   return (
     <div className='search-container'>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4 }}>
-          {/* Fecha entrada */}
+          
           <div className='enter'>
             <p>Fecha de entrada</p>
             <DatePicker  
@@ -66,7 +66,7 @@ const SearchResult = ({ setFilteredRooms, rooms, setEntry, setDeparture, onExtra
               }} 
             />
           </div>
-          {/* Fecha salida */}
+         
           <div className='exit'>
             <p>Fecha de salida</p>
             <DatePicker 

@@ -1,50 +1,6 @@
 {
   "restaurantReservations": [
-    {
-      "id": "309a",
-      "name": "Alejandro",
-      "email": "lecigomoj@gmail.com",
-      "phone": "123456789",
-      "guests": 5,
-      "dateTime": "2025-03-06T16:49",
-      "reservationNumber": 163613924
-    },
-    {
-      "id": "3192",
-      "name": "Paco",
-      "email": "lecigomoj2@gmail.com",
-      "phone": "123456789",
-      "guests": 7,
-      "dateTime": "2025-03-01T15:55",
-      "reservationNumber": 424389555
-    },
-    {
-      "id": "55ed",
-      "name": "Ejemplo",
-      "email": "ejemplo@ejemplo.es",
-      "phone": "653709898",
-      "guests": 12,
-      "dateTime": "2025-03-06T14:00",
-      "reservationNumber": 846902624
-    },
-    {
-      "id": "7985",
-      "name": "Pablo",
-      "email": "ejemplo2@ejemplo.es",
-      "phone": "123456789",
-      "guests": 6,
-      "dateTime": "2025-03-08T11:18",
-      "reservationNumber": 926093295
-    },
-    {
-      "id": "0216",
-      "name": "EjemploDefinitivo",
-      "email": "lecigomoj@gmail.com",
-      "phone": "653781919",
-      "guests": 8,
-      "dateTime": "2025-03-06T19:00",
-      "reservationNumber": 898544512
-    }
+    
   ],
   "rooms": [
     {

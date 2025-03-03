@@ -197,11 +197,12 @@ Before you start, ensure you have the following installed:
 - Create social media accounts
 - Add dark mode
 - Create chat for Contact section
+- Replace json with database
 
 ---
 
 ## 🌐 **Preview**
-
+COMMING SOON
 ---
 
 ## 🔖 **License**

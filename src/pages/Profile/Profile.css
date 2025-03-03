@@ -8,6 +8,23 @@
     position: relative;
 }
 
+.bg-layer-1, .bg-layer-2 {
+    width: 12vh;
+    height: 100vh;
+    background-color: #C99F4B; 
+    position: fixed;
+    top: 0;
+    z-index: -1; 
+  }
+
+  .bg-layer-1 {
+    left: 0;
+  }
+  
+  .bg-layer-2 {
+    right: 0;
+  }
+
 .profile-bg-management {
     position: absolute;
     height: 100vh;
@@ -74,6 +91,10 @@
     .profile-edit-title {
         font-size: 1.5em;
     }
+
+    .bg-layer-1, .bg-layer-2 {
+        visibility: hidden;
+    }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1124px) {
@@ -87,6 +108,10 @@
 
     .form-label {
         font-size: 1.1em;
+    }
+
+    .bg-layer-1, .bg-layer-2 {
+        visibility: hidden;
     }
 }
 

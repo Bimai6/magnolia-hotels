@@ -121,6 +121,8 @@ const Profile = () => {
     return (
       <div className='profile-primary-container'>
         <div className='profile-bg-management'></div>
+        <div className='bg-layer-1'></div>
+        <div className='bg-layer-2'></div>
         <div className='profile-edit-container'>
           <h1 className='profile-edit-title mb-4'>Editar Perfil</h1>
           <h3 className='profile-edit-subtitle text-decoration-underline mb-4'>Información de usuario</h3>
@@ -157,6 +159,8 @@ const Profile = () => {
   return (
     <div className='profile-primary-container'>
       <div className='profile-bg-management'></div>
+      <div className='bg-layer-1'></div>
+      <div className='bg-layer-2'></div>
       <div className='profile-settings-container'>
         <h2 className='profile-settings-title mb-4'>Perfil</h2>
         <h3 className='text-decoration-underline mb-4'>Información de usuario</h3>

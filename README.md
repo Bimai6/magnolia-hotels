@@ -196,6 +196,7 @@ Before you start, ensure you have the following installed:
 - Choose reservations during time slots at the restaurant
 - Create social media accounts
 - Add dark mode
+- Create chat for Contact section
 
 ---
 

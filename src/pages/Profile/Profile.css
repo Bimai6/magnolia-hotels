@@ -2,82 +2,95 @@
     height: 100vh;
     width: 100vw;
     overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 .profile-bg-management {
-    position: fixed;
+    position: absolute;
     height: 100vh;
     width: 100vw;
     background-image: url('https://res.cloudinary.com/demqnwfff/image/upload/v1740828840/12_31_20_photo_1481833761820_0509d3217039_h1vg9z.jpg');
-    background-size: contain;
+    background-size: cover;
     filter: blur(5px);
-    z-index: -50;
+    z-index: -1;
+}
+
+.profile-settings-container, .profile-edit-container {
+    background-color: #C99F4B;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    max-width: 90%;
+    width: 100%;
+    margin: 1rem;
+    overflow-y: auto;
+    max-height: 90vh;
 }
 
 .profile-settings-container {
-    background-color: #C99F4B;
+    max-width: 500px;
 }
 
 .profile-edit-container {
-    background-color: #C99F4B;
+    max-width: 700px;
 }
 
 .profile-logout-btn {
     color: #EB0606;
+    cursor: pointer;
 }
 
 .profile-logout-btn:hover {
     color: #e93f3f;
-    cursor: pointer;
 }
 
 .form-label {
-    font-size: 1.4em;
+    font-size: 1.2em;
     font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin-bottom: 1rem;
 }
 
 @media screen and (max-width: 768px) {
-    .profile-container {
-        flex-direction: column;
-    }
-
     .profile-settings-container, .profile-edit-container {
-        max-width: 400px;
-    }
-
-    .profile-settings-container {
-        max-height: 820px;
-    }
-
-    .profile-edit-container {
-        max-height: 920px;
-    }
-
-    .form-control {
-        padding: 0 10vw;
+        max-width: 90%;
+        padding: 1rem;
     }
 
     .form-label {
-        font-size: 2.75vw; 
+        font-size: 1em;
     }
 
     .profile-edit-title {
-        font-size: 6vw;
+        font-size: 1.5em;
     }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1124px) {
-    .profile-layer-1, .profile-layer-2 {
-        position: fixed;
-        height: 100vh;
-        width: 4vw;
-        background-color: #C99F4B;
+    .profile-settings-container {
+        max-width: 500px;
     }
 
-    .profile-layer-2 {
-        right: 0;
+    .profile-edit-container {
+        max-width: 600px;
     }
 
+    .form-label {
+        font-size: 1.1em;
+    }
+}
+
+@media screen and (min-width: 1125px) {
     .profile-settings-container {
         max-width: 500px;
     }
@@ -86,40 +99,7 @@
         max-width: 700px;
     }
 
-    .form-control {
-        padding: 0 4vw;
-    }
-
     .form-label {
-        font-size: 2vw; 
-    }
-}
-
-@media screen and (min-width: 1125px) {
-    .profile-layer-1, .profile-layer-2 {
-        position: fixed;
-        height: 100vh;
-        width: 4vw;
-        background-color: #C99F4B;
-    }
-
-    .profile-layer-2 {
-        right: 0;
-    }
-
-    .profile-settings-container {
-        max-width: 500px;
-    }
-
-    .profile-edit-container {
-        max-width: 1000px;
-    }
-
-    .form-control {
-        padding: 0 4vw;
-    }
-
-    .form-label {
-        font-size: 1.5vw;
+        font-size: 1.2em;
     }
 }

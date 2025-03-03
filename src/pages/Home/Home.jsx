@@ -80,7 +80,7 @@ const Home = () => {
           <Grid container spacing={4} alignItems={"center"} justifyContent="center">
             {benefits.map((benefit, index) => (
               <Grid item xs={12} sm={6} md={3} key={index} sx={{ justifyItems: "center" }}>
-                <img src={benefit.icon} alt={benefit.label} width="100" />
+                <img src={benefit.icon} alt={benefit.label} width="100"  style={{ marginTop: benefit.label === "Servicio de piscina y SPA" ? "15px" : "0" }}/>
                 <Typography variant="subtitle1" sx={{ mt: 2, minHeight: "4em" }}>
                   {benefit.label}
                 </Typography>
@@ -163,7 +163,7 @@ const Home = () => {
             src={benefit.icon} 
             alt={benefit.label} 
             width="100" 
-            style={{ display: "block", margin: "0 auto" }}
+            style={{ display: "block", margin: "0 auto", marginTop: benefit.label === "Servicio de piscina y SPA" ? "10px" : "0"}}
           />
           <Typography 
             variant="subtitle1" 

@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { showAlert } from "../../utils/alerts";
 import '../Auth/Auth.css';
 import Login from '../Auth/Login';
@@ -16,6 +16,7 @@ function Register() {
   });
 
   const [showLogin, setShowLogin] = useState(false);
+  const [isTwoColumns, setIsTwoColumns] = useState(true);
   const { login } = useContext(AuthContext);
 
   const fields = [
@@ -33,13 +34,13 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const errors = validators.validateForm(formData, true);
 
-  if (errors.length > 0) {
-    errors.forEach(error => showAlert(error, 'error'));
-    return;
-  }
+    if (errors.length > 0) {
+      errors.forEach((error) => showAlert(error, 'error'));
+      return;
+    }
 
     try {
       const existingUsersResponse = await fetch("http://localhost:3000/users");
@@ -67,7 +68,7 @@ function Register() {
         },
         body: JSON.stringify(newUser)
       });
-      
+
       if (!response.ok) {
         throw new Error("Error al registrar usuario");
       }
@@ -83,6 +84,21 @@ function Register() {
     }
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.matchMedia("(max-width: 1285px)").matches) {
+        setIsTwoColumns(false);
+      } else {
+        setIsTwoColumns(true);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   if (showLogin) {
     return <Login />;
   }
@@ -90,10 +106,10 @@ function Register() {
   return (
     <div className="register-primary-container flex items-center justify-center min-h-screen bg-gray-300 p-5">
       <div className="register-container p-10 rounded-5 shadow-lg w-full px-5 m-auto">
-        <h2 className="register-title mb-5 text-black pt-5">Registro</h2>
+        <h2 className="register-title mb-5 ps-0 text-black pt-5">Registro</h2>
         <form onSubmit={handleSubmit} className="row justify-content-center">
           {fields.map(({ name, type, placeholder, label }) => (
-            <div key={name} className="register-form-field col-12 col-md-6 mb-4">
+            <div key={name} className={`register-form-field ${isTwoColumns ? "col-md-6" : "col-12"} mb-4`}>
               <label htmlFor={name} className="label-register-fields block text-black mb-1">{label}</label>
               <br />
               <input
@@ -102,7 +118,7 @@ function Register() {
                 placeholder={placeholder}
                 value={formData[name]}
                 onChange={handleChange}
-                className="w-100 pe-5 py-2 border-black border-1 rounded-3"
+                className="register-input w-100 pe-5 py-2 border-black border-1 rounded-3"
                 required
               />
             </div>
@@ -112,7 +128,7 @@ function Register() {
               Registrarse
             </button>
           </div>
-          <p className="text-center mt-3 text-sm text-black pb-3">
+          <p className="register-to-login text-center mt-3 text-sm text-black pb-3">
             ¿Ya tienes cuenta? <span className="login-anchor" onClick={() => setShowLogin(true)}>Inicia sesión</span>
           </p>
         </form>

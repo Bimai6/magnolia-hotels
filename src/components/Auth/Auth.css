@@ -20,16 +20,20 @@
 }
 
 .label-register-fields, .label-login-fields{
-    font-size: 1.4em;
+    font-size: clamp(14px, 2.5vw, 20px);
+}
+
+.register-input{
+    font-size: clamp(14px, 2.5vw, 20px);
 }
 
 .register-title{
-    font-size: 3.2em;
+    font-size: clamp(18px, 7vw, 50px);
     padding: 0 1.4vw;
 }
 
 .login-title{
-    font-size: 2.2em;
+    font-size: clamp(18px, 6vw, 45px);
     padding: 0 1.4vw;
 }
 
@@ -50,8 +54,39 @@
     cursor: pointer;
 }
 
-@media screen and (min-width: 769px) {
+.login-to-register, .register-to-login{
+    font-size: clamp(11px, 2vw, 16px);
+}
+
+.login-logo{
+    min-width: 12vw;
+    max-width: 14vw;
+}
+
+@media screen and (max-width: 568px){
     .login-logo{
-        max-width: 10vw;
+        max-width: 30vw;
     }
+    
+}
+
+@media screen and (min-width: 569px) and (max-width: 768px){
+    .login-logo{
+        max-width: 25vw;
+    }
+    
+}
+
+@media screen and (min-width: 769px) and (max-width: 1068px){
+    .login-logo{
+        max-width: 20vw;
+    }
+    
+}
+
+@media screen and (min-width: 1069px) and (max-width: 1268px){
+    .login-logo{
+        max-width: 16vw;
+    }
+    
 }

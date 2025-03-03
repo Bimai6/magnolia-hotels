@@ -7,8 +7,6 @@ import ContactSlider from '../ContactSlider/ContactSlider';
 import { useLocation } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 
-
-
 const navItems = [
   { label: 'Inicio', value: 'home', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/isotype_idmria.svg', link: '/', width: 45, height: 45 },
   { label: 'Estancia', value: 'book', icon: 'https://res.cloudinary.com/dk1g12n2h/image/upload/v1738865406/bed_2_kda2wz.svg', link: '/my-reservations', width: 39, height: 39, ml: 'auto' },

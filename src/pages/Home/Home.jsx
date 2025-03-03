@@ -36,9 +36,9 @@ const Home = () => {
       <Header />
       <div>
         
-        {/* Contenedor Principal */}
+        
         <Grid container  alignItems="center" justifyContent="center" sx={{ position: "relative",   width: "100%", }}>
-          {/* Texto a la izquierda */}
+         
           <Grid item xs={12} md={6} sx={{ p: { xs: 2, md: 5 } }}>
             <Typography 
               variant="h2" 
@@ -55,11 +55,11 @@ const Home = () => {
             </Typography>
           </Grid>
   
-          {/* Imagen de fondo */}
+         
           <Grid item xs={12} md={6} sx={{ position: "relative", display: "flex", alignItems: "stretch" }}>
             <Box sx={{
-              width: "100%",  // Asegura que ocupe todo el espacio del Grid
-              height: "100%", // Asegura que siempre tenga altura completa
+              width: "100%",  
+              height: "100%", 
               overflow: "hidden",
             }}>
               <img 
@@ -75,12 +75,12 @@ const Home = () => {
           </Grid> 
         </Grid>
   
-        {/* Sección de beneficios */}
+        
         <Box sx={{ display: "flex", justifyContent: "center", mt: 5 }}>
           <Grid container spacing={4} alignItems={"center"} justifyContent="center">
             {benefits.map((benefit, index) => (
               <Grid item xs={12} sm={6} md={3} key={index} sx={{ justifyItems: "center" }}>
-                <img src={benefit.icon} alt={benefit.label} width="100" />
+                <img src={benefit.icon} alt={benefit.label} width="100"  style={{ marginTop: benefit.label === "Servicio de piscina y SPA" ? "15px" : "0" }}/>
                 <Typography variant="subtitle1" sx={{ mt: 2, minHeight: "4em" }}>
                   {benefit.label}
                 </Typography>
@@ -89,7 +89,7 @@ const Home = () => {
           </Grid>
         </Box>
   
-        {/* Mapa */}
+        
         <Box sx={{ mt: 5 }}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -163,7 +163,7 @@ const Home = () => {
             src={benefit.icon} 
             alt={benefit.label} 
             width="100" 
-            style={{ display: "block", margin: "0 auto" }}
+            style={{ display: "block", margin: "0 auto", marginTop: benefit.label === "Servicio de piscina y SPA" ? "10px" : "0"}}
           />
           <Typography 
             variant="subtitle1" 

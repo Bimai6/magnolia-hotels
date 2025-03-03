@@ -433,7 +433,7 @@ const handleModifyReservationClick = async () => {
                        <strong>Nombre:</strong> ${name}<br>
                        <strong>Teléfono:</strong> ${phone}<br>
                        <strong>Comensales:</strong> ${guests}<br>
-                       <strong>Fecha y hora:</strong> ${dateTime}`,
+                       <strong>Fecha y hora:</strong> ${formatDateTime(dateTime)}`,
                 icon: 'success',
                 confirmButtonText: 'OK',
                 confirmButtonColor: '#DAA520',

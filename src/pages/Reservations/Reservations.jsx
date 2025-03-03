@@ -3,15 +3,15 @@ import RoomCard from "../../components/RoomCard/RoomCard";
 import SearchResult from "../../components/SearchResult/SearchResult";
 import "./Reservations.css";
 import Header from "../../components/Header/Header";
-//npx json-server --watch src/data/db.json --port 3000
+
 
 const Reservations = () => {
   const [rooms, setRooms] = useState([]);
   const [filteredRooms, setFilteredRooms] = useState([]);
-  const [entry, setEntry] = useState(null); // Fecha de entrada
-  const [departure, setDeparture] = useState(null); // Fecha de salida
+  const [entry, setEntry] = useState(null); 
+  const [departure, setDeparture] = useState(null); 
   const [noRoomsAvailable, setNoRoomsAvailable] = useState(false);
-  const [isSingleRoom, setIsSingleRoom] = useState(false); // Nuevo estado
+  const [isSingleRoom, setIsSingleRoom] = useState(false); 
 
   useEffect(() => {
     fetch("http://localhost:3000/rooms")
@@ -23,7 +23,7 @@ const Reservations = () => {
   },);
 
   useEffect(() => {
-    setIsSingleRoom(filteredRooms.length === 1); // ✅ Detecta si hay solo 1 habitación
+    setIsSingleRoom(filteredRooms.length === 1); 
   }, [filteredRooms]);
 
   const searchAnimation = () => {
@@ -70,7 +70,7 @@ const Reservations = () => {
           onExtraClick={searchAnimation}
           setFilteredRooms={(newFilteredRooms) => {
             setFilteredRooms(newFilteredRooms);
-            setNoRoomsAvailable(newFilteredRooms.length === 0); // Activa el mensaje si no hay habitaciones
+            setNoRoomsAvailable(newFilteredRooms.length === 0); 
           }}
           rooms={rooms}
           setEntry={setEntry}

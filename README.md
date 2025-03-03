@@ -48,6 +48,12 @@ Before you start, ensure you have the following installed:
 
    ```bash
    npm run dev
+   
+4. **Run the server**
+   Start the json server using the following command
+
+   ```bash
+   npm start
 
 ---
 

@@ -146,21 +146,15 @@ const RoomCard = ({
   const handleMyReservationDesktop = () => {
     MySwal.fire({
       html: `
-        <div class="main-content">
-          <img alt="${title}" src="${img}" class="room-image" /> 
-          <div class="sweetalert-info-container">
-            <h3 class="title">${title}</h3>
-            <div class="description-container">
-              <p class="description">${description}</p>
-              <h4 class="price">Total: <strong>${entry} EUR</strong></h4>
-            </div>
-            <button id="customConfirmButton" class="custom-confirm-button" >Cancelar reserva</button>
-          </div>
+        <div class="main-content-my-reservation">
+          <h3 class="title">${title}</h3>
+          <img alt="${title}" src="${img}" class="room-image-my-reservation" /> 
+          <button id="customConfirmButton" class="custom-confirm-button btn-sm" id="cancel-confirm">Eliminar</button> 
         </div>
       `,
       showConfirmButton: false,
       customClass: {
-        popup: 'custom-swal-popup',
+        popup: 'custom-swal-popup-my-reservation',
         backdrop: 'custom-backdrop',
       },
       didOpen: () => {

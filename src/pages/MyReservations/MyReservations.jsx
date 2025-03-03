@@ -111,7 +111,10 @@ const MyReservations = () => {
   console.log(localStorage.getItem('user'));
   return (
     <div className="main-container">
-      <Header />
+      <div className='header-container'>
+        <Header />
+      </div>
+      
       <h1 className="reservation-title text-center mt-4">Mis reservas</h1>
       <div className="rooms-view row justify-content-center">
         {userReservations.map((reservation) => (

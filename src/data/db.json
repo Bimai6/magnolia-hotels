@@ -1,6 +1,14 @@
 {
   "restaurantReservations": [
-    
+    {
+      "id": "9ac3",
+      "name": "EjemploFetch",
+      "email": "ejemplo2@ejemplo.es",
+      "phone": "12345678",
+      "guests": 4,
+      "dateTime": "2025-03-14T16:40",
+      "reservationNumber": 713099720
+    }
   ],
   "rooms": [
     {

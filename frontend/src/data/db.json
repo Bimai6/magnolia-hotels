@@ -1,7 +1,4 @@
 {
-  "restaurantReservations": [
-    
-  ],
   "rooms": [
     {
       "id": "1",
@@ -28,7 +25,13 @@
       "stars": 5,
       "price": 99,
       "img": "https://res.cloudinary.com/dzecw7i0a/image/upload/v1740949573/villa-1737168_1280_ewovxp.jpg",
-      "reservations": []
+      "reservations": [
+        {
+          "entry": "2025-10-16",
+          "departure": "2025-10-17",
+          "reservationId": "31"
+        }
+      ]
     },
     {
       "id": "4",
@@ -56,7 +59,11 @@
       "fullName": "User One",
       "email": "mail1@example.com",
       "password": "password1",
-      "myReservations": []
+      "myReservations": [
+        {
+          "reservationId": "31"
+        }
+      ]
     },
     {
       "id": "2",

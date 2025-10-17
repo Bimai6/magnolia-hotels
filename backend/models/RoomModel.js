@@ -15,10 +15,11 @@ const roomSchema = new mongoose.Schema({
     reservations: [embebbedRoomReservationSchema]
 }, {timestamps: true});
 
-roomSchema.set("toJSON", (doc, ret) => {
+roomSchema.set("toJSON",{ 
+    transform: (doc, ret) => {
     ret.id = ret._id,
     delete ret._id,
     delete ret.__v
-})
+}})
 
 export default mongoose.model("Room", roomSchema);

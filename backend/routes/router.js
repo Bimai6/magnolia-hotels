@@ -1,6 +1,6 @@
 import express from "express"
-import { createUser, getAllUsers} from "../controllers/UserController.js";
-import { createRoom, getAllRooms } from "../controllers/RoomController.js";
+import { createUser, deleteAnUser, getAllUsers, getAnUser } from "../controllers/UserController.js";
+import { createRoom, deleteARoom, getAllRooms, getARoom } from "../controllers/RoomController.js";
 import User from "../models/UserModel.js";
 import Room from "../models/RoomModel.js";
 
@@ -18,9 +18,13 @@ router.get("/", async (req, res) => {
 });
 
 router.get('/users', getAllUsers);
+router.get('/users/:id', getAnUser);
 router.post('/users', createUser);
+router.delete('/users/:id', deleteAnUser);
 
 router.get('/rooms', getAllRooms);
+router.get('/rooms/:id', getARoom);
 router.post('/rooms', createRoom);
+router.delete('/rooms/:id', deleteARoom);
 
 export default router

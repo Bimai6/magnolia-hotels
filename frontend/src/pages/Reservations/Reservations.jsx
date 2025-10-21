@@ -4,6 +4,7 @@ import SearchResult from "../../components/SearchResult/SearchResult";
 import "./Reservations.css";
 import Header from "../../components/Header/Header";
 
+const API_URL = import.meta.env.VITE_API_URI;
 
 const Reservations = () => {
   const [rooms, setRooms] = useState([]);
@@ -14,7 +15,7 @@ const Reservations = () => {
   const [isSingleRoom, setIsSingleRoom] = useState(false); 
 
   useEffect(() => {
-    fetch("http://localhost:3000/rooms")
+    fetch(`${API_URL}/rooms`)
       .then((response) => response.json())
       .then((data) => {
         setRooms(data);

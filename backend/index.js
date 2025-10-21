@@ -1,15 +1,16 @@
 import dotenv from "dotenv"
+dotenv.config();
 import express from "express"
 import mongoose from "mongoose";
 import cors from "cors"
 import router from "./routes/router.js";
-dotenv.config();
+import { corsOptions } from "./config/corsConfig.js";
 
 const app = express()
 
+app.use(cors(corsOptions))
 app.use(express.json())
 app.use('/api', router)
-app.use(cors())
 
 app.get('/', (req, res)=> {
     res.send('Welcome to my api');

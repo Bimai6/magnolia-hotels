@@ -5,6 +5,8 @@ import Register from '../Auth/Register';
 import { validators } from '../../utils/validators';
 import { AuthContext } from '../../context/AuthContext';
 
+const API_URL = import.meta.env.VITE_API_URI;
+
 function Login() {
   const [formData, setFormData] = useState({
     user: "",
@@ -33,7 +35,7 @@ function Login() {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/users");
+      const response = await fetch(`${API_URL}/users`);
       const users = await response.json();
 
       const userFound = users.find(u => u.user === formData.user);
@@ -67,7 +69,11 @@ function Login() {
     <div className="login-primary-container flex justify-center min-h-screen bg-gray-300 p-5">
       <div className="login-container p-10 rounded-5 shadow-lg w-full px-5 mx-auto">
         <div className="login-logo-container">
-        <img className="login-logo bg-white rounded-pill" src="https://res.cloudinary.com/dk1g12n2h/image/upload/v1739175372/isotipo_1_k7fbrd.png" alt="Magnolia Hotels Logo" />     
+          <img 
+          className="login-logo bg-white rounded-pill" 
+          src="https://res.cloudinary.com/dk1g12n2h/image/upload/v1739175372/isotipo_1_k7fbrd.png" 
+          alt="Magnolia Hotels Logo" 
+          />     
         </div>
         <h2 className="login-title mb-5 text-center text-black pt-5">Iniciar sesión</h2>
         <form onSubmit={handleSubmit} className="row justify-content-center">

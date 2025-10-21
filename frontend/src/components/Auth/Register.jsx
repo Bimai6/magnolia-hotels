@@ -5,6 +5,8 @@ import Login from '../Auth/Login';
 import { validators } from '../../utils/validators';
 import { AuthContext } from '../../context/AuthContext';
 
+const API_URL = import.meta.env.VITE_API_URI;
+
 function Register() {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -43,17 +45,14 @@ function Register() {
     }
 
     try {
-      const existingUsersResponse = await fetch("http://localhost:3000/users");
+      const existingUsersResponse = await fetch(`${API_URL}/users`);
       const existingUsers = await existingUsersResponse.json();
 
       if (existingUsers.some(user => user.user === formData.user)) {
         return showAlert("El usuario ya está registrado", "warning");
       }
 
-      const newUserId = parseInt(existingUsers[existingUsers.length - 1].id) + 1;
-
       const newUser = {
-        id: newUserId.toString(),
         user: formData.user,
         fullName: formData.fullName,
         email: formData.email,
@@ -61,7 +60,7 @@ function Register() {
         myReservations: []
       };
 
-      const response = await fetch("http://localhost:3000/users", {
+      const response = await fetch(`${API_URL}/users`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -80,7 +79,7 @@ function Register() {
       }, 1500);
 
     } catch (error) {
-      showAlert("Error conectando a la base de datos", error);
+      showAlert(`Error conectando a la base de datos: ${error}`, "error");
     }
   };
 

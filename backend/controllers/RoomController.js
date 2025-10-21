@@ -9,6 +9,22 @@ export const createRoom = (req, res) => {
         .catch((error) => res.json({message : error}));
 }
 
+export const createRooms = async (req, res) => {
+    try {
+        const roomsArray = req.body;
+    if (!Array.isArray(roomsArray) || roomsArray.length === 0) {
+        return res.status(400).json({ message: "Se requiere un array de habitaciones válido" });
+    }
+
+    const createdRooms = await RoomModel.insertMany(roomsArray);
+    res.status(201).json(createdRooms);
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Error creando las habitaciones", error: error.message });
+    }
+};
+
 export const getAllRooms = (req, res) => {
     
     roomSchema

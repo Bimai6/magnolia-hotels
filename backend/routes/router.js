@@ -1,6 +1,6 @@
 import express from "express"
 import { createUser, deleteAnUser, getAllUsers, getAnUser } from "../controllers/UserController.js";
-import { createRoom, deleteARoom, getAllRooms, getARoom } from "../controllers/RoomController.js";
+import { createRoom, createRooms, deleteARoom, getAllRooms, getARoom } from "../controllers/RoomController.js";
 import User from "../models/UserModel.js";
 import Room from "../models/RoomModel.js";
 
@@ -25,6 +25,7 @@ router.delete('/users/:id', deleteAnUser);
 router.get('/rooms', getAllRooms);
 router.get('/rooms/:id', getARoom);
 router.post('/rooms', createRoom);
+router.post('/rooms/bulk', createRooms);
 router.delete('/rooms/:id', deleteARoom);
 
 export default router

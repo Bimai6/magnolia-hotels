@@ -95,19 +95,26 @@ export const updateAnUserReservation = async (req, res) => {
         const { id } = req.params;
         const { myReservations } = req.body;
 
-        const user = await UserModel.findByIdAndUpdate(
-            id,
-            { myReservations },
-            { new: true }
-        );
+        const userToUpdate = await UserModel.findById(id);
 
-        if (!user) {
+        if (!userToUpdate) {
             return res.status(404).json({ message: 'Usuario no encontrado' });
         }
 
-        res.json(user);
+        userToUpdate.myReservations = myReservations;
+
+        await userToUpdate.save();
+
+        const userResponse = userToUpdate.toJSON();
+
+        res.json(userResponse);
 
     } catch (error) {
+        if (error.code === 11000) {
+            return res.status(400).json({ 
+                message: `La habitación ya había sido reservada` 
+            });
+        }
         res.status(500).json({ message: error.message });
     }
 };

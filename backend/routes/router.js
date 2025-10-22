@@ -1,6 +1,6 @@
 import express from "express"
-import { createUser, deleteAnUser, getAllUsers, getAnUser, updateAnUserProfile } from "../controllers/UserController.js";
-import { createRoom, createRooms, deleteARoom, getAllRooms, getARoom } from "../controllers/RoomController.js";
+import { createUser, deleteAnUser, getAllUsers, getAnUser, updateAnUserProfile, updateAnUserReservation } from "../controllers/UserController.js";
+import { createRoom, createRooms, deleteARoom, getAllRooms, getARoom, updateARoomReservation } from "../controllers/RoomController.js";
 import User from "../models/UserModel.js";
 import Room from "../models/RoomModel.js";
 
@@ -21,11 +21,13 @@ router.get('/users', getAllUsers);
 router.get('/users/:id', getAnUser);
 router.post('/users', createUser);
 router.patch('/users/:id', updateAnUserProfile);
+router.patch('/users/:id/reservations', updateAnUserReservation);
 router.delete('/users/:id', deleteAnUser);
 
 router.get('/rooms', getAllRooms);
 router.get('/rooms/:id', getARoom);
 router.post('/rooms', createRoom);
+router.patch('/rooms/:id', updateARoomReservation);
 router.post('/rooms/bulk', createRooms);
 router.delete('/rooms/:id', deleteARoom);
 

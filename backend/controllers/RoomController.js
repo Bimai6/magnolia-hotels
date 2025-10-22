@@ -39,7 +39,7 @@ export const getARoom = async (req, res) => {
         const room = await RoomModel.findById(id);
 
         if(!room){
-            res.status(404).json({message: 'Habitacion no encontrada'});
+            res.status(404).json({message: 'Habitación no encontrada'});
         }
     
         res.json((room));
@@ -48,15 +48,44 @@ export const getARoom = async (req, res) => {
     };
 }
 
+export const updateARoomReservation = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { reservations } = req.body;
+
+        const roomToUpdate = await RoomModel.findById(id);
+
+        if (!roomToUpdate) {
+            return res.status(404).json({ message: 'Habitación no encontrada' });
+        }
+
+        roomToUpdate.reservations = reservations;
+
+        await roomToUpdate.save();
+
+        const roomResponse = roomToUpdate.toJSON();
+
+        res.json(roomResponse);
+
+    } catch (error) {
+        if (error.code === 11000) {
+            return res.status(400).json({ 
+                message: `La habitación ya había sido reservada` 
+            });
+        }
+        res.status(500).json({ message: error.message });
+    }
+};
+
 export const deleteARoom = async (req, res) => {
     try {
         const {id} = req.params;
         const room = await RoomModel.findByIdAndDelete(id);
 
         if(!room){
-            res.status(404).json({message: 'Habitacion no encontrada'})
+            res.status(404).json({message: 'Habitación no encontrada'})
         }
-        res.json({message: `Habitacion ${room.title} eliminada correctamente`});
+        res.json({message: `Habitación ${room.title} eliminada correctamente`});
     } catch (error) {
         res.json({message : error});
     }

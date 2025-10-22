@@ -4,8 +4,7 @@ import '../Auth/Auth.css';
 import Register from '../Auth/Register';
 import { validators } from '../../utils/validators';
 import { AuthContext } from '../../context/AuthContext';
-
-const API_URL = import.meta.env.VITE_API_URI;
+import { API_URL } from "../../utils/globals";
 
 function Login() {
   const [formData, setFormData] = useState({

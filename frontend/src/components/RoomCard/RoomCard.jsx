@@ -26,10 +26,8 @@ const RoomCard = ({
   handleDeleteReservation 
 }) => {
   
-  
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
- 
   const updateUserInLocalStorage = async (userId) => {
     try {
       const userResponse = await fetch(`http://localhost:3000/users/${userId}`);
@@ -55,10 +53,8 @@ const RoomCard = ({
       const response = await fetch(`http://localhost:3000/rooms/${id}`);
       const roomData = await response.json();
 
-     
       const totalIds = roomData.reservations.length + 1;
 
-      
       const newReservation = {
         entry: entry.format('YYYY-MM-DD'), 
         departure: departure.format('YYYY-MM-DD'), 
@@ -99,11 +95,8 @@ const RoomCard = ({
         body: JSON.stringify(updatedUser),
       });
 
-      
       updateUserInLocalStorage(userId);
 
-      
-     
       setRooms((prevRooms) => prevRooms.filter((room) => room.id !== id));
 
       MySwal.close();
@@ -182,8 +175,8 @@ const RoomCard = ({
           Reservar
         </Button>
         <Button onClick={() => { 
-          handleMyReservationDesktop();
-           }} variant="dark" size='lg' className='w-100 rounded-0 fs-6 mx-auto' style={{ maxWidth: '355px', display: `${manageReservationButtonVisibility}` }}>
+            handleMyReservationDesktop();
+          }} variant="dark" size='lg' className='w-100 rounded-0 fs-6 mx-auto' style={{ maxWidth: '355px', display: `${manageReservationButtonVisibility}` }}>
           Gestionar
         </Button>
       </Card.Body>

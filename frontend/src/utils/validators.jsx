@@ -9,7 +9,7 @@ export const validators = {
         errors.push('El nombre de usuario debe tener al menos 3 caracteres alfanuméricos.');
       }
       
-      if (!validators.password(form.password)) {
+      if (!isProfile && !validators.password(form.password)) {
         errors.push('La contraseña debe tener al menos 8 caracteres, incluyendo una letra y un número.');
       }
 

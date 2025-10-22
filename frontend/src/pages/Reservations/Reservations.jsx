@@ -3,8 +3,7 @@ import RoomCard from "../../components/RoomCard/RoomCard";
 import SearchResult from "../../components/SearchResult/SearchResult";
 import "./Reservations.css";
 import Header from "../../components/Header/Header";
-
-const API_URL = import.meta.env.VITE_API_URI;
+import { API_URL } from "../../utils/globals";
 
 const Reservations = () => {
   const [rooms, setRooms] = useState([]);

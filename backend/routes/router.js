@@ -1,5 +1,5 @@
 import express from "express"
-import { createUser, deleteAnUser, getAllUsers, getAnUser } from "../controllers/UserController.js";
+import { createUser, deleteAnUser, getAllUsers, getAnUser, updateAnUserProfile } from "../controllers/UserController.js";
 import { createRoom, createRooms, deleteARoom, getAllRooms, getARoom } from "../controllers/RoomController.js";
 import User from "../models/UserModel.js";
 import Room from "../models/RoomModel.js";
@@ -20,6 +20,7 @@ router.get("/", async (req, res) => {
 router.get('/users', getAllUsers);
 router.get('/users/:id', getAnUser);
 router.post('/users', createUser);
+router.patch('/users/:id', updateAnUserProfile);
 router.delete('/users/:id', deleteAnUser);
 
 router.get('/rooms', getAllRooms);

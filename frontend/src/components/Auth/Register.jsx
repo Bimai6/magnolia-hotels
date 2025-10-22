@@ -4,8 +4,7 @@ import '../Auth/Auth.css';
 import Login from '../Auth/Login';
 import { validators } from '../../utils/validators';
 import { AuthContext } from '../../context/AuthContext';
-
-const API_URL = import.meta.env.VITE_API_URI;
+import { API_URL } from "../../utils/globals";
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -71,8 +70,8 @@ function Register() {
       if (!response.ok) {
         throw new Error("Error al registrar usuario");
       }
-
-      login(newUser);
+      const createdUser = await response.json()
+      login(createdUser);
       showAlert("Inicio de sesión exitoso", "success");
       setTimeout(() => {
         window.location.reload();

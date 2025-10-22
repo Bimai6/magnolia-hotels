@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import { useState, useEffect } from 'react';
 import './RoomCard.css';
+import { API_URL } from '../../utils/globals';
 
 const MySwal = withReactContent(Swal);
 
@@ -30,7 +31,7 @@ const RoomCard = ({
 
   const updateUserInLocalStorage = async (userId) => {
     try {
-      const userResponse = await fetch(`http://localhost:3000/users/${userId}`);
+      const userResponse = await fetch(`${API_URL}/users/${userId}`);
       const userData = await userResponse.json();
       localStorage.setItem('user', JSON.stringify(userData)); 
       setUser(userData); 
@@ -40,7 +41,6 @@ const RoomCard = ({
   };
 
   useEffect(() => {
-    
     const userFromLocalStorage = localStorage.getItem('user');
     if (userFromLocalStorage) {
       setUser(JSON.parse(userFromLocalStorage));
@@ -49,48 +49,39 @@ const RoomCard = ({
 
   const handleReservation = async () => {
     try {
-      
-      const response = await fetch(`http://localhost:3000/rooms/${id}`);
+      const response = await fetch(`${API_URL}/rooms/${id}`);
       const roomData = await response.json();
-
       const totalIds = roomData.reservations.length + 1;
-
       const newReservation = {
         entry: entry.format('YYYY-MM-DD'), 
         departure: departure.format('YYYY-MM-DD'), 
         reservationId: roomData.id + totalIds,
       };
-
       
       const updatedRoom = {
         ...roomData,
         reservations: [...roomData.reservations, newReservation],
       };
-
       
-      await fetch(`http://localhost:3000/rooms/${id}`, {
-        method: "PUT",
+      await fetch(`${API_URL}/rooms/${id}`, {
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedRoom),
       });
 
-      
       const userId = user.id;
 
-    
       const newReservationId = {
         reservationId: newReservation.reservationId,
       };
 
-      
       const updatedUser = {
         ...user,
         myReservations: [...user.myReservations, newReservationId],
       };
-
       
-      await fetch(`http://localhost:3000/users/${userId}`, {
-        method: "PUT",
+      await fetch(`${API_URL}/users/${userId}/reservations`, {
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedUser),
       });

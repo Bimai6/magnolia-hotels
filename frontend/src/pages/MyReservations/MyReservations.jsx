@@ -3,6 +3,7 @@ import RoomCard from '../../components/RoomCard/RoomCard';
 import './MyReservations.css';
 import Header from '../../components/Header/Header';
 import Swal from 'sweetalert2';
+import { API_URL } from '../../utils/globals';
 
 const MySwal = Swal.mixin();
 
@@ -15,7 +16,7 @@ const MyReservations = () => {
         const user = JSON.parse(localStorage.getItem('user'));
         if (!user?.myReservations) return;
 
-        const roomsResponse = await fetch('http://localhost:3000/rooms');
+        const roomsResponse = await fetch(`${API_URL}/rooms`);
         const rooms = await roomsResponse.json();
 
         const reservationIds = user.myReservations.map(r => r.reservationId);
@@ -54,7 +55,7 @@ const MyReservations = () => {
 
     try {
       
-      const roomsResponse = await fetch('http://localhost:3000/rooms');
+      const roomsResponse = await fetch(`${API_URL}/rooms`);
       const rooms = await roomsResponse.json();
       
       const roomWithReservation = rooms.find(room => 
@@ -67,8 +68,8 @@ const MyReservations = () => {
         res => res.reservationId !== reservationId
       );
       
-      await fetch(`http://localhost:3000/rooms/${roomWithReservation.id}`, {
-        method: 'PUT',
+      await fetch(`${API_URL}/rooms/${roomWithReservation.id}`, {
+        method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...roomWithReservation,
@@ -82,8 +83,8 @@ const MyReservations = () => {
         res => res.reservationId !== reservationId
       );
       
-      await fetch(`http://localhost:3000/users/${user.id}`, {
-        method: 'PUT',
+      await fetch(`${API_URL}/users/${user.id}/reservations`, {
+        method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...user,

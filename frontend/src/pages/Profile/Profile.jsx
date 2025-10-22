@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { showAlert } from '../../utils/alerts';
 import { validators } from '../../utils/validators';
 import './Profile.css';
+import { API_URL } from "../../utils/globals";
 
 const Profile = () => {
   const { user, logout, login } = useContext(AuthContext);
@@ -14,8 +15,8 @@ const Profile = () => {
     user: user?.user || '',
     email: user?.email || '',
     confirmEmail: user?.email || '',
-    password: user?.password || '',
-    confirmPassword: user?.password || ''
+    password: '',
+    confirmPassword: ''
   });
   const [loading, setLoading] = useState(false);
 
@@ -50,7 +51,7 @@ const Profile = () => {
       editForm.user !== user.user || 
       editForm.fullName !== user.fullName || 
       editForm.email !== user.email || 
-      editForm.password !== user.password;
+      editForm.password.trim() !== '';
 
     if (!hasChanges) {
       showAlert('No se realizaron cambios', 'warning');
@@ -66,29 +67,39 @@ const Profile = () => {
       return;
     }
 
-    const updatedUser = {
-      ...user,
+    const updatedData = {
       user: editForm.user,
       fullName: editForm.fullName,
-      email: editForm.email,
-      password: editForm.password
+      email: editForm.email
     };
 
+  
+    if (editForm.password && editForm.password.trim() !== '') {
+      updatedData.password = editForm.password;
+    }
+
     try {
-      const response = await fetch(`http://localhost:3000/users/${user.id}`, {
-        method: 'PUT',
+      const response = await fetch(`${API_URL}/users/${user.id}`, {
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(updatedUser)
+        body: JSON.stringify(updatedData)
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        throw new Error('Error al actualizar perfil');
+        const backendMessage = data?.message || 'Error al actualizar perfil';
+        throw new Error(backendMessage);
       }
 
-      const data = await response.json();
-      login(data);
+      login({
+        ...user,
+        user: data.user,
+        fullName: data.fullName,
+        email: data.email
+      });
       setShowEditProfile(false);
       showAlert('Perfil actualizado', 'success');
     } catch (err) {
@@ -137,7 +148,7 @@ const Profile = () => {
                     value={editForm[field.name]}
                     onChange={handleChange}
                     className='form-control'
-                    required={field.name !== 'password'}
+                    required={field.name !== 'password' && field.name !== 'confirmPassword'}
                   />
                 </div>
               ))}

@@ -3,9 +3,10 @@ import Card from 'react-bootstrap/Card';
 import { FaStar } from "react-icons/fa";
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import './RoomCard.css';
 import { API_URL } from '../../utils/globals';
+import { AuthContext } from '../../context/AuthContext';
 
 const MySwal = withReactContent(Swal);
 
@@ -26,26 +27,8 @@ const RoomCard = ({
   reservationButtonVisibility, 
   handleDeleteReservation 
 }) => {
-  
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
-  const updateUserInLocalStorage = async (userId) => {
-    try {
-      const userResponse = await fetch(`${API_URL}/users/${userId}`);
-      const userData = await userResponse.json();
-      localStorage.setItem('user', JSON.stringify(userData)); 
-      setUser(userData); 
-    } catch (error) {
-      console.error("Error al actualizar el usuario:", error);
-    }
-  };
-
-  useEffect(() => {
-    const userFromLocalStorage = localStorage.getItem('user');
-    if (userFromLocalStorage) {
-      setUser(JSON.parse(userFromLocalStorage));
-    }
-  }, []);
+  const {token, user, login} = useContext(AuthContext);
 
   const handleReservation = async () => {
     try {
@@ -65,7 +48,10 @@ const RoomCard = ({
       
       await fetch(`${API_URL}/rooms/${id}`, {
         method: "PATCH",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          'Authorization': `Bearer ${token}`,
+        },
         body: JSON.stringify(updatedRoom),
       });
 
@@ -80,13 +66,26 @@ const RoomCard = ({
         myReservations: [...user.myReservations, newReservationId],
       };
       
-      await fetch(`${API_URL}/users/${userId}/reservations`, {
+      const userResponse = await fetch(`${API_URL}/users/${userId}/reservations`, {
         method: "PATCH",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          'Authorization': `Bearer ${token}`,
+        },
         body: JSON.stringify(updatedUser),
       });
 
-      updateUserInLocalStorage(userId);
+      const data = await userResponse.json();
+
+      if (!userResponse.ok) {
+        throw new Error(data?.message || 'Error al actualizar usuario');
+      }
+      
+      if (data.user && data.token) {
+        login(data.user, data.token);
+      } else {
+        login(data, token);
+      }
 
       setRooms((prevRooms) => prevRooms.filter((room) => room.id !== id));
 

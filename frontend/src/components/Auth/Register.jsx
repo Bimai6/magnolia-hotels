@@ -44,13 +44,6 @@ function Register() {
     }
 
     try {
-      const existingUsersResponse = await fetch(`${API_URL}/users`);
-      const existingUsers = await existingUsersResponse.json();
-
-      if (existingUsers.some(user => user.user === formData.user)) {
-        return showAlert("El usuario ya está registrado", "warning");
-      }
-
       const newUser = {
         user: formData.user,
         fullName: formData.fullName,
@@ -59,7 +52,7 @@ function Register() {
         myReservations: []
       };
 
-      const response = await fetch(`${API_URL}/users`, {
+      const response = await fetch(`${API_URL}/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -70,8 +63,9 @@ function Register() {
       if (!response.ok) {
         throw new Error("Error al registrar usuario");
       }
-      const createdUser = await response.json()
-      login(createdUser);
+      
+      const data = await response.json()
+      login(data.user, data.token);
       showAlert("Inicio de sesión exitoso", "success");
       setTimeout(() => {
         window.location.reload();

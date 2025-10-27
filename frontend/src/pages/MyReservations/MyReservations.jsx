@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext} from 'react';
 import RoomCard from '../../components/RoomCard/RoomCard';
 import './MyReservations.css';
 import Header from '../../components/Header/Header';
 import Swal from 'sweetalert2';
 import { API_URL } from '../../utils/globals';
+import { AuthContext } from '../../context/AuthContext';
 
 const MySwal = Swal.mixin();
 
 const MyReservations = () => {
   const [userReservations, setUserReservations] = useState([]);
+  const {token} = useContext(AuthContext);
 
   useEffect(() => {
     const fetchReservations = async () => {
@@ -70,7 +72,10 @@ const MyReservations = () => {
       
       await fetch(`${API_URL}/rooms/${roomWithReservation.id}`, {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
         body: JSON.stringify({
           ...roomWithReservation,
           reservations: updatedRoomReservations
@@ -85,7 +90,10 @@ const MyReservations = () => {
       
       await fetch(`${API_URL}/users/${user.id}/reservations`, {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
         body: JSON.stringify({
           ...user,
           myReservations: updatedUserReservations

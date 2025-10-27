@@ -34,24 +34,27 @@ function Login() {
     }
 
     try {
-      const response = await fetch(`${API_URL}/users`);
-      const users = await response.json();
+      const response = await fetch(`${API_URL}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user: formData.user,
+          password: formData.password,
+        }),
+      });
 
-      const userFound = users.find(u => u.user === formData.user);
-      
-      if (!userFound) {
-        return showAlert('Usuario no encontrado', 'error');
+      const data = await response.json();
+
+      if (!response.ok) {
+        return showAlert(data.message || "Credenciales inválidas", "error");
       }
 
-      if (userFound.password !== formData.password) {
-        return showAlert('Contraseña incorrecta', 'error');
-      }
+      login(data.user, data.token);
 
-      login(userFound);
       showAlert("Inicio de sesión exitoso", "success");
 
       setTimeout(() => {
-      window.location.reload();
+        window.location.reload();
       }, 1500);
       
 

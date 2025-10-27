@@ -7,7 +7,7 @@ import './Profile.css';
 import { API_URL } from "../../utils/globals";
 
 const Profile = () => {
-  const { user, logout, login } = useContext(AuthContext);
+  const { user, logout, login, token } = useContext(AuthContext);
   const navigate = useNavigate();
   const [showEditProfile, setShowEditProfile] = useState(false);
   const [editForm, setEditForm] = useState({
@@ -82,7 +82,8 @@ const Profile = () => {
       const response = await fetch(`${API_URL}/users/${user.id}`, {
         method: 'PATCH',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify(updatedData)
       });
@@ -94,12 +95,7 @@ const Profile = () => {
         throw new Error(backendMessage);
       }
 
-      login({
-        ...user,
-        user: data.user,
-        fullName: data.fullName,
-        email: data.email
-      });
+      login(data.user, data.token);
       setShowEditProfile(false);
       showAlert('Perfil actualizado', 'success');
     } catch (err) {

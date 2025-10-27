@@ -5,16 +5,17 @@ import './Restaurant.css';
 import ButtonRestaurant from '../../components/ButtonRestaurant/ButtonRestaurant';
 import emailjs from '@emailjs/browser';
 import Header from '../../components/Header/Header';
-emailjs.init('h0PZABPnZmb6RndN-');
+import { API_URL } from '../../utils/globals';
+emailjs.init('E81pisN5DUHHYVjjp');
 
 
 const MySwal = withReactContent(Swal);
 
-const getReservations = async () => {
+const getReservation = async () => {
   try {
-    const response = await fetch('http://localhost:3000/restaurantReservations');
-    const reservations = await response.json();
-    return reservations;
+    const response = await fetch('http://localhost:3000/restaurantReservations/');
+    const reservation = await response.json();
+    return reservation;
   } catch (error) {
     console.error("Error al obtener las reservas:", error);
     return [];
@@ -23,7 +24,7 @@ const getReservations = async () => {
 
 const saveReservation = async (reservation) => {
   try {
-    const response = await fetch('http://localhost:3000/restaurantReservations', {
+    const response = await fetch(`${API_URL}/restaurantReservations`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -230,22 +231,21 @@ const handleReservationClick = () => {
     },
     preConfirm: () => {
       const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
+      const mail = document.getElementById('email').value.trim();
       const phone = document.getElementById('phone').value.trim();
       const guests = parseInt(document.getElementById('guests').value, 10);
       const dateTime = document.getElementById('dateTime').value;
-      const reservationNumber = Math.floor(100000000 + Math.random() * 900000000);
       
       const phoneRegex = /^\+?[0-9]{8,15}$/;
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       const selectedDate = new Date(dateTime);
       const currentDate = new Date();
 
-      if (!name || !email || !phone || !guests || !dateTime) {
+      if (!name || !mail || !phone || !guests || !dateTime) {
         MySwal.showValidationMessage('Por favor, rellena todos los campos');
         return false;
       }
-      if (!emailRegex.test(email)) {
+      if (!emailRegex.test(mail)) {
         MySwal.showValidationMessage('Por favor, introduce un correo electrónico válido');
         return false;
       }
@@ -269,19 +269,19 @@ const handleReservationClick = () => {
         return false;
       }
 
-      return { name, email, phone, guests, dateTime, reservationNumber };
+      return { name, mail, phone, guests, dateTime };
     },
-  }).then((result) => {
+  }).then(async (result) => {
     if (result.isConfirmed) {
-      const { name, email, phone, guests, dateTime, reservationNumber } = result.value;
-      const reservation = { name, email, phone, guests, dateTime, reservationNumber };
-      saveReservation(reservation);
+      const { name, mail, phone, guests, dateTime } = result.value;
+      const restaurantReservation = { name, mail, phone, guests, dateTime };
+      const reservation = await saveReservation(restaurantReservation);
 
       MySwal.fire({
         title: 'Reserva Confirmada',
         html: `Gracias ${name}, tu reserva para ${guests} comensales el ${formatDateTime(dateTime)} ha sido confirmada.<br><br>
-               <strong>Número de reserva:</strong> ${reservationNumber}<br><br>
-               Se enviará una confirmación a tu correo: ${email}`,
+               <strong>Número de reserva:</strong> ${reservation.id}<br><br>
+               Se enviará una confirmación a tu correo: ${mail}`,
         icon: 'success',
         confirmButtonText: 'OK',
         confirmButtonColor: '#DAA520',
@@ -290,17 +290,17 @@ const handleReservationClick = () => {
       });
 
       emailjs.send(
-        'service_qgjhvea',
-        'template_8c7fits',
+        'service_wdnf3be',
+        'template_b2icd2d',
         {
-          name: name,
-          email: email,
-          phone: phone,
-          guests: guests,
+          name: reservation.name,
+          mail: reservation.mail,
+          phone: reservation.phone,
+          guests: reservation.guests,
           dateTime: formatDateTime(dateTime),
-          reservationNumber: reservationNumber
+          id: reservation.id
         },
-        'h0PZABPnZmb6RndN-'
+        'E81pisN5DUHHYVjjp'
       )
       .then((response) => {
         console.log('Correo enviado con éxito:', response);

@@ -4,9 +4,9 @@ import { createRoom, createRooms, deleteARoom, getAllRooms, getARoom, updateARoo
 import User from "../models/UserModel.js";
 import Room from "../models/RoomModel.js";
 import { verifyToken } from "../middlewares/auth.js";
+import { createRestaurantReservation } from "../controllers/RestaurantReservationController.js";
 
 const router = express.Router();
-
 
 router.get("/", async (req, res) => {
     try {
@@ -34,5 +34,7 @@ router.get('/rooms/:id', getARoom);
 router.patch('/rooms/:id', verifyToken, updateARoomReservation);
 //router.post('/rooms/bulk', createRooms);
 //router.delete('/rooms/:id', deleteARoom);
+
+router.post('/restaurantReservations', createRestaurantReservation);
 
 export default router

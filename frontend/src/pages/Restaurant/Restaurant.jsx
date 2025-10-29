@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 import './Restaurant.css';
@@ -6,14 +6,22 @@ import ButtonRestaurant from '../../components/ButtonRestaurant/ButtonRestaurant
 import emailjs from '@emailjs/browser';
 import Header from '../../components/Header/Header';
 import { API_URL } from '../../utils/globals';
-emailjs.init('E81pisN5DUHHYVjjp');
+import { AuthContext } from '../../context/AuthContext';
 
+emailjs.init('E81pisN5DUHHYVjjp');
 
 const MySwal = withReactContent(Swal);
 
-const getReservation = async () => {
+const getReservation = async (mail, id, token) => {
   try {
-    const response = await fetch('http://localhost:3000/restaurantReservations/');
+    const response = await fetch(`${API_URL}/restaurantReservations/${id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+      body: JSON.stringify(mail),
+    });
     const reservation = await response.json();
     return reservation;
   } catch (error) {
@@ -22,12 +30,13 @@ const getReservation = async () => {
   }
 };
 
-const saveReservation = async (reservation) => {
+const saveReservation = async (reservation, token) => {
   try {
     const response = await fetch(`${API_URL}/restaurantReservations`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
       },
       body: JSON.stringify(reservation),
     });
@@ -175,7 +184,7 @@ const handleMenuClick = () => {
   });
 };
 
-const handleReservationClick = () => {
+const handleReservationClick = (token) => {
   const isMobile = window.innerWidth <= 768;
   const titleText = isMobile
     ? "Reserva tu mesa"
@@ -275,7 +284,7 @@ const handleReservationClick = () => {
     if (result.isConfirmed) {
       const { name, mail, phone, guests, dateTime } = result.value;
       const restaurantReservation = { name, mail, phone, guests, dateTime };
-      const reservation = await saveReservation(restaurantReservation);
+      const reservation = await saveReservation(restaurantReservation, token);
 
       MySwal.fire({
         title: 'Reserva Confirmada',
@@ -312,7 +321,7 @@ const handleReservationClick = () => {
   });
 };
 
-const handleModifyReservationClick = async () => {
+const handleModifyReservationClick = async (token) => {
   MySwal.fire({
     title: "Modificar Reserva",
     html: `
@@ -322,8 +331,8 @@ const handleModifyReservationClick = async () => {
           <input type="email" id="email" class="swal-reserva-input" required>
         </div>
         <div class="swal-reserva-row">
-          <label for="reservationId">Número de reserva</label>
-          <input type="number" id="reservationId" class="swal-reserva-input" required>
+          <label for="reservationId">Código de reserva</label>
+          <input type="text" id="reservationId" class="swal-reserva-input" required>
         </div>
       </div>
     `,
@@ -337,7 +346,7 @@ const handleModifyReservationClick = async () => {
     background: 'rgba(79, 78, 78, 0.66)',
     preConfirm: () => {
       const email = document.getElementById('email').value.trim();
-      const reservationId = parseInt(document.getElementById('reservationId').value.trim(), 10);
+      const reservationId = document.getElementById('reservationId').value.trim();
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
       if (!email || !reservationId) {
@@ -354,8 +363,7 @@ const handleModifyReservationClick = async () => {
   }).then(async (result) => {
     if (result.isConfirmed) {
       const { email, reservationId } = result.value;
-      const reservations = await getReservations();
-      const reservation = reservations.find(res => res.reservationNumber === reservationId && res.email === email);
+      const reservation = await getReservation({mail: email}, reservationId, token);
 
       if (reservation) {
         MySwal.fire({
@@ -483,6 +491,9 @@ function formatDateTime(dateTime) {
 }
 
 const Restaurant = () => {
+
+  const { token } = useContext(AuthContext);
+
   return (
     <div className="restaurant-container">
       <Header/>
@@ -491,8 +502,8 @@ const Restaurant = () => {
         <img className='restaurantTitle' src="https://res.cloudinary.com/dczjloaiy/image/upload/v1739180953/Titulo_Logo_ej81de.png" alt="Ebano Restaurant Title" />
       </div>
       <div id="buttonsRestaurant">
-        <ButtonRestaurant title="Reservar" action={handleReservationClick} />
-        <ButtonRestaurant title="Modificar Reserva" action={handleModifyReservationClick} />
+        <ButtonRestaurant title="Reservar" action={() => handleReservationClick(token)} />
+        <ButtonRestaurant title="Modificar Reserva" action={() => handleModifyReservationClick(token)} />
         <ButtonRestaurant title="Carta" action={handleMenuClick} />
       </div>
       

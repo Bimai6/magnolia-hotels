@@ -12,7 +12,18 @@ emailjs.init('E81pisN5DUHHYVjjp');
 
 const MySwal = withReactContent(Swal);
 
-const getReservation = async (mail, id, token) => {
+const getReservation = async (id) => {
+  try {
+    const response = await fetch(`${API_URL}/restaurantReservations/${id}`);
+    const reservation = await response.json();
+    return reservation;
+  } catch (error) {
+    console.error("Error al obtener las reservas:", error);
+    return [];
+  }
+};
+
+const getReservationWithMail = async (mail, id, token) => {
   try {
     const response = await fetch(`${API_URL}/restaurantReservations/${id}`, {
       method: 'POST',
@@ -48,22 +59,15 @@ const saveReservation = async (reservation, token) => {
 };
 
 
-const updateReservation = async (reservationNumber, updatedReservation) => {
+const updateReservation = async (reservationId, updatedReservation, token) => {
   try {
-    const reservations = await getReservations();
-
-    const reservation = reservations.find(res => res.reservationNumber === reservationNumber);
-
-    if (!reservation) {
-      throw new Error(`No se encontró la reserva con el número ${reservationNumber}`);
-    }
-
-    const response = await fetch(`http://localhost:3000/restaurantReservations/${reservation.id}`, {
-      method: 'PUT',
+    const response = await fetch(`${API_URL}/restaurantReservations/${reservationId}`, {
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify({ ...updatedReservation, id: reservation.id }),
+      body: JSON.stringify(updatedReservation),
     });
 
     if (!response.ok) {
@@ -80,7 +84,7 @@ const updateReservation = async (reservationNumber, updatedReservation) => {
 
 const deleteReservation = async (reservationNumber) => {
   try {
-    const reservations = await getReservations();
+    const reservations = await getReservationWithMails();
     const reservation = reservations.find(res => res.reservationNumber === reservationNumber);
 
     if (!reservation) {
@@ -363,7 +367,7 @@ const handleModifyReservationClick = async (token) => {
   }).then(async (result) => {
     if (result.isConfirmed) {
       const { email, reservationId } = result.value;
-      const reservation = await getReservation({mail: email}, reservationId, token);
+      const reservation = await getReservationWithMail({mail: email}, reservationId, token);
 
       if (reservation) {
         MySwal.fire({
@@ -420,24 +424,23 @@ const handleModifyReservationClick = async (token) => {
               return false;
             }
             
-            return { name, phone, guests, dateTime, reservationId };
+            return { name, phone, guests, dateTime};
           }
         }).then(async (modResult) => {
           if (modResult.isConfirmed) {
-            const { name, phone, guests, dateTime, reservationId } = modResult.value;
+            const { name, phone, guests, dateTime } = modResult.value;
             const updatedReservation = { 
               name, 
-              email: reservation.email, 
+              mail: reservation.mail, 
               phone, 
               guests, 
-              dateTime, 
-              reservationNumber: reservationId 
+              dateTime,
             };
-            const success = await updateReservation(reservationId, updatedReservation);
+            const success = await updateReservation(reservation.id, updatedReservation, token);
             if (success) {
               MySwal.fire({
                 title: 'Reserva Modificada',
-                html: `Tu reserva <strong>${reservationId}</strong> ha sido actualizada.<br>
+                html: `Tu reserva con el código <strong>${reservation.id}</strong> ha sido actualizada.<br>
                        <strong>Nombre:</strong> ${name}<br>
                        <strong>Teléfono:</strong> ${phone}<br>
                        <strong>Comensales:</strong> ${guests}<br>

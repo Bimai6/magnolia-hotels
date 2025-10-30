@@ -33,11 +33,17 @@ const getReservationWithMail = async (mail, id, token) => {
       },
       body: JSON.stringify(mail),
     });
+
+    if (!response.ok) {
+      console.error(`Error: ${response.status} - ${response.statusText}`);
+      return null;
+    }
+
     const reservation = await response.json();
     return reservation;
   } catch (error) {
     console.error("Error al obtener las reservas:", error);
-    return [];
+    return null;
   }
 };
 
@@ -51,6 +57,12 @@ const saveReservation = async (reservation, token) => {
       },
       body: JSON.stringify(reservation),
     });
+
+    if (!response.ok) {
+      console.error(`Error: ${response.status} - ${response.statusText}`);
+      return null;
+    }
+    
     const newReservation = await response.json();
     return newReservation;
   } catch (error) {
@@ -82,22 +94,24 @@ const updateReservation = async (reservationId, updatedReservation, token) => {
   }
 };
 
-const deleteReservation = async (reservationNumber) => {
+const deleteReservation = async (reservationId, token) => {
   try {
-    const reservations = await getReservationWithMails();
-    const reservation = reservations.find(res => res.reservationNumber === reservationNumber);
-
-    if (!reservation) {
-      throw new Error(`No se encontró la reserva con el número ${reservationNumber}`);
-    }
-
-    await fetch(`http://localhost:3000/restaurantReservations/${reservation.id}`, {
+    const response = await fetch(`${API_URL}/restaurantReservations/${reservationId}`, {
       method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
     });
 
-    console.log(`Reserva ${reservationNumber} eliminada correctamente.`);
+    if (!response.ok) {
+      console.error(`Error: ${response.status} - ${response.statusText}`);
+      return false;
+    }
+
+    return true;
   } catch (error) {
     console.error("Error al eliminar la reserva:", error);
+    return false;
   }
 };
 
@@ -290,6 +304,19 @@ const handleReservationClick = (token) => {
       const restaurantReservation = { name, mail, phone, guests, dateTime };
       const reservation = await saveReservation(restaurantReservation, token);
 
+      if (!reservation) {
+      MySwal.fire({
+        title: 'Error',
+        text: 'No se pudo crear la reserva. Por favor, intenta de nuevo.',
+        icon: 'error',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#DAA520',
+        background: 'rgba(79, 78, 78, 0.66)',
+        color: '#fff',
+      });
+      return;
+    }
+
       MySwal.fire({
         title: 'Reserva Confirmada',
         html: `Gracias ${name}, tu reserva para ${guests} comensales el ${formatDateTime(dateTime)} ha sido confirmada.<br><br>
@@ -453,16 +480,28 @@ const handleModifyReservationClick = async (token) => {
               });
             }
           } else if (modResult.isDenied) {
-            await deleteReservation(reservationId);
-            MySwal.fire({
+            const reservationDeleted = await deleteReservation(reservation.id, token);
+            if(reservationDeleted){
+              MySwal.fire({
               title: 'Reserva Anulada',
-              text: `Tu reserva: ${reservationId}, ha sido anulada.`,
+              text: `Tu reserva: ${reservation.id}, ha sido anulada.`,
               icon: 'info',
               background: 'rgba(79, 78, 78, 0.66)',
               color: '#fff',
               confirmButtonText: 'OK',
               confirmButtonColor: '#DAA520'
-            });
+              });
+            }else{
+              MySwal.fire({
+                title: 'Error',
+                text: 'No se encontró la reserva con los datos proporcionados.',
+                icon: 'error',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#DAA520',
+                background: 'rgba(79, 78, 78, 0.66)',
+                color: '#fff',
+              });
+            }
           }
         });
       } else {
@@ -494,7 +533,7 @@ function formatDateTime(dateTime) {
 }
 
 const Restaurant = () => {
-
+  
   const { token } = useContext(AuthContext);
 
   return (

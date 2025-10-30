@@ -4,7 +4,7 @@ import { createRoom, createRooms, deleteARoom, getAllRooms, getARoom, updateARoo
 import User from "../models/UserModel.js";
 import Room from "../models/RoomModel.js";
 import { verifyToken } from "../middlewares/auth.js";
-import { createRestaurantReservation, getRestaurantReservationById, getRestaurantReservationByMailAndId, updateRestaurantReservation } from "../controllers/RestaurantReservationController.js";
+import { createRestaurantReservation, deleteRestaurantReservation, getRestaurantReservationById, getRestaurantReservationByMailAndId, updateRestaurantReservation } from "../controllers/RestaurantReservationController.js";
 
 const router = express.Router();
 
@@ -39,5 +39,6 @@ router.get('/restaurantReservations', getRestaurantReservationById);
 router.post('/restaurantReservations', verifyToken, createRestaurantReservation);
 router.post('/restaurantReservations/:id', verifyToken, getRestaurantReservationByMailAndId);
 router.patch('/restaurantReservations/:id', verifyToken, updateRestaurantReservation);
+router.delete('/restaurantReservations/:id', verifyToken, deleteRestaurantReservation);
 
 export default router

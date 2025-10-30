@@ -14,6 +14,7 @@ export const getRestaurantReservationByMailAndId = async (req, res) => {
     const { mail } = req.body;
     const { id } = req.params;
     const restaurantReservation = await RestaurantReservation.findById(id);
+    console.log(restaurantReservation);
     if(!restaurantReservation || restaurantReservation.mail !== mail){
         return res.status(404).json({message: 'No se ha encontrado una reserva para el restaurante con esos datos'})
     }
@@ -59,5 +60,21 @@ export const updateRestaurantReservation = async (req, res) => {
 
   } catch (error) {
     return res.status(500).json({message: error});
+  }
+}
+
+export const deleteRestaurantReservation = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const restaurantReservationToDelete = await RestaurantReservation.findById(id);
+
+    if(!restaurantReservationToDelete) 
+      return res.status(404).json({message: 'No se ha encontrado la reserva que se desea borrar'});
+
+    await restaurantReservationToDelete.deleteOne();
+
+    res.json({ message: `Reserva con el código: ${id} eliminada correctamente.` });
+  } catch (error) {
+    return res.status(500).json({message: error})
   }
 }

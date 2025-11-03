@@ -7,6 +7,7 @@ import { useState, useEffect, useContext } from 'react';
 import './RoomCard.css';
 import { API_URL } from '../../utils/globals';
 import { AuthContext } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const MySwal = withReactContent(Swal);
 
@@ -29,6 +30,7 @@ const RoomCard = ({
 }) => {
 
   const {token, user, login} = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleReservation = async () => {
     try {
@@ -97,7 +99,7 @@ const RoomCard = ({
         confirmButtonText: 'Aceptar'
       });
 
-      window.location.href = '/my-reservations'; 
+      navigate('/my-reservations', { replace: true });
     } catch (error) {
       console.error('Error al realizar la reserva:', error);
       MySwal.fire('Error', 'Hubo un problema al hacer la reserva. Intenta de nuevo.', 'error');

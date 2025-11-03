@@ -2,21 +2,22 @@
 
 # **Magnolia Hotels** 🏨
 
-**Magnolia Hotels** is an exclusive luxury hotel chain, where every detail is designed to offer you a unique experience. With individual and double luxury rooms, a gourmet restaurant that takes gastronomy to new heights, and a pool and spa service for your total relaxation. Located in central and privileged locations, **Magnolia Hotels** guarantees you a dream getaway, combining comfort, elegance, and sophistication in one place.
+**Magnolia Hotels** is an exclusive chain of luxury hotels where every detail is designed to offer you a unique experience. With single and double luxury rooms, a gourmet restaurant that takes gastronomy to new heights, and pool and spa services for your total relaxation. Located in central and privileged areas, **Magnolia Hotels** guarantees you a dream getaway, combining comfort, elegance, and sophistication in one place.
+
+Fullstack application with a React frontend and Node.js/Express backend, connected to MongoDB Atlas for complete management of room and restaurant reservations, featuring JWT authentication.
 
 ---
 
 ## 📌 **Table of Contents**
 1. [⚙️ Installation and Requirements](#installation-and-requirements)
-2. [👥 Team Members](#-team-members)
-3. [🎨 App Design](#-app-design)
-4. [🏗️ Project Architecture](#project-architecture)
-5. [💻 Technologies Used](#-technologies-used) 
-6. [📚 Libraries](#-libraries)
-7. [🧪 Test Screenshots](#-test-screenshots)
-8. [🚀 Next Steps](#-next-steps)
-9. [🌐 Preview](#-preview)
-10. [🔖 License](#-license)
+2. [🔐 Authentication & Security](#auth-security)
+3. [🌐 REST API Endpoints](#rest-api-endpoints)
+4. [🎨 Application Design](#app-design)
+5. [💻 Technologies Used](#technologies-used)
+6. [📚 Libraries](#-libraries) 
+7. [🚀 Next Steps](#-next-steps)
+8. [👥 Original Team](#original-team)
+9. [🔖 License](#-license)
 
 ---
 
@@ -27,6 +28,7 @@
 Before you start, ensure you have the following installed:
 - **Node.js** (Download from [here](https://nodejs.org/))
 - **npm** (comes with Node.js)
+- **MongoDB Atlas** (free account at mongodb.com)
 
 ### **Installation Steps**
 
@@ -44,33 +46,70 @@ Before you start, ensure you have the following installed:
    npm install
    
 3. **Run the application**
-   Start the development server using the following command
+   Thanks to concurrently, you run both backend and frontend with the same command
+   ("dev": "concurrently \"npm run dev --prefix frontend\" \"npm run dev --prefix backend\"")
 
    ```bash
    npm run dev
    
-4. **Run the server**
-   Start the json server using the following command
+   
+---
 
-   ```bash
-   npm start
+## 🔐 **Authentication & Security** <a name="auth-security"></a>
+-This app uses JWT (JSON Web Tokens) for user authentication and secure access.
+
+-User login credentials are securely handled and stored in the database.
+
+-Protected routes ensure that only authorized users can access certain resources.
 
 ---
 
-## 👥 **Team Members**  
+## 🌐 REST API Endpoints <a name="rest-api-endpoints"></a>
 
-| Nombre | Rol | GitHub |
-|--------|-----|--------|
-| **Mario Lebrero** | Developer | [@Bimai6](https://github.com/Bimai6) |
-| **Pablo Jiménez** | Developer | [@pablo-jm](https://github.com/pablo-jm) |
-| **Alejandro Gómez** | Developer | [@AleGomoj](https://github.com/AleGomoj) |
-| **Jesús Manuel García** | Scrum Master | [@LozzDev](https://github.com/LozzDev) |
-| **Felipe Chacón** | Product Owner | [@PhilippeInCode](https://github.com/PhilippeInCode) |
+### **Authentication**
+
+| Method | Endpoint      | Description         | Auth |
+|--------|---------------|-------------------|------|
+| POST   | /login        | Log in a user      | ❌   |
+| POST   | /register     | Register a new user| ❌   |
 
 ---
 
+### **Users**
 
-## 🎨 **App Design**
+| Method | Endpoint                  | Description                     | Auth |
+|--------|---------------------------|---------------------------------|------|
+| GET    | /users                    | Get all users                   | ❌   |
+| GET    | /users/:id                | Get a specific user by ID       | ❌   |
+| PATCH  | /users/:id                | Update user profile             | ✅   |
+| PATCH  | /users/:id/reservations   | Update user's reservations      | ✅   |
+
+---
+
+### **Rooms**
+
+| Method | Endpoint           | Description                     | Auth |
+|--------|------------------|---------------------------------|------|
+| GET    | /rooms            | Get all rooms                   | ❌   |
+| GET    | /rooms/:id        | Get a specific room by ID       | ❌   |
+| PATCH  | /rooms/:id        | Update room reservations        | ✅   |
+
+---
+
+### **Restaurant Reservations**
+
+| Method | Endpoint                         | Description                           | Auth |
+|--------|----------------------------------|---------------------------------------|------|
+| GET    | /restaurantReservations           | Get all restaurant reservations       | ❌   |
+| POST   | /restaurantReservations           | Create a new restaurant reservation   | ✅   |
+| POST   | /restaurantReservations/:id       | Get reservation by email and ID       | ✅   |
+| PATCH  | /restaurantReservations/:id       | Update a restaurant reservation       | ✅   |
+| DELETE | /restaurantReservations/:id       | Delete a restaurant reservation       | ✅   |
+
+
+---
+
+## 🎨 **App Design** <a name="app-design"></a>
 
 ### 🖥️ Desktop Version  
 
@@ -87,73 +126,26 @@ Before you start, ensure you have the following installed:
 
 ---
 
-## 🏗️ Project Architecture <a name="project-architecture"></a>
-
-📂 Magnolia-Hotels
-
-├─ 📂 src
-
-   │ ├─ 📂 components
-   
-      │ │ ├─ 📂 Auth
-      │ │ ├─ 📂 ButtonRestaurant
-         │ │ │ ├─ ButtonRestaurant.css
-         │ │ │ └─ ButtonRestaurant.jsx
-      │ │ ├─ 📂 ButtonSearch
-      │ │ ├─ 📂 ContactSlider
-      │ │ ├─ 📂 EmailButton
-      │ │ ├─ 📂 Footer
-      │ │ ├─ 📂 Header
-      │ │ ├─ 📂 RoomCard
-      │ │ └─ 📂 SearchResult
-      
-   │ ├─ 📂 context
-   
-   │ ├─ 📂 data
-   
-   │ ├─ 📂 pages
-   
-      │ │ ├─ 📂 Home
-         │ │ │ ├─ Home.css
-            │ │ │ └─ Home.jsx
-            
-      │ │ ├─ 📂 MyReservations
-      │ │ ├─ 📂 Profile
-      │ │ ├─ 📂 Reservations
-      │ │ └─ 📂 Restaurant
-      │ │ └─ RestaurantMenu
-      
-   │ ├─ 📂 router
-   
-      │ │ └─ Router.jsx
-      
-   │ ├─ index.css
-   
-   │ ├─ main.jsx
-   
-   │ └─ ...
-   
-├─ 📄 .gitignore
-
-├─ 📄 eslint.config.js
-
-├─ 📄 index.html
-
-├─ 📄 package.json
-
-├─ 📄 README.md
-
-└─ 📄 vite.config.js
-
----
-
-## 💻 **Technologies Used**
+## 💻 **Technologies Used** <a name="technologies-used"></a>
  This project utilizes the following technologies:
 
-- React: Frontend JavaScript library for building user interfaces
-- React Router: For handling navigation within the app
-- Bootstrap: For responsive design and UI components
-- React Bootstrap: Bootstrap components for React
+###Frontend
+- React
+- React Router
+- Bootstrap
+- React Bootstrap
+- MUI Components
+
+###Backend
+- Node.js
+- Express.js
+- JWT
+- Mongoose
+- Joi
+- Nodemon
+
+###Database
+- MongoDB Atlas
 
 ---
 
@@ -176,18 +168,11 @@ Before you start, ensure you have the following installed:
 - react-slick
 - slick-carousel
 - sweetalert2
-
----
-## 🧪 **Test Screenshots**
-
-| Test Name         | Screenshot |
-|------------------|------------|
-| **Header Test**  | ![Header Test](https://res.cloudinary.com/dczjloaiy/image/upload/v1740668360/headertest_yhtzk5.png) |
-| **Footer Test**  | ![Footer Test](https://res.cloudinary.com/dczjloaiy/image/upload/v1740668360/footertest_u7esvi.png) |
-| **Button Search** | ![Button Search](https://res.cloudinary.com/dczjloaiy/image/upload/v1740668823/buttonsearchtest_iykbe3.png) |
-| **Room Card**    | ![Room Card](https://res.cloudinary.com/dczjloaiy/image/upload/v1740668654/roomcardtest_c9dyiv.png) |
-| **Email Button** | ![Email Button](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740776961/EmailButton_n6pcem.jpg) |
-| **Contact Slider** | ![Contact Slider](https://res.cloudinary.com/dk1g12n2h/image/upload/v1740776961/ContactSlider_f8yiot.jpg) |
+- mongoose
+- jsonwebtoken
+- joi
+- nodemon
+- concurrently
 
 ---
 
@@ -197,13 +182,31 @@ Before you start, ensure you have the following installed:
 - Create social media accounts
 - Add dark mode
 - Create chat for Contact section
-- Replace json with database
-
+  
 ---
 
-## 🌐 **Preview**
-   Comming soon
----
+## 👥 Original Team <a name="original-team"></a>
+
+This project originally started as a group effort but has evolved into an individual fullstack project.
+
+### Initial Team
+
+| Name                | Role           | GitHub |
+|--------------------|----------------|--------|
+| Mario Lebrero       | Developer      | [@Bimai6](https://github.com/Bimai6) |
+| Pablo Jiménez       | Developer      | [@pablo-jm](https://github.com/pablo-jm) |
+| Alejandro Gómez     | Developer      | [@AleGomoj](https://github.com/AleGomoj) |
+| Jesús Manuel García | Scrum Master   | [@LozzDev](https://github.com/LozzDev) |
+| Felipe Chacón       | Product Owner  | [@PhilippeInCode](https://github.com/PhilippeInCode) |
+
+### Current Development
+
+| Name          | Role                                                                 |
+|---------------|----------------------------------------------------------------------|
+| Mario Lebrero | Fullstack Developer (Backend + MongoDB connection + Deployment)      |
+
+> Note: All backend functionality, database connection, and deployment have been handled individually by Mario Lebrero.
+
 
 ## 🔖 **License**
 
